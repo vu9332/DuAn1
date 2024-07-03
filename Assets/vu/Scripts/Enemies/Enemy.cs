@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, TakeDamage
+public class Enemy : MonoBehaviour, IDamageAble
 {
     // Start is called before the first frame update
-    public float maxHealth;
-    public float curentHealth;
+   
+
+    public float health { get ; set ; }
+    public float currentHealth { get ; set; }
+
     void Start()
     {
-        curentHealth=maxHealth;
+        currentHealth = health;
     }
 
     // Update is called once per frame
@@ -19,8 +22,12 @@ public class Enemy : MonoBehaviour, TakeDamage
     }
     public void TakeDamage(float damage)
     {
-        curentHealth-=damage;
-        Debug.Log("curenthealt" + curentHealth);
+        currentHealth -= damage;
+        Debug.Log("curenthealt" + currentHealth);
     }
 
+    public void Die()
+    {
+       
+    }
 }

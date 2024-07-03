@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skill",
+                    "name": "Skill1",
                     "type": "Button",
                     "id": "00416716-4fae-4a07-b6e1-3909ab8f4ae1",
                     "expectedControlType": "Button",
@@ -63,6 +63,33 @@
                     "name": "Roll",
                     "type": "Button",
                     "id": "dca1a74c-7e67-4080-b5e4-78efb04408a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "dash",
+                    "type": "Button",
+                    "id": "7fc81553-c123-4022-868a-fbfea613cff2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skil2",
+                    "type": "Button",
+                    "id": "e96b79d1-74a9-4de9-8365-25933c29818b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Buff",
+                    "type": "Button",
+                    "id": "61977d9e-eb71-4fab-beec-07455ba9bafa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -297,7 +324,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Skill",
+                    "action": "Skill1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -309,6 +336,39 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c28462f-79c0-4f68-9ae9-1cde84b9c1fd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d86c228f-f6cc-4d6c-aaaa-04864927215f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Skil2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47ef27d3-4789-4de3-a168-1d41a5c162f2",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Buff",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

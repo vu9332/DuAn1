@@ -4827,7 +4827,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -131944809
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5023,6 +5023,8 @@ GameObject:
   - component: {fileID: 3482554763992056168}
   - component: {fileID: 7336326324453955207}
   - component: {fileID: 5012664347156787793}
+  - component: {fileID: 7790714996148349664}
+  - component: {fileID: 7223761058501302747}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5089,7 +5091,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -131944809
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -1969780371, guid: 6c22ed121af2ba74cb9fba599e0da55e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5421,7 +5423,7 @@ MonoBehaviour:
   _isMoving: 0
   _isRunning: 0
   jumpForce: 8
-  dashSpeed: 30
+  dashSpeed: 20
   maxDashDistance: 5
   _isDash: 0
   rollSpeed: 10
@@ -5431,6 +5433,10 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  movingSoundEffect:
+  - {fileID: 8300000, guid: 5be19836440df394985a3839f95a0c3b, type: 3}
+  - {fileID: 8300000, guid: adbff260cce0a3e4cbee038c656df848, type: 3}
+  - {fileID: 8300000, guid: 1fd344d5f8106844e93942ea8a062eab, type: 3}
 --- !u!114 &3482554763992056168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5500,6 +5506,13 @@ MonoBehaviour:
   buffAttackPrefabs: {fileID: 5113928139953908053, guid: 9af25f44301788144834570c7163ee7c, type: 3}
   _isBuff: 0
   _canAttack: 1
+  particleOnHitPrefabVFX: {fileID: 9082173580397688825, guid: e88c077a8b8c9234db0acd959d845714, type: 3}
+  attackSoundClip:
+  - {fileID: 8300000, guid: 9bd9c3b8b6eacb646b3c1fc19b0774c8, type: 3}
+  - {fileID: 8300000, guid: c9aa7e90952aea449a95c41c873520bc, type: 3}
+  - {fileID: 8300000, guid: f3734897adb4d5449ac86b29694abc8a, type: 3}
+  - {fileID: 8300000, guid: 0b60c5443d018a04b8fa12e05b3fc388, type: 3}
+  - {fileID: 8300000, guid: 8c13c9a75c5ac4c4aa3910235a8dc1c3, type: 3}
 --- !u!96 &5012664347156787793
 TrailRenderer:
   serializedVersion: 3
@@ -5540,7 +5553,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -131944809
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 0.15
   m_PreviewTimeScale: 1
@@ -5622,3 +5635,34 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7790714996148349664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801682784065055976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d8183822379b44d91d7c860cd05047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  maxStamina: 50
+  staminaRefresh: 1
+  timeBtweenStaminaRefresh: 2
+--- !u!114 &7223761058501302747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801682784065055976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366ef1f9b2a7a14cbd236e2ae5c1ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost: {fileID: 8993714808278641046, guid: daa48a632941e48448372c17a9b79f0d, type: 3}
+  ghostDelay: 0.1
+  makeGhost: 0

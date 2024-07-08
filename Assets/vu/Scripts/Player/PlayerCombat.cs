@@ -80,17 +80,24 @@ public class PlayerCombat : MonoBehaviour
     TouchingDirection touchingDirection;
     Animator myAnimator;
     Rigidbody2D rb;
+    PlayerHealth playerHealth;
+    TrailRenderer trailRenderer;
+    [SerializeField] private GameObject particleOnHitPrefabVFX;
+    [SerializeField] private List< AudioClip >attackSoundClip;
 
+  //  private AudioSource audioSource;
 
     public bool CanMove { get { return myAnimator.GetBool(AnimationString.canMove); } }
 
     void Start()
     {
+
+        playerHealth=GetComponent<PlayerHealth>();  
         myAnimator = GetComponent<Animator>();
         touchingDirection = GetComponent<TouchingDirection>();
         rb = GetComponent<Rigidbody2D>();
         comboTempo = comboTiming;
-        //combo = 1;
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -106,7 +113,7 @@ public class PlayerCombat : MonoBehaviour
 
                     if (Vector2.Distance(startMoveWhileAttackPos, this.transform.position) <= maxDistanceWhileAttack)
                     {
-                        rb.AddForce(new Vector2(PlayerController.instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
+                        rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
                         Debug.Log("Normal");
                     }
                     else rb.velocity = Vector2.zero;
@@ -117,7 +124,7 @@ public class PlayerCombat : MonoBehaviour
                     if (Vector2.Distance(startPointSlideSkillOne, this.transform.position) <= maxDistanceSkillOneSlide)
                     {
                         Debug.Log("2");
-                        rb.AddForce(new Vector2(PlayerController.instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
+                        rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
                     }
                     else rb.velocity = Vector2.zero;
                 }
@@ -135,12 +142,13 @@ public class PlayerCombat : MonoBehaviour
   
     public void OnAttack(InputAction.CallbackContext context)
     {
-       if((!PlayerController.instance.IsRolling&&!PlayerController.instance.IsDash)&&touchingDirection.IsGround)
+       if((!PlayerController.Instance.IsRolling&&!PlayerController.Instance.IsDash)&&touchingDirection.IsGround&&playerHealth.currentStamina>1)
         {
             rb.velocity = Vector2.zero;
-            if (context.started && comboTempo < 0)
+            if (context.started && comboTempo < 0&&CanAttack)
             {
-                
+               SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3],transform,.5f);
+                playerHealth.currentStamina -= 1;
                 IsNormalAttack = true;
                 startMoveWhileAttackPos = rb.position;
                 StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
@@ -150,49 +158,24 @@ public class PlayerCombat : MonoBehaviour
                 {
                     BuffAttack();
                 }
-                    
-               
-                // 
-                //if (CanAttack && (IsNormalAttack && !IsNormalAttack2))
-                //{
-                //    CanAttack = false;
-                //    IsNormalAttack = false;
-                //    IsNormalAttack2 = true;
-                //    myAnimator.SetTrigger(AnimationString.IsNormalAttack);
-                //    StartCoroutine(NormalAttackCoolDown( attackNormalCoolDown));
-
-
-
-                //}
-                //else if (CanAttack && (!IsNormalAttack && IsNormalAttack2))
-                //{
-                //    IsNormalAttack = true;
-                //    IsNormalAttack2 = false;
-                //    CanAttack = false;
-                //    //CanAttack = false;
-                //    myAnimator.SetTrigger(AnimationString.IsNormalAttack);
-                //    myAnimator.SetTrigger(AnimationString.IsNormalAttack2);
-                //    StartCoroutine(NormalAttackCoolDown( attackNormalCoolDown));
-
-
-                //}
-                //combo++;
-
             }
-            else if (context.started && (comboTempo > 0 && comboTempo <= 1f))
+            else if (context.started && (comboTempo > 0 && comboTempo <= 1f)&&CanAttack)
             {
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3],transform, .5f);
                 IsNormalAttack = true;
                 combo++;
                 if (combo > comboNumber)
                 {
                     combo = 1;
                 }
+                playerHealth.currentStamina -= 1;
                 startMoveWhileAttackPos = rb.position;
                 //CanAttack = false;
                 myAnimator.SetTrigger(AnimationString.IsNormalAttack + combo);
                 if (IsBuff) { BuffAttack(); }
                 StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
                 comboTempo = comboTiming;
+              //  if (comboTempo == 3) audioSource.Play();
 
             }
             else if (comboTempo < 0 && context.canceled)
@@ -204,8 +187,13 @@ public class PlayerCombat : MonoBehaviour
        else if(!touchingDirection.IsGround && context.started)
         {
             myAnimator.SetTrigger(AnimationString.IsAirAttack);
+            playerHealth.currentStamina -= 1;
         }
 
+    }
+    public void PlayNormalAttackAudioClip()
+    {
+        SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[0], transform, 1f);
     }
     IEnumerator NormalAttackCoolDown(float coolDownTime)
     {
@@ -220,17 +208,20 @@ public class PlayerCombat : MonoBehaviour
     public void OnSkillOne(InputAction.CallbackContext context)
     {
 
-        if (context.started && touchingDirection.IsGround && !PlayerController.instance.IsRolling)
+        if (context.started && touchingDirection.IsGround && !PlayerController.Instance.IsRolling&&playerHealth.currentStamina>2)
         {
             rb.velocity = Vector2.zero;
             if (IsSkillOne && CanAttack)
             {
-
-               startPointSlideSkillOne=rb.position;
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[1],transform, 1f);
+              //  SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[0],transform, 1f);
+                trailRenderer.emitting = true;
+                playerHealth.currentStamina -= 2;
+                startPointSlideSkillOne =rb.position;
                 CanAttack = false;
                 IsSkillOne = false;
                 IsNormalAttack = false;
-                myAnimator.SetTrigger(AnimationString.IsSkillOne        );
+                myAnimator.SetTrigger(AnimationString.IsSkillOne);
                 StartCoroutine(SkillOneCoolDown(attackComboCoolDown));             
                
                
@@ -243,6 +234,7 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator SkillOneCoolDown(float coolDownTime)
     {
          yield return new WaitForSeconds(1f);
+        trailRenderer.emitting = false;
         CanAttack = true;
         IsNormalAttack=true;
         yield return new WaitForSeconds(coolDownTime);
@@ -254,10 +246,12 @@ public class PlayerCombat : MonoBehaviour
 
     public void OnSkillTwo(InputAction.CallbackContext context)
     {
-        if (context.started&&(!PlayerController.instance.IsRolling&&!PlayerController.instance.IsDash))
+        if (context.started&&(!PlayerController.Instance.IsRolling&&!PlayerController.Instance.IsDash)&&playerHealth.currentStamina>2)
         {
             if (IsSkillTwo&&CanAttack)
             {
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[4], transform, 1f);
+                playerHealth.currentStamina -= 2;
                 IsSkillTwo = false;
                 CanAttack=false;
                 myAnimator.SetTrigger(AnimationString.IsSkillTwo);
@@ -274,6 +268,10 @@ public class PlayerCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(coolDownTime);
         IsSkillTwo = true;
+    }
+    public void PlaySlashAttackAudioClip()
+    {
+        SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[2], transform, 1f);
     }
     public void Slash()
     {
@@ -305,7 +303,7 @@ public class PlayerCombat : MonoBehaviour
     }
     void BuffAttack()
     {    GameObject buffAttack= Instantiate(buffAttackPrefabs, buffAttackPoint.position, transform.rotation);
-        buffAttack.transform.localScale=(PlayerController.instance.IsFacingRight)?new Vector2(1,1):new Vector2(-1,1);
+        buffAttack.transform.localScale=(PlayerController.Instance.IsFacingRight)?new Vector2(1,1):new Vector2(-1,1);
         Destroy(buffAttack,.5f);
     }
     IEnumerator buffCoolDown()
@@ -337,9 +335,9 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-            slashToEnemy = (PlayerController.instance.IsFacingRight) ? Vector2.right : Vector2.left;
+            slashToEnemy = (PlayerController.Instance.IsFacingRight) ? Vector2.right : Vector2.left;
         }
-         PlayerController.instance.SetFacingDirection(slashToEnemy);
+         PlayerController.Instance.SetFacingDirection(slashToEnemy);
       
 
     }
@@ -356,6 +354,8 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] HitsEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (var enemy in HitsEnemies)
         {
+           GameObject ps=  Instantiate(particleOnHitPrefabVFX,enemy.transform.position, transform.rotation);
+            Destroy(ps,.15f);
             Debug.Log("Enemy: " + enemy.name);
             enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
         }

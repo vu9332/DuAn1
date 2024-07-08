@@ -134,8 +134,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.04
+    functionName: PlayNormalAttackAudioClip
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.24
     functionName: Attacking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.24
+    functionName: PlayNormalAttackAudioClip
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -148,8 +162,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.44
+    functionName: PlayNormalAttackAudioClip
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.64
     functionName: Attacking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.64
+    functionName: PlayNormalAttackAudioClip
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

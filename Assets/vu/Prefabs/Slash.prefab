@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -148757885
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: -131944809
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: -197289449, guid: a4ddb7086ec696b41ba1be67344bdaa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   timeToDestroyObject: 1
   damageSlash: 10
   slashSpeed: 20
+  particleOnHitPrefabVFX: {fileID: 9082173580397688825, guid: e88c077a8b8c9234db0acd959d845714, type: 3}
 --- !u!70 &7251602547094634800
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -44,18 +44,9 @@ TagManager:
   - name: bg1
     uniqueID: 495856231
     locked: 0
-  - name: bg2
-    uniqueID: 675439103
-    locked: 0
-  - name: bg3
-    uniqueID: 1565882945
-    locked: 0
   - name: player
     uniqueID: 4163022487
     locked: 0
   - name: terrain
     uniqueID: 4146209411
-    locked: 0
-  - name: bg4
-    uniqueID: 2859463505
     locked: 0

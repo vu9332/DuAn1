@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D enemy)
     {
         //Nếu kiếm Enemy trúng Player thì trừ máu Player
-        if (enemy.gameObject.GetComponent<Player>())
+        if (enemy.gameObject.GetComponent<PlayerController>())
         {
             Debug.Log("Đã va chạm Player");
         }

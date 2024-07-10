@@ -7,7 +7,6 @@ public class EnemyDamage : MonoBehaviour,IDamageAble
     [SerializeField] private float damage;
     [SerializeField] private float knockBackThrust;
     private KnockBack knockBack;
-    private Animator animBringer;
 
     public float health { get; set; }
     public float currentHealth { get ; set ; }
@@ -15,7 +14,6 @@ public class EnemyDamage : MonoBehaviour,IDamageAble
     private void Awake()
     {
         knockBack= GetComponent<KnockBack>();
-        animBringer=GetComponent<Animator>();
     }
     private void Start()
     {
@@ -34,7 +32,7 @@ public class EnemyDamage : MonoBehaviour,IDamageAble
     {
         if(currentHealth <= 0)
         {
-            animBringer.SetTrigger("Death");
+            
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BringerOfDeath : MonoBehaviour
 {
-    [Header("Player:")]
+    [Header("Bringer Move:")]
     [SerializeField] private float speed;
     [SerializeField] private GameObject hitArea;
     private Rigidbody2D rb;
@@ -13,8 +13,9 @@ public class BringerOfDeath : MonoBehaviour
     private Transform playerPosition;
     private SpriteRenderer bringerSprite;
     private bool facingLeft = true;
-    public bool foundPlayer = false;
     private float distance;
+    private float dirSee;
+    private bool canAttack=false;
 
     [Header("Bringer's Ability")]
     [SerializeField] private GameObject Spell;
@@ -24,7 +25,7 @@ public class BringerOfDeath : MonoBehaviour
         animBringer = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         bringerSprite=GetComponent<SpriteRenderer>();
-        playerPosition = GameObject.FindAnyObjectByType<Player>().transform;
+        playerPosition = GameObject.FindAnyObjectByType<PlayerController>().transform;
     }
     private void Start()
     {
@@ -36,22 +37,42 @@ public class BringerOfDeath : MonoBehaviour
         if (transform.position.x < playerPosition.position.x)
         {
             facingLeft = false;
+            dirSee = 1;
         }
         else
         {
             facingLeft = true;
+            dirSee = -1;
+        }
+        if (canAttack)
+        {
+            animBringer.SetTrigger("Attack");
+            bringerDirection = Vector2.zero;
         }
         animBringer.SetFloat("distance",(float)distance);
     }
+    [Header("Bringer WideSeen")]
+    [SerializeField] private float distanceToAttackPlayer;
     private void FixedUpdate()
     {
-        if (distance <= 4)
+        Vector2 endPos = transform.position + Vector3.right * distanceToAttackPlayer * dirSee;
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, endPos, 1 << LayerMask.NameToLayer("Player"));
+        if (hit.collider != null)
         {
-            foundPlayer = true;
+            if (hit.collider.GetComponent<PlayerController>())
+            {
+                canAttack = true;
+                Debug.DrawLine(transform.position, endPos, Color.green);
+            }
+            else
+            {
+                canAttack = false;
+                Debug.DrawLine(transform.position, endPos, Color.red);
+            }
         }
         else
         {
-            foundPlayer = false;
+            canAttack = false;
         }
     }
     void DestroyBoss()
@@ -69,7 +90,6 @@ public class BringerOfDeath : MonoBehaviour
     {
         hitArea.SetActive(false);
         GameObject spell = Instantiate(Spell, new Vector2(playerPosition.position.x, transform.position.y+spellOffset), Quaternion.identity);
-        Destroy(spell,1.2f);
     }
     public void AttackPlayer()
     {
@@ -82,6 +102,10 @@ public class BringerOfDeath : MonoBehaviour
         {
             hitArea.transform.rotation=Quaternion.Euler(0,-180,0);
         }
+    }
+    public void CantBeTakeDamage()
+    {
+        hitArea.SetActive(false);
     }
     public void Flip()
     {

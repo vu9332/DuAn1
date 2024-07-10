@@ -6,7 +6,7 @@ public class FlyingEyeBitePlayer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D enemy)
     {
-        if (enemy.gameObject.GetComponent<Player>())
+        if (enemy.gameObject.GetComponent<PlayerController>())
         {
             Debug.Log("Player đã bị cắn!");
             FlyingEyes fe = GameObject.FindAnyObjectByType<FlyingEyes>().GetComponent<FlyingEyes>();

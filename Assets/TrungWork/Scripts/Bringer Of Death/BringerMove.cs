@@ -11,10 +11,6 @@ public class BringerMove : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (bringerOfDeath.foundPlayer)
-        {
-            animator.SetTrigger("Attack");
-        }
         bringerOfDeath.Flip();
         bringerOfDeath.MoveToPlayer();
     }

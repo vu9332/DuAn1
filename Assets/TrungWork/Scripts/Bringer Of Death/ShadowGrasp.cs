@@ -11,7 +11,7 @@ public class ShadowGrasp : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D player)
     {
-        if (player.GetComponent<Player>())
+        if (player.GetComponent<PlayerController>())
         {
             if (player!= null)
             {

@@ -346,7 +346,7 @@ MonoBehaviour:
   groundCheckRadius: 0.33
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   delayJump: 0.15
   Bite: {fileID: 5057371057665785787}
   Body: {fileID: 2398304483723060465}

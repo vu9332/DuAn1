@@ -46,7 +46,7 @@ public class FlyingEyes : MonoBehaviour
         idleMoveDirection.Normalize();
         attackMoveDirection.Normalize();
         EnemyRB=GetComponent<Rigidbody2D>();
-        player = GameObject.FindAnyObjectByType<Player>().transform;
+        player = GameObject.FindAnyObjectByType<PlayerController>().transform;
         spriteRenderer=GetComponent<SpriteRenderer>();
     }
     void Update()

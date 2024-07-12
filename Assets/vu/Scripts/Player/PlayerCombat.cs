@@ -84,6 +84,7 @@ public class PlayerCombat : MonoBehaviour
     TrailRenderer trailRenderer;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
     [SerializeField] private List< AudioClip >attackSoundClip;
+    [SerializeField] private GameObject skill1ffect;
 
   //  private AudioSource audioSource;
 
@@ -124,11 +125,19 @@ public class PlayerCombat : MonoBehaviour
                     if (Vector2.Distance(startPointSlideSkillOne, this.transform.position) <= maxDistanceSkillOneSlide)
                     {
                         Debug.Log("2");
+
                         rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
+                        GameObject ff = Instantiate(skill1ffect, transform.position, transform.rotation);
+                        ff.transform.localScale = this.transform.localScale;
+                        Destroy(ff, .25f);
                     }
-                    else rb.velocity = Vector2.zero;
+                    else
+                    {
+                        rb.velocity = Vector2.zero;
+                       
+                    }
+                    }
                 }
-            }
 
 
         }
@@ -147,7 +156,7 @@ public class PlayerCombat : MonoBehaviour
             rb.velocity = Vector2.zero;
             if (context.started && comboTempo < 0&&CanAttack)
             {
-               SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3],transform,.5f);
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3],transform,.5f);
                 playerHealth.currentStamina -= 1;
                 IsNormalAttack = true;
                 startMoveWhileAttackPos = rb.position;
@@ -184,10 +193,12 @@ public class PlayerCombat : MonoBehaviour
             }
 
         }
-       else if(!touchingDirection.IsGround && context.started)
+       else if(!touchingDirection.IsGround && context.started && CanAttack)
         {
-            myAnimator.SetTrigger(AnimationString.IsAirAttack);
-            playerHealth.currentStamina -= 1;
+           
+                myAnimator.SetTrigger(AnimationString.IsAirAttack);
+                playerHealth.currentStamina -= 1;
+                StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
         }
 
     }
@@ -200,7 +211,7 @@ public class PlayerCombat : MonoBehaviour
        
         CanAttack = false;
         yield return new WaitForSeconds(coolDownTime);
-        yield return null;
+      //  yield return null;
         CanAttack = true;
     }
 
@@ -213,18 +224,18 @@ public class PlayerCombat : MonoBehaviour
             rb.velocity = Vector2.zero;
             if (IsSkillOne && CanAttack)
             {
-                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[1],transform, 1f);
-              //  SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[0],transform, 1f);
-                trailRenderer.emitting = true;
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[1],transform, .5f);              
+               // trailRenderer.emitting = true;
                 playerHealth.currentStamina -= 2;
-                startPointSlideSkillOne =rb.position;
+                startPointSlideSkillOne=rb.position;
                 CanAttack = false;
                 IsSkillOne = false;
                 IsNormalAttack = false;
                 myAnimator.SetTrigger(AnimationString.IsSkillOne);
-                StartCoroutine(SkillOneCoolDown(attackComboCoolDown));             
+                StartCoroutine(SkillOneCoolDown(attackComboCoolDown));
                
-               
+
+
             }
             
         }   
@@ -234,11 +245,10 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator SkillOneCoolDown(float coolDownTime)
     {
          yield return new WaitForSeconds(1f);
-        trailRenderer.emitting = false;
+        //trailRenderer.emitting = false;
         CanAttack = true;
         IsNormalAttack=true;
-        yield return new WaitForSeconds(coolDownTime);
-        
+        yield return new WaitForSeconds(coolDownTime);      
         IsSkillOne =true;
     }
 
@@ -250,7 +260,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (IsSkillTwo&&CanAttack)
             {
-                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[4], transform, 1f);
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[4], transform, .5f);
                 playerHealth.currentStamina -= 2;
                 IsSkillTwo = false;
                 CanAttack=false;
@@ -311,12 +321,12 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(2f);      
         IsBuff = false;
     }
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(attackPoint.position, attackRange);
+    //void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.DrawSphere(attackPoint.position, attackRange);
 
-        Gizmos.DrawSphere(slashPoint.position, slashAttackRange);
-    }
+    //    Gizmos.DrawSphere(slashPoint.position, slashAttackRange);
+    //}
     void FindingEnemy()
     {
 

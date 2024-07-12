@@ -15,6 +15,7 @@ internal static class AnimationString
   //  internal static string IsComboAttack = "AttackCombo";
     internal static string canMove = "canMove";
     internal static string IsRoll = "isRoll";
+    internal static string IsWalllSlide = "IsWallSlide";
    // internal static string IsNormalAttack2 = "NormalAttack2";
     internal static string IsDashing = "IsDashing";
     internal static string IsTurnAround = "IsTurnAround";
@@ -22,4 +23,5 @@ internal static class AnimationString
 
     public static string IsSkillTwo = "SkillTwo";
     public static string IsSkillOne = "IsSkillOne";
+    public static string IsLedgeClimb = "canLedgeClimb";
 }

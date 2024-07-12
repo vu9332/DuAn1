@@ -5981,11 +5981,14 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0.5
-  wallDistance: 0.5
-  cellDistance: 0.05
   _isGround: 1
   _isOnWall: 1
-  _isOnCelling: 1
+  wallCheck: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallCheckSize: {x: 0, y: 0}
+  _isTouchingLedge: 0
 --- !u!95 &3738695490986132230
 Animator:
   serializedVersion: 5
@@ -6041,12 +6044,15 @@ MonoBehaviour:
   _isMoving: 0
   _isRunning: 0
   jumpForce: 8
+  jumpTime: 0
+  _isJumping: 0
   dashSpeed: 20
   maxDashDistance: 5
   _isDash: 0
   rollSpeed: 10
   maxRollDistance: 7
   _isRolling: 0
+  moveForceInAir: 0
   rayCastMaxDistance: 2
   enemyLayer:
     serializedVersion: 2
@@ -6055,6 +6061,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5be19836440df394985a3839f95a0c3b, type: 3}
   - {fileID: 8300000, guid: adbff260cce0a3e4cbee038c656df848, type: 3}
   - {fileID: 8300000, guid: 1fd344d5f8106844e93942ea8a062eab, type: 3}
+  _isWallSliding: 0
+  wallSlidingSpeed: 0
+  wallJumpPower: {x: 5, y: 8}
+  ledgeCheckDistance: 0
+  ledgeClimbOffset1: {x: 0, y: 0}
+  ledgeClimbOffset2: {x: 0, y: 0}
 --- !u!4 &4265556290987216880
 Transform:
   m_ObjectHideFlags: 0

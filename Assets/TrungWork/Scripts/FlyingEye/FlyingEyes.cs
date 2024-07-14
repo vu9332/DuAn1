@@ -25,12 +25,15 @@ public class FlyingEyes : MonoBehaviour
     [SerializeField] Transform groundCheckDown;
     [SerializeField] Transform groundCheckWall;
     [SerializeField] float groundCheckRadius;
+    public float groundCheckDownRadius;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float delayJump;
     public GameObject Bite;
     public GameObject Body;
-    private bool isTouchingUp;
-    private bool isTouchingDown;
+    public bool isTouchingUp;
+    public bool isTouchingDown;
+
+    public static FlyingEyes Instance;
     private bool isTouchingWall;
     private bool goingUp=true;
     private bool facingLeft = true;
@@ -38,9 +41,10 @@ public class FlyingEyes : MonoBehaviour
     private Animator enemyAnim;
     private bool isWaiting = false;
     private SpriteRenderer spriteRenderer;
+    private EffectFall effectFall;
     private void Awake()
     {
-        Body.SetActive(true);
+        Body.SetActive(false);
         Bite.SetActive(false);
         enemyAnim = GetComponent<Animator>();
         idleMoveDirection.Normalize();
@@ -48,25 +52,30 @@ public class FlyingEyes : MonoBehaviour
         EnemyRB=GetComponent<Rigidbody2D>();
         player = GameObject.FindAnyObjectByType<PlayerController>().transform;
         spriteRenderer=GetComponent<SpriteRenderer>();
+        effectFall = GetComponent<EffectFall>();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
     void Update()
     {
         isTouchingUp = Physics2D.OverlapCircle(groundCheckUp.position, groundCheckRadius, groundLayer);
-        isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckRadius, groundLayer);
+        isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckDownRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(groundCheckWall.position, groundCheckRadius, groundLayer);
-        if (spriteRenderer.flipX)
-        {
-            Bite.gameObject.transform.Rotate(0, 0, 180);
-        }
-        else
-        {
-            Bite.gameObject.transform.Rotate(0, 0, 0);
-        }
+        //if (spriteRenderer.flipX)
+        //{
+        //    Bite.gameObject.transform.Rotate(0, 0, 180);
+        //}
+        //else
+        //{
+        //    Bite.gameObject.transform.Rotate(0, 0, 0);
+        //}
     }
     void randomStateAttack()
     {
-        int randomState = Random.Range(0, 2);
-        if (randomState == 0)
+        int randomState = Random.Range(0, 3);
+        if (randomState >=0 && randomState <3 && randomState != 1)
         {
             enemyAnim.SetTrigger("AttackUpNDown");
         }
@@ -102,7 +111,7 @@ public class FlyingEyes : MonoBehaviour
     //Trạng thái cơ bản của quái
     public void IdleStage()
     {
-        Body.SetActive(true);
+        Body.SetActive(false);
         Bite.SetActive(false);
         if (isTouchingUp && goingUp)
         {
@@ -112,7 +121,10 @@ public class FlyingEyes : MonoBehaviour
         {
             ChangeDirection();
         }
-        EnemyRB.MovePosition(EnemyRB.position + idleMoveSpeed * idleMoveDirection* Time.fixedDeltaTime);
+        if (EnemyRB.bodyType != RigidbodyType2D.Static)
+        {
+            EnemyRB.MovePosition(EnemyRB.position + idleMoveSpeed * idleMoveDirection * Time.fixedDeltaTime);
+        }
         if (isTouchingWall)
         {
             if (facingLeft)
@@ -125,11 +137,6 @@ public class FlyingEyes : MonoBehaviour
             }
         }
     }
-    void CantBehurt()
-    {
-        Bite.SetActive(false);
-        Body.SetActive(false);
-    }
     // Tấn công bằng cách di chuyển theo đường ziczac
     public void AttackUpNDown()
     {
@@ -139,11 +146,15 @@ public class FlyingEyes : MonoBehaviour
         {
             if (isTouchingUp && goingUp || isTouchingDown && !goingUp)
             {
+                effectFall.Effectfall();
                 StartCoroutine(WaitAndChangeDirection());
             }
             else
             {
-                EnemyRB.MovePosition(EnemyRB.position + attackMoveSpeed * attackMoveDirection * Time.fixedDeltaTime);
+                if (EnemyRB.bodyType != RigidbodyType2D.Static)
+                {
+                    EnemyRB.MovePosition(EnemyRB.position + attackMoveSpeed * attackMoveDirection * Time.fixedDeltaTime);
+                }
             }
             if (isTouchingWall)
             {
@@ -187,7 +198,10 @@ public class FlyingEyes : MonoBehaviour
         }
         if (hasPlayerPosition)
         {
-            EnemyRB.velocity = attackPlayerSpeed * playerPosition;
+            if (EnemyRB.bodyType != RigidbodyType2D.Static)
+            {
+                EnemyRB.velocity = attackPlayerSpeed * playerPosition;
+            }
         }
         if (isTouchingWall || isTouchingDown)
         {
@@ -213,7 +227,7 @@ public class FlyingEyes : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(groundCheckUp.position, groundCheckRadius);
-        Gizmos.DrawWireSphere(groundCheckDown.position, groundCheckRadius);
+        Gizmos.DrawWireSphere(groundCheckDown.position, groundCheckDownRadius);
         Gizmos.DrawWireSphere(groundCheckWall.position, groundCheckRadius);
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2323009562949350384}
   - component: {fileID: 6693253533052422452}
   - component: {fileID: 8839424319267863747}
-  - component: {fileID: 1007545486166885290}
+  - component: {fileID: 8750377343037936436}
   m_Layer: 0
   m_Name: Bringer Of Death
   m_TagString: Untagged
@@ -32,10 +32,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.84, y: -3.1, z: -0.7499639}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8432167853849101605}
+  - {fileID: 3380969163646111186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5430871151590394044
@@ -153,8 +154,9 @@ MonoBehaviour:
   speed: 5
   hitArea: {fileID: 3099880236192699361}
   Spell: {fileID: 6827621824625857987, guid: 6b6f0e394d6b4a8498b7d5ce3625eedf, type: 3}
-  spellOffset: 2.31
-  distanceToAttackPlayer: 4
+  spellOffset: 3.29
+  distanceToAttackPlayer: 4.5
+  pointBornLineCast: {fileID: 3380969163646111186}
 --- !u!70 &8839424319267863747
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -187,10 +189,10 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012833357, y: -0.18131506}
-  m_Size: {x: 1.498065, y: 3.40077}
+  m_Offset: {x: 0.012833357, y: -0.17382145}
+  m_Size: {x: 1.498065, y: 3.4157567}
   m_Direction: 0
---- !u!114 &1007545486166885290
+--- !u!114 &8750377343037936436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,11 +201,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 326662464053407083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ebaa5c08c68744db71b286a46180a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d07673dd1d63d64e9b0d922fd6c81c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  knockBackThrust: 0
+  Health: 0
 --- !u!1 &3099880236192699361
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8432167853849101605}
   - component: {fileID: 4884700988933400616}
-  - component: {fileID: 1303942503958608455}
+  - component: {fileID: 5210331634618687675}
   m_Layer: 0
   m_Name: HitArea
   m_TagString: Untagged
@@ -249,8 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c9074376af9b345b667a9cbdc20cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
---- !u!58 &1303942503958608455
+  damage: 5
+--- !u!58 &5210331634618687675
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,6 +283,37 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.9130287, y: -0.09499025}
+  m_Offset: {x: -2.2480633, y: 0.5320414}
   serializedVersion: 2
-  m_Radius: 1.7974458
+  m_Radius: 2.6206677
+--- !u!1 &4169748957073322802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3380969163646111186}
+  m_Layer: 8
+  m_Name: PointBornLineCast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3380969163646111186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169748957073322802}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02, y: -0.96818924, z: 0.5999711}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4938338768472515220}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -34,15 +34,18 @@ public class BringerOfDeath : MonoBehaviour
     private void Update()
     {
         distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (transform.position.x < playerPosition.position.x)
+        if (Mathf.Abs(transform.position.x - playerPosition.position.x) > 1f)
         {
-            facingLeft = false;
-            dirSee = 1;
-        }
-        else
-        {
-            facingLeft = true;
-            dirSee = -1;
+            if (transform.position.x < playerPosition.position.x)
+            {
+                facingLeft = false;
+                dirSee = 1;
+            }
+            else
+            {
+                facingLeft = true;
+                dirSee = -1;
+            }
         }
         if (canAttack)
         {
@@ -53,10 +56,11 @@ public class BringerOfDeath : MonoBehaviour
     }
     [Header("Bringer WideSeen")]
     [SerializeField] private float distanceToAttackPlayer;
+    [SerializeField] private Transform pointBornLineCast;
     private void FixedUpdate()
     {
-        Vector2 endPos = transform.position + Vector3.right * distanceToAttackPlayer * dirSee;
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, endPos, 1 << LayerMask.NameToLayer("Player"));
+        Vector2 endPos = pointBornLineCast.position + Vector3.right * distanceToAttackPlayer * dirSee;
+        RaycastHit2D hit = Physics2D.Linecast(pointBornLineCast.position, endPos, 1 << LayerMask.NameToLayer("Player"));
         if (hit.collider != null)
         {
             if (hit.collider.GetComponent<PlayerController>())

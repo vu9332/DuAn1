@@ -1,0 +1,621 @@
+fileFormatVersion: 2
+guid: a708cb96cb759164fb22f2af82478c8f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 363
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36c4780c9e046e44a058fa82f9ba2e9
+      internalID: -2067090538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 343
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3583cbdf2179ba7429afb9fbda5256bc
+      internalID: 198930426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 333
+        width: 61
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ad99d9d0d652543a8cf0a28fd25356
+      internalID: -2061237218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_3
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 342
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002bb3c9347d93e4e8729f06d53d1ac0
+      internalID: -1297437048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_4
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 346
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f11b672c379eb245a1f079a126babee
+      internalID: 1020182334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_5
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 350
+        width: 26
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0a39b94c74e19498ed5da7048b351a
+      internalID: 2011169073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_6
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 339
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e00597a64e14b543a1c8765df96aee4
+      internalID: -290664341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_7
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 374
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13702290442e0e24690c1b8e584d2a74
+      internalID: -1020294958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 351
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3961ed99b143c348bd5adfa2b4b579c
+      internalID: 1999263628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_9
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 348
+        width: 68
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb279ebf4119be149945881dcb15d11d
+      internalID: 1399778193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_10
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 336
+        width: 94
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f44d8ee99d5f743b7e838337b9c38d
+      internalID: 1554409912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_11
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 322
+        width: 100
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf733ef1aaa072142ab926716075ce4b
+      internalID: 212555921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_12
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 306
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970ddb0f29a951c47aa95704f68695bd
+      internalID: 324820371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_13
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 190
+        width: 100
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c089801b05db49242b8103d0e4e4f31c
+      internalID: 1833962072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_14
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 194
+        width: 98
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a5a70c86ad0284689dfd706ccd98e4
+      internalID: -113983453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 194
+        width: 98
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 861c455418cbbd44d89e36aba8092fe1
+      internalID: 547139154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_16
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 191
+        width: 102
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720d90e68a4f9d74781e84d96b452b46
+      internalID: 1590338118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_22
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 8
+        width: 114
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5fc38e2fac05b44aa21491d04df9df
+      internalID: -92926255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_52
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 6
+        width: 142
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d04bcec349bc01d47a031f2fd1b22147
+      internalID: 2001250747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_17
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 5
+        width: 142
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3635d7dc86a95b143a15b3352973d746
+      internalID: -798222702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Infected Balloon copy_18
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 5
+        width: 143
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1881f938220b474c9d7c67f8df634a3
+      internalID: 1228343568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PC Computer - Hollow Knight - Infected Balloon copy_0: -2067090538
+      PC Computer - Hollow Knight - Infected Balloon copy_1: 198930426
+      PC Computer - Hollow Knight - Infected Balloon copy_10: 1554409912
+      PC Computer - Hollow Knight - Infected Balloon copy_11: 212555921
+      PC Computer - Hollow Knight - Infected Balloon copy_12: 324820371
+      PC Computer - Hollow Knight - Infected Balloon copy_13: 1833962072
+      PC Computer - Hollow Knight - Infected Balloon copy_14: -113983453
+      PC Computer - Hollow Knight - Infected Balloon copy_15: 547139154
+      PC Computer - Hollow Knight - Infected Balloon copy_16: 1590338118
+      PC Computer - Hollow Knight - Infected Balloon copy_17: -798222702
+      PC Computer - Hollow Knight - Infected Balloon copy_18: 1228343568
+      PC Computer - Hollow Knight - Infected Balloon copy_19: 694091780
+      PC Computer - Hollow Knight - Infected Balloon copy_2: -2061237218
+      PC Computer - Hollow Knight - Infected Balloon copy_20: 1147222749
+      PC Computer - Hollow Knight - Infected Balloon copy_21: -1803985827
+      PC Computer - Hollow Knight - Infected Balloon copy_22: -92926255
+      PC Computer - Hollow Knight - Infected Balloon copy_23: 398077217
+      PC Computer - Hollow Knight - Infected Balloon copy_24: 1595923779
+      PC Computer - Hollow Knight - Infected Balloon copy_25: -2057558170
+      PC Computer - Hollow Knight - Infected Balloon copy_26: 1084820515
+      PC Computer - Hollow Knight - Infected Balloon copy_27: 2064659509
+      PC Computer - Hollow Knight - Infected Balloon copy_28: 1944897692
+      PC Computer - Hollow Knight - Infected Balloon copy_29: -1273244048
+      PC Computer - Hollow Knight - Infected Balloon copy_3: -1297437048
+      PC Computer - Hollow Knight - Infected Balloon copy_30: 1948429945
+      PC Computer - Hollow Knight - Infected Balloon copy_31: 1235400350
+      PC Computer - Hollow Knight - Infected Balloon copy_32: -616965574
+      PC Computer - Hollow Knight - Infected Balloon copy_33: 539776735
+      PC Computer - Hollow Knight - Infected Balloon copy_34: -1609188909
+      PC Computer - Hollow Knight - Infected Balloon copy_35: -1576318653
+      PC Computer - Hollow Knight - Infected Balloon copy_36: -1754302118
+      PC Computer - Hollow Knight - Infected Balloon copy_37: 165664927
+      PC Computer - Hollow Knight - Infected Balloon copy_38: 739322162
+      PC Computer - Hollow Knight - Infected Balloon copy_39: 983599176
+      PC Computer - Hollow Knight - Infected Balloon copy_4: 1020182334
+      PC Computer - Hollow Knight - Infected Balloon copy_40: -358299055
+      PC Computer - Hollow Knight - Infected Balloon copy_41: 999538750
+      PC Computer - Hollow Knight - Infected Balloon copy_42: -1168993609
+      PC Computer - Hollow Knight - Infected Balloon copy_43: 1505535363
+      PC Computer - Hollow Knight - Infected Balloon copy_44: -2079012977
+      PC Computer - Hollow Knight - Infected Balloon copy_45: 471878904
+      PC Computer - Hollow Knight - Infected Balloon copy_46: 908997834
+      PC Computer - Hollow Knight - Infected Balloon copy_47: -1497768801
+      PC Computer - Hollow Knight - Infected Balloon copy_48: -380773873
+      PC Computer - Hollow Knight - Infected Balloon copy_49: 1054797163
+      PC Computer - Hollow Knight - Infected Balloon copy_5: 2011169073
+      PC Computer - Hollow Knight - Infected Balloon copy_50: 1731948929
+      PC Computer - Hollow Knight - Infected Balloon copy_51: 1989360174
+      PC Computer - Hollow Knight - Infected Balloon copy_52: -323411879
+      PC Computer - Hollow Knight - Infected Balloon copy_6: -290664341
+      PC Computer - Hollow Knight - Infected Balloon copy_7: -1020294958
+      PC Computer - Hollow Knight - Infected Balloon copy_8: 1999263628
+      PC Computer - Hollow Knight - Infected Balloon copy_9: 1399778193
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

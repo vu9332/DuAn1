@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI textBoss;
     [SerializeField] private GameObject NoticeYouKilledBoss;
-    [SerializeField] private float Health;
+    public Bosses boss;
     [Header("Effect")]
     [SerializeField] private GameObject deathSFX;
     [SerializeField] private GameObject hurtSFX;
@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     }
     private void Start()
     {
-        health = Health;
+        health = boss.bosses[0].health;
         currentHealth = health;
         healthBarObject.SetActive(false);
         textBoss.text = null;
@@ -56,6 +56,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     {
         if (isDead)
         {
+            effectFall.radius = 0;
             if (!BossIsDead)
             {
                 rb.bodyType = RigidbodyType2D.Dynamic;
@@ -90,7 +91,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
             SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
             Instantiate(hurtSFX, transform.position, Quaternion.identity);
             currentHealth -= damage;
-            healthBar.fillAmount = currentHealth / Health;
+            healthBar.fillAmount = currentHealth / boss.bosses[0].health;
             Debug.Log("Máu boss còn: " + currentHealth);
             StartCoroutine(flash.FlashRoutine());
             Die();

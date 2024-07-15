@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class HitEnemy : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D player)
+    [SerializeField] private LayerMask layerEnemies;
+    private Collider2D coll;
+    private void Awake()
     {
-        if (player.gameObject.GetComponent<EnemyAIHealth>())
+        coll = GetComponent<Collider2D>();
+    }
+    private void FixedUpdate()
+    {
+        Collider2D[] HitsEnemies = Physics2D.OverlapCircleAll(transform.position, 2, layerEnemies);
+        foreach (var enemy in HitsEnemies)
         {
-            EnemyAIHealth enemyAIHealth=player.gameObject.GetComponent<EnemyAIHealth>();
-            enemyAIHealth.TakeDamage(10);
+            EnemyHealth t =enemy.GetComponent<EnemyHealth>();
+            t.TakeDamage(10);
         }
     }
 }

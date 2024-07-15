@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 647291260679118046}
   - component: {fileID: 6587799460870578463}
   - component: {fileID: 7566875386788862016}
+  - component: {fileID: 6067812843724824832}
+  - component: {fileID: 566945766706305223}
   m_Layer: 0
   m_Name: Blue Smile
   m_TagString: Untagged
@@ -82,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 2015188449, guid: 90441d7853430df4abaff985e31138ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4, y: 4}
@@ -161,7 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posLeft: {fileID: 2813717207386683421}
   posRight: {fileID: 8642883945200210132}
-  speed: 5
+  speed: 3
+  facingLeft: 0
 --- !u!50 &2554751489283777028
 Rigidbody2D:
   serializedVersion: 4
@@ -170,7 +173,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316589640775191890}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -204,7 +207,12 @@ MonoBehaviour:
   knockBackThrust: 15
   Health: 30
   hurtSFX: {fileID: 0}
-  hurtSFXBlue: {fileID: 6875109949903131768, guid: 8c342c32af6231944bf4aeea817d1494, type: 3}
+  deathSFXBlue: {fileID: 6875109949903131768, guid: 8c342c32af6231944bf4aeea817d1494, type: 3}
+  deathSFXBlack: {fileID: 0}
+  deathSFXPurple: {fileID: 0}
+  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
+  isHurting: 0
+  isDead: 0
 --- !u!114 &6587799460870578463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +240,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackTime: 0.2
+--- !u!114 &6067812843724824832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316589640775191890}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d05c8223edf2e4448c543b976837d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 3
+--- !u!114 &566945766706305223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316589640775191890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7291c60f0b8e20641af11d8f46e00310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToAttackPlayer: 0
+  canAttack: 0
 --- !u!1 &3341201310478203124
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +292,7 @@ Transform:
   m_GameObject: {fileID: 3341201310478203124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.3965416, y: -3.5247605, z: 0.019157551}
+  m_LocalPosition: {x: 7.14, y: -3.5247605, z: 0.019157551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -272,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2199340736236943366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Blue Smile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 9143602343059170488}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4934578, y: -3.5247605, z: 0.019157551}
+  m_LocalPosition: {x: 0.45, y: -3.5247605, z: 0.019157551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

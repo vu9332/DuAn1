@@ -140,7 +140,14 @@ public class FlyingEyes : MonoBehaviour
     // Tấn công bằng cách di chuyển theo đường ziczac
     public void AttackUpNDown()
     {
-        Body.SetActive(true);
+        if ((facingLeft && transform.position.x > PlayerController.Instance.transform.position.x) || (!facingLeft && transform.position.x < PlayerController.Instance.transform.position.x))
+        {
+            Body.SetActive(true);
+        }
+        else
+        {
+            Body.SetActive(false);
+        }
         Bite.SetActive(false);
         if (!isWaiting)
         {

@@ -1,6 +1,7 @@
 ﻿using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FireWormController : MonoBehaviour
@@ -8,45 +9,67 @@ public class FireWormController : MonoBehaviour
     [Header("FireWorm Controller")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float distanceToAttackPlayer;
+    [SerializeField] private Transform posLeft;
+    [SerializeField] private Transform posRight;
+    [Header("Sound Effect")]
+    [SerializeField] private AudioClip soundSpray;
     private SpriteRenderer spriteFireWorm;
     private Rigidbody2D rb;
     private Vector2 directionMove;
     private Transform playerPosition;
     private Animator animFireWorm;
+    private EnemyAIHealth enemyAIHealth;
     private bool canAttack=false;
+    private Vector2 posTarget;
+    private float dirLineCast;
 
     [Header("Please don't edit them!")]
     public float dirFireBall;
-    public bool facingLeft = false;
-    public Vector2 dirPlayer;
+    public bool facingLeft = true;
+
     private void Awake()
     {
         animFireWorm= GetComponent<Animator>();
         spriteFireWorm=GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        enemyAIHealth= GetComponent<EnemyAIHealth>();
         playerPosition=GameObject.FindAnyObjectByType<PlayerController>().transform;
+    }
+    private void Start()
+    {
+        posTarget=posRight.position;
     }
     private void Update()
     {
-        directionMove=playerPosition.position-transform.position;
-        directionMove.Normalize();
-        if(transform.position.x > playerPosition.position.x)
+        if (Vector2.Distance(transform.position,posRight.position) < .1f)
         {
             facingLeft = true;
+            posTarget = posLeft.position;
+            Flip();
+            dirLineCast =-1;
         }
-        else
-        {
+       if (Vector2.Distance(transform.position, posLeft.position) < .1f)
+       {
             facingLeft = false;
-        }
-        if(canAttack)
+            posTarget=posRight.position;
+            dirLineCast = 1;
+            Flip();
+       }
+        directionMove = posTarget - (Vector2)transform.position;
+        directionMove.Normalize();
+        if (canAttack)
         {
             animFireWorm.SetTrigger("Attack");
+            directionMove = Vector2.zero;
+        }
+        if (enemyAIHealth.isDead)
+        {
             directionMove = Vector2.zero;
         }
     }
     private void FixedUpdate()
     {
-        Vector2 endPos= transform.position + Vector3.right * distanceToAttackPlayer * dirFireBall;
+        Vector2 endPos= transform.position + Vector3.right * distanceToAttackPlayer * dirLineCast;
         RaycastHit2D hit=Physics2D.Linecast(transform.position, endPos, 1 << LayerMask.NameToLayer("Player"));
         if (hit.collider != null)
         {
@@ -65,8 +88,8 @@ public class FireWormController : MonoBehaviour
         {
             canAttack = false;
         }
+        MoveToPlayer();
     }
-    
     //Phun lửa
     [Header("Spray")]
 
@@ -75,11 +98,12 @@ public class FireWormController : MonoBehaviour
     public void Spray()
     {
         GameObject fireBall = Instantiate(fireBallPrefabs, posSprayFireBall.position, Quaternion.identity);
+        SoundFXManagement.Instance.PlaySoundFXClip(soundSpray, transform, 100);
     }
     //Di chuyển tới Player
     public void MoveToPlayer()
     {
-        rb.MovePosition(rb.position + moveSpeed * directionMove * Time.fixedDeltaTime); 
+       rb.MovePosition(rb.position + moveSpeed * directionMove * Time.fixedDeltaTime);
     }
     public void Flip()
     {

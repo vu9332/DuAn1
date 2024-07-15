@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6154091541215453322}
   - component: {fileID: 5457737038470043916}
   - component: {fileID: 7439361424447500753}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3149347164210384484}
   - component: {fileID: 1187421582719128874}
   - component: {fileID: 7671244199514152752}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 1182135914324663291}
   - component: {fileID: 1532550107483766755}
   - component: {fileID: 6599275498222275795}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ Transform:
   m_GameObject: {fileID: 4117185158836657614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.103, y: -0.448, z: 0}
+  m_LocalPosition: {x: -0.103, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -493,7 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7878693100017445775}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7818858873135161517}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PanelGameObejct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 4454524905617139772}
   - component: {fileID: 1224744160965306390}
   - component: {fileID: 6977046328949096734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flying Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,8 +793,8 @@ MonoBehaviour:
   groundCheckUp: {fileID: 4191425693117828582}
   groundCheckDown: {fileID: 9206511729699860288}
   groundCheckWall: {fileID: 8672667511870714178}
-  groundCheckRadius: 0.22
-  groundCheckDownRadius: 0.34
+  groundCheckRadius: 0.29
+  groundCheckDownRadius: 0.25
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -840,7 +840,7 @@ MonoBehaviour:
   healthBar: {fileID: 5125626165810501395}
   textBoss: {fileID: 7439361424447500753}
   NoticeYouKilledBoss: {fileID: 5662983751554445815}
-  Health: 100
+  Health: 50
   deathSFX: {fileID: 9026148628735156671, guid: 03518451637d7d5468a06e41a9a93e20, type: 3}
   hurtSFX: {fileID: 5785785142468859200, guid: af7ac2a846777e5458ce804cd6e3eb81, type: 3}
   explosionSFX: {fileID: 4699140187411700161, guid: ad766bb5428c0344cb795f272d14ab96, type: 3}
@@ -850,6 +850,7 @@ MonoBehaviour:
   bossHurting: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
   bossBiting: {fileID: 8300000, guid: da8e64bcd72c40040a352fd9d5c305ea, type: 3}
   isDead: 0
+  BossIsDead: 0
 --- !u!70 &4454524905617139772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -882,8 +883,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.106600605, y: -0.040544417}
-  m_Size: {x: 0.80716175, y: 1.1690522}
+  m_Offset: {x: -0.112054855, y: -0.036160342}
+  m_Size: {x: 0.79625326, y: 1.1602848}
   m_Direction: 0
 --- !u!114 &1224744160965306390
 MonoBehaviour:
@@ -918,7 +919,7 @@ MonoBehaviour:
   groundPointUp: {fileID: 4191425693117828582}
   groundPointDown: {fileID: 9206511729699860288}
   radius: 1.44
-  offSet: {x: -0.24, y: -0.06, z: 0}
+  offSet: {x: -0.25, y: -0.02, z: -0.02}
   hitGround: {fileID: 8300000, guid: 7934b0408819f1b49b87b5fd0ff9a6b6, type: 3}
   isTouchingGround: 0
 --- !u!1 &6296499195860789317
@@ -932,7 +933,7 @@ GameObject:
   - component: {fileID: 4860539889362183661}
   - component: {fileID: 2914523767125078055}
   - component: {fileID: 5125626165810501395}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBarFull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1008,7 @@ GameObject:
   - component: {fileID: 1311517378725166062}
   - component: {fileID: 3346640456311236156}
   - component: {fileID: 886082269681074189}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1083,7 @@ GameObject:
   - component: {fileID: 2774678208492638302}
   - component: {fileID: 8756430871703033262}
   - component: {fileID: 6029397578849024364}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

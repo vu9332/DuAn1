@@ -123,67 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &111673286
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.18951845
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.36360896
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.019157551
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199340736236943366, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6192324365356081032, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_Name
-      value: Blue Smile
-      objectReference: {fileID: 0}
-    - target: {fileID: 6192324365356081032, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9e183e936417321438dba307051ebc49, type: 3}
 --- !u!1 &322039973
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4938338768472515220, guid: e4ab9ec5b44670b41af354e6c95ad2e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.1272144
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 4938338768472515220, guid: e4ab9ec5b44670b41af354e6c95ad2e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.092965
+      value: -2.59
       objectReference: {fileID: 0}
     - target: {fileID: 4938338768472515220, guid: e4ab9ec5b44670b41af354e6c95ad2e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6326,8 +6265,7 @@ GameObject:
   - component: {fileID: 7613926946678045031}
   - component: {fileID: 7028923146748742236}
   - component: {fileID: 7613926946678045032}
-  - component: {fileID: 7613926946678045033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6557,18 +6495,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6140521702189023087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e2e260dd14f34458028efec68d7272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7613926946678045033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140521702189023087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -6677,4 +6603,3 @@ SceneRoots:
   - {fileID: 1147207762}
   - {fileID: 6476392493104160468}
   - {fileID: 5375683390081294969}
-  - {fileID: 111673286}

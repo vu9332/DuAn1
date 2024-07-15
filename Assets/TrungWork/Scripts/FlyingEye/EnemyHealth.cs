@@ -33,6 +33,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     public float health { get ; set; }
     public float currentHealth { get ; set ; }
     public bool isDead = false;
+    public bool BossIsDead = false;
 
     private void Awake()
     {
@@ -55,11 +56,18 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     {
         if (isDead)
         {
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            if (effectFall.isTouchingGround && flyingEyes.isTouchingDown)
+            if (!BossIsDead)
             {
-                rb.bodyType=RigidbodyType2D.Static;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+            }
+            else
+            {
+                rb.bodyType = RigidbodyType2D.Static;
                 flyingEyes.groundCheckDownRadius = 0;
+            }
+            if (flyingEyes.isTouchingDown)
+            {
+                BossIsDead = true;
             }
         }
     }
@@ -82,7 +90,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
             SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
             Instantiate(hurtSFX, transform.position, Quaternion.identity);
             currentHealth -= damage;
-            healthBar.fillAmount = (float)currentHealth / 100;
+            healthBar.fillAmount = currentHealth / Health;
             Debug.Log("Máu boss còn: " + currentHealth);
             StartCoroutine(flash.FlashRoutine());
             Die();
@@ -93,9 +101,12 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     {
         if(currentHealth <= 0)
         {
+            if (FlyingEyes.Instance.Body.activeInHierarchy || FlyingEyes.Instance.Bite.activeInHierarchy)
+            {
+                FlyingEyes.Instance.Body.SetActive(false);
+                FlyingEyes.Instance.Bite.SetActive(false);
+            }
             capsuleCollider2D.enabled = false;
-            FlyingEyes.Instance.Body.SetActive(false);
-            FlyingEyes.Instance.Bite.SetActive(false);
             healthBarObject.SetActive(false);
             textBoss.text = null;
             anim.SetTrigger("Death");

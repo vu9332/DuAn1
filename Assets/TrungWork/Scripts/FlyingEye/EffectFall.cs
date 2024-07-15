@@ -9,7 +9,7 @@ public class EffectFall : MonoBehaviour
     [SerializeField] private Transform groundPointUp;
     [SerializeField] private Transform groundPointDown;
     [SerializeField] private float radius;
-    [SerializeField] private Vector3 offSet;
+    public Vector3 offSet;
     [Header("Sound")]
     [SerializeField] private AudioClip hitGround;
     public bool isTouchingGround;

@@ -23,6 +23,8 @@ public class FlyingEyes : MonoBehaviour
     [Header("Other")]
     [SerializeField] Transform groundCheckUp;
     [SerializeField] Transform groundCheckDown;
+    [SerializeField] Transform groundCheckDown1;
+    [SerializeField] Transform groundCheckDown2;
     [SerializeField] Transform groundCheckWall;
     [SerializeField] float groundCheckRadius;
     public float groundCheckDownRadius;
@@ -32,6 +34,8 @@ public class FlyingEyes : MonoBehaviour
     public GameObject Body;
     public bool isTouchingUp;
     public bool isTouchingDown;
+    public bool isTouchingDown1;
+    public bool isTouchingDown2;
 
     public static FlyingEyes Instance;
     private bool isTouchingWall;
@@ -62,6 +66,8 @@ public class FlyingEyes : MonoBehaviour
     {
         isTouchingUp = Physics2D.OverlapCircle(groundCheckUp.position, groundCheckRadius, groundLayer);
         isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckDownRadius, groundLayer);
+        isTouchingDown1 = Physics2D.OverlapCircle(groundCheckDown1.position, groundCheckDownRadius, groundLayer);
+        isTouchingDown2 = Physics2D.OverlapCircle(groundCheckDown2.position, groundCheckDownRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(groundCheckWall.position, groundCheckRadius, groundLayer);
         //if (spriteRenderer.flipX)
         //{
@@ -117,7 +123,7 @@ public class FlyingEyes : MonoBehaviour
         {
             ChangeDirection();
         }
-        else if (isTouchingDown && !goingUp)
+        else if ((isTouchingDown || isTouchingDown1 || isTouchingDown2) && !goingUp)
         {
             ChangeDirection();
         }
@@ -151,7 +157,7 @@ public class FlyingEyes : MonoBehaviour
         Bite.SetActive(false);
         if (!isWaiting)
         {
-            if (isTouchingUp && goingUp || isTouchingDown && !goingUp)
+            if (isTouchingUp && goingUp || (isTouchingDown || isTouchingDown1 || isTouchingDown2) && !goingUp)
             {
                 effectFall.Effectfall();
                 StartCoroutine(WaitAndChangeDirection());
@@ -235,6 +241,8 @@ public class FlyingEyes : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(groundCheckUp.position, groundCheckRadius);
         Gizmos.DrawWireSphere(groundCheckDown.position, groundCheckDownRadius);
+        Gizmos.DrawWireSphere(groundCheckDown1.position, groundCheckDownRadius);
+        Gizmos.DrawWireSphere(groundCheckDown2.position, groundCheckDownRadius);
         Gizmos.DrawWireSphere(groundCheckWall.position, groundCheckRadius);
     }
 }

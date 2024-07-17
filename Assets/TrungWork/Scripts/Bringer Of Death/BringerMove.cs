@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class BringerMove : StateMachineBehaviour
 {
-    private BringerOfDeath bringerOfDeath;
+    private Demon demon;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        bringerOfDeath=GameObject.FindAnyObjectByType<BringerOfDeath>().GetComponent<BringerOfDeath>();
+        demon=GameObject.FindAnyObjectByType<Demon>().GetComponent<Demon>();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        bringerOfDeath.Flip();
-        bringerOfDeath.MoveToPlayer();
+        demon.FlipDirection();
     }
 }

@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
-public class EnemyHealth : MonoBehaviour,IDamageAble
+public class EnemyHealth : MonoBehaviour, IDamageAble
 {
+    private int ID = 1;
+    public BossesManager bossesManager;
+    private int indexBoss;
+
     [Header("UI")]
     [SerializeField] private GameObject healthBarObject;
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI textBoss;
     [SerializeField] private GameObject NoticeYouKilledBoss;
-    public Bosses boss;
     [Header("Effect")]
     [SerializeField] private GameObject deathSFX;
     [SerializeField] private GameObject hurtSFX;
@@ -22,12 +26,16 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
     [SerializeField] private AudioClip bossGushing;
     [SerializeField] private AudioClip bossHurting;
     [SerializeField] private AudioClip bossBiting;
+
+    [Header("Other")]
+    [SerializeField] private GameObject deathFall;
     private Flash flash;
     private Animator anim;
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider2D;
     private EffectFall effectFall;
     private FlyingEyes flyingEyes;
+    private FlyingEyesFall flyingEyesFall;
     private bool isStartFight = false;
     private int countHit = 0;
     public float health { get ; set; }
@@ -43,19 +51,27 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();  
         effectFall = GetComponent<EffectFall>();
         flyingEyes = GetComponent<FlyingEyes>();
+        flyingEyesFall = GetComponentInChildren<FlyingEyesFall>();
     }
     private void Start()
     {
-        health = boss.bosses[0].health;
+        indexBoss = bossesManager.GetIndexBoss(ID);
+        if (indexBoss == -1)
+        {
+            Debug.Log("Nhân vật này chưa thêm vào ScriptableObejct");
+        }
+        health = bossesManager.listBosses[indexBoss].health;
         currentHealth = health;
         healthBarObject.SetActive(false);
         textBoss.text = null;
         NoticeYouKilledBoss.SetActive(false);
+        deathFall.SetActive(false);
     }
     private void Update()
     {
         if (isDead)
         {
+            deathFall.SetActive(true);
             effectFall.radius = 0;
             if (!BossIsDead)
             {
@@ -66,9 +82,10 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
                 rb.bodyType = RigidbodyType2D.Static;
                 flyingEyes.groundCheckDownRadius = 0;
             }
-            if (flyingEyes.isTouchingDown)
+            if (flyingEyesFall.deathTouchingGround)
             {
                 BossIsDead = true;
+                flyingEyes.groundCheckDownRadius = 0;
             }
         }
     }
@@ -91,7 +108,7 @@ public class EnemyHealth : MonoBehaviour,IDamageAble
             SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
             Instantiate(hurtSFX, transform.position, Quaternion.identity);
             currentHealth -= damage;
-            healthBar.fillAmount = currentHealth / boss.bosses[0].health;
+            healthBar.fillAmount = currentHealth / health;
             Debug.Log("Máu boss còn: " + currentHealth);
             StartCoroutine(flash.FlashRoutine());
             Die();

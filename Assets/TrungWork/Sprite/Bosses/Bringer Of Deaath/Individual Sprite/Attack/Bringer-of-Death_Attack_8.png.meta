@@ -108,7 +108,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bringer-of-Death_Attack_8_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 140
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee8d9e9be156ba24a83c62e44b52cdfd
+      internalID: -27170610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +140,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Attack_8_0: -2058752119
+      Bringer-of-Death_Attack_8_1: 2004106415
+      Bringer-of-Death_Attack_8_10: -27170610
+      Bringer-of-Death_Attack_8_2: 279826536
+      Bringer-of-Death_Attack_8_3: 993818455
+      Bringer-of-Death_Attack_8_4: 580781997
+      Bringer-of-Death_Attack_8_5: 339568829
+      Bringer-of-Death_Attack_8_6: 1992195166
+      Bringer-of-Death_Attack_8_7: 1304579533
+      Bringer-of-Death_Attack_8_8: -1921998819
+      Bringer-of-Death_Attack_8_9: 1394147399
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

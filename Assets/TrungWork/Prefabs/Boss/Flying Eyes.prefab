@@ -478,7 +478,7 @@ Transform:
   m_GameObject: {fileID: 3603398676401655241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.142, y: -0.477, z: 0}
+  m_LocalPosition: {x: 0.142, y: -0.54700005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -509,7 +509,7 @@ Transform:
   m_GameObject: {fileID: 4117185158836657614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.103, y: -0.477, z: 0}
+  m_LocalPosition: {x: -0.103, y: -0.547, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -705,7 +705,7 @@ Transform:
   m_GameObject: {fileID: 5693407955769525655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.34, y: -0.477, z: 0}
+  m_LocalPosition: {x: -0.34, y: -0.54700005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_Bits: 512
   groundPointUp: {fileID: 4191425693117828582}
   groundPointDown: {fileID: 9206511729699860288}
-  radius: 1.44
+  radius: 1.53
   offSet: {x: -0.25, y: -0.08, z: -0.02}
   hitGround: {fileID: 8300000, guid: 7934b0408819f1b49b87b5fd0ff9a6b6, type: 3}
   isTouchingGround: 0
@@ -1379,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 8599430316527031336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.107, y: 0.389, z: 0}
+  m_LocalPosition: {x: -0.107, y: 0.469, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

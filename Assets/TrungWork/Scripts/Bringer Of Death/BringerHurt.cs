@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BringerHurt : MonoBehaviour
 {
-    private BringerOfDeathHealth enemyHealth;
+    private DemonHealth enemyHealth;
     private void Awake()
     {
-        enemyHealth = GameObject.FindAnyObjectByType<BringerOfDeathHealth>().GetComponent<BringerOfDeathHealth>();
+        enemyHealth = GameObject.FindAnyObjectByType<DemonHealth>().GetComponent<DemonHealth>();
     }
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        if (hit.GetComponent<BringerOfDeathHealth>() != null)
+        if (hit.GetComponent<DemonHealth>() != null)
         {
             //anim.SetTrigger("StartFight");
             enemyHealth.TakeDamage(10);

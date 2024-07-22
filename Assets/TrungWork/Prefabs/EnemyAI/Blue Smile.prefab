@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7566875386788862016}
   - component: {fileID: 6067812843724824832}
   - component: {fileID: 566945766706305223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Blue Smile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2199340736236943366}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Blue Smile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

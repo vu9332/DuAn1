@@ -11,9 +11,9 @@ public class EnemyAIFindPlayer : MonoBehaviour
     {
         enemyAIType1 = GetComponent<EnemyAIType1>();
     }
-
     private void FixedUpdate()
     {
+        
         Vector2 endPos = transform.position + Vector3.right * distanceToAttackPlayer * enemyAIType1.dirLineCast;
         RaycastHit2D hit = Physics2D.Linecast(transform.position, endPos, 1 << LayerMask.NameToLayer("Player"));
         if (hit.collider != null)

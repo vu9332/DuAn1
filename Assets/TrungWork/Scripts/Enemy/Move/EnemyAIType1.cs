@@ -20,6 +20,7 @@ public class EnemyAIType1 : MonoBehaviour
     private void Start()
     {
         posTarget = posLeft.position;
+        dirLineCast = 1;
     }
     private void Update()
     {

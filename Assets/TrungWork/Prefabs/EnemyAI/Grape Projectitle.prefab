@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8429654242271033660}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Grape Projectitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,9 +113,9 @@ GameObject:
   - component: {fileID: 2412086981985948630}
   - component: {fileID: 3856765824068213550}
   - component: {fileID: 6323848824435489101}
-  - component: {fileID: 2007847128816157812}
   - component: {fileID: 1420523673377893330}
-  m_Layer: 0
+  - component: {fileID: 4880694482738181119}
+  m_Layer: 6
   m_Name: Grape Projectitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,20 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackTime: 0.2
---- !u!114 &2007847128816157812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8651241204825222428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7291c60f0b8e20641af11d8f46e00310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToAttackPlayer: 5
-  canAttack: 0
 --- !u!114 &1420523673377893330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,3 +350,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPrefab: {fileID: 6675098193237668619, guid: 0c9d416b378ccdc4a81813b19bebe6ab, type: 3}
   posShoot: {fileID: 726031598500797827}
+--- !u!114 &4880694482738181119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651241204825222428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7291c60f0b8e20641af11d8f46e00310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToAttackPlayer: 3
+  canAttack: 0

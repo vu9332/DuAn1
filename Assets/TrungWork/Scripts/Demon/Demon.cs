@@ -57,6 +57,7 @@ public class Demon : MonoBehaviour
             return animator.GetBool(AnimationStrings.canMove);
         }
     }
+    public bool CanUseAbility = false;
     private void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
@@ -71,7 +72,7 @@ public class Demon : MonoBehaviour
     void Update()
     {
         HasTarget=attackZone.detectedColliders.Count > 0;
-        
+        CanUseAbility = !CanMove;
     }
     private void FixedUpdate()
     {
@@ -87,13 +88,12 @@ public class Demon : MonoBehaviour
         }
         else
         {
-
+            transform.Translate(walkDirectionVector.x * walkSpeed * direction * Time.fixedDeltaTime, 0, 0);
         }
         //else
         //{
         //    //rb.velocity=new Vector2(Mathf.Lerp(rb.velocity.x,0,walkStopRate),rb.velocity.y);
         //}
-        transform.Translate(walkDirectionVector.x * walkSpeed * direction * Time.fixedDeltaTime,0,0);
     }
     public void FlipDirection()
     {

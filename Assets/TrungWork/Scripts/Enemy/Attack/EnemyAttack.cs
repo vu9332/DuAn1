@@ -13,20 +13,14 @@ public class EnemyAttack : MonoBehaviour
     private PlayerHealth playerHealth;
     private void Awake()
     {
-        playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+        playerHealth = FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
     }
     private void Start()
     {
-        indexBoss = bossesManager.GetIndexBoss(ID);
-        if (indexBoss == -1)
+        if (bossesManager != null)
         {
-            Debug.Log("Nhân vật này chưa thêm vào ScriptableObejct");
+            damage = bossesManager.listBosses[0].damage;
         }
-        else
-        {
-            damage = bossesManager.listBosses[indexBoss].damage;
-        }
-        
     }
     private void OnTriggerEnter2D(Collider2D enemy)
     {

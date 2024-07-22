@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 5846848521832901465}
   - component: {fileID: 4861159310590934523}
   - component: {fileID: 8785882131259100965}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3507667137502171224}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FireWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

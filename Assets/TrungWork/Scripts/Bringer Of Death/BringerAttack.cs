@@ -7,12 +7,11 @@ public class BringerAttack : StateMachineBehaviour
     private BringerOfDeath bringerOfDeath;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        bringerOfDeath = GameObject.FindAnyObjectByType<BringerOfDeath>().GetComponent<BringerOfDeath>();
+        animator.SetBool("StartFight", true);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        bringerOfDeath.Flip();
-        bringerOfDeath.AttackPlayer();
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

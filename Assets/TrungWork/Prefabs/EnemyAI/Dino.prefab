@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4623238517841041972}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,8 +51,8 @@ GameObject:
   - component: {fileID: 157597643440861438}
   - component: {fileID: 6852271724643708156}
   - component: {fileID: 2744759387506048733}
-  - component: {fileID: 8138438985021760729}
-  m_Layer: 0
+  - component: {fileID: 6955718567930289957}
+  m_Layer: 6
   m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackTime: 0.2
---- !u!114 &8138438985021760729
+--- !u!114 &6955718567930289957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,11 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2803271111874725955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7291c60f0b8e20641af11d8f46e00310, type: 3}
+  m_Script: {fileID: 11500000, guid: d8b4ea79e8242db4faf7f7cb8a4e2c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToAttackPlayer: 0
-  canAttack: 0
+  damage: 10
 --- !u!1 &4021734219550816252
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +361,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729087119842078373}
-  - component: {fileID: 1791850399122894916}
   - component: {fileID: 4376637029230357618}
   m_Layer: 0
   m_Name: Body
@@ -386,19 +384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6385627992148504526}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1791850399122894916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056534136945556707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c9074376af9b345b667a9cbdc20cd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
 --- !u!70 &4376637029230357618
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

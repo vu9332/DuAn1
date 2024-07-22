@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class SpellController : MonoBehaviour
 {
-    [SerializeField] private GameObject HitSpell;
-    private void Start()
+    private Transform playerPos;
+    [SerializeField] private Vector2 offSet;
+    private void Awake()
     {
-        HitSpell.SetActive(false);
+        playerPos=FindAnyObjectByType<PlayerController>().GetComponent<Transform>();
     }
+    [SerializeField] private GameObject HitSpell;
     void Hit()
     {
-        HitSpell.SetActive(true);
-    }
-    void CantHit()
-    {
-        HitSpell.SetActive(false);
+        Instantiate(HitSpell,(Vector2)playerPos.position + offSet, Quaternion.identity);
     }
 }

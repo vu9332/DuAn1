@@ -18,6 +18,7 @@ public class EnemyAIType2 : MonoBehaviour
     private enum State { idle, jump, fall}
     private State state;
     private Animator anim;
+    public int directionCast { get;set; }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,10 +62,12 @@ public class EnemyAIType2 : MonoBehaviour
         if (facingLeft)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            directionCast = -1;
         }
         else
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            directionCast = 1;
         }
     }
     private void StateSwtich()

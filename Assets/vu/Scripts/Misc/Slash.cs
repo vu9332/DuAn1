@@ -35,6 +35,10 @@ public class Slash : MonoBehaviour
             Destroy(this.gameObject);   
         }
     }
+    public float GetSlashDamage(float damage)
+    {
+        return damageSlash = damage;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     { 
         if(other.gameObject.GetComponent<Enemy>())

@@ -46,21 +46,13 @@ public class PlayerController : MonoBehaviour
     [Header("Roll")]
     [SerializeField] private float rollSpeed;
     [SerializeField] private float maxRollDistance;
+    [SerializeField] float rollCD = .25f;
     Vector2 startRollPos;
-
     [SerializeField] private bool _isRolling = false;
     public bool IsRolling { get { return _isRolling; } private set { _isRolling = value; } }
     private bool CanRoll = true;
-
-
-
-    [SerializeField] private float moveForceInAir;
-
-
-
     [Range(0f, 10)] public float rayCastMaxDistance;
     [SerializeField] private LayerMask enemyLayer;
-
     [Header(" ")]
     [SerializeField] private List<AudioClip> movingSoundEffect;
 
@@ -76,16 +68,7 @@ public class PlayerController : MonoBehaviour
     float wallJumptimer;
     public Vector2 wallJumpPower = new Vector2(5f, 8f);
 
-   [Header("Ledge ")]
-   [ SerializeField] private float ledgeCheckDistance;
-    private bool canClimbLedge=false;
-    private bool ledgeDetected;
-
-    private Vector2 ledgePosBot;
-    private Vector2 ledgePos1;
-    private Vector2 ledgePos2;
-    [SerializeField] private Vector2 ledgeClimbOffset1;
-    [SerializeField] private Vector2 ledgeClimbOffset2;
+   
     
     public float currentMoveSpeed
     {
@@ -143,6 +126,8 @@ public class PlayerController : MonoBehaviour
             if (_isFacingRight != value)
             {
                 transform.localScale *= new Vector2(-1, 1);
+                CreateDust();
+                myAnimator.SetTrigger(AnimationString.IsTurnAround);
             }
 
             _isFacingRight = value;
@@ -177,11 +162,7 @@ public class PlayerController : MonoBehaviour
         }
         ApplyRolling();
         ApplyDashing();
-
         myAnimator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
-
-        Debug.DrawRay(this.transform.position, moveInput * rayCastMaxDistance, Color.yellow);
-
         ProcessWallSlide();
         ProcessWallJump();
         
@@ -217,8 +198,6 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMovement()
     {
-       
-
             if (CanMove)
             {
                 if (!IsRolling && !IsDash)
@@ -258,9 +237,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector2.zero;
 
             }
-
         }
-
         if (touchingDirection.IsOnWall) IsDash = false;
     }
     IEnumerator EndDashRoutine()
@@ -289,7 +266,6 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = (touchingDirection.IsGround) ? 1 : 0;
             rb.AddForce(new Vector2(rollSpeed * direction.x, 0), ForceMode2D.Impulse); ;
             StartCoroutine(EndRollRoutine());
-            Debug.Log("Do");
             playerHealth.UseStamina(2);
 
         }
@@ -301,21 +277,14 @@ public class PlayerController : MonoBehaviour
         {
             if (Vector2.Distance(startRollPos, this.transform.position) < maxRollDistance)
             {
-                //  Enemy enemy;
                 Vector2 direction = (IsFacingRight) ? Vector2.right : Vector2.left;
                 RaycastHit2D hitsEnemy = Physics2D.Raycast(this.transform.position, direction, rayCastMaxDistance, enemyLayer);
                 if (hitsEnemy)
-                {
-                    //hitsEnemy.collider.GetComponent<Enemy>();
-
-                    Debug.Log("Trung");
-                    // rb.gravityScale = 0;
+                {                 
+                    rb.gravityScale = 0;
                     capsuleCollider2D.isTrigger = true;
                     StartCoroutine(SetFalseTriggerCollier());
-
                 }
-
-
             }
             else rb.velocity = Vector2.zero;
         }
@@ -324,7 +293,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator EndRollRoutine()
     {
         float rollTime = .25f;
-        float rollCD = .25f;
         //yield return new WaitForSeconds(rollTime);      
         yield return new WaitForSeconds(rollTime);
         IsRolling = false;
@@ -333,8 +301,6 @@ public class PlayerController : MonoBehaviour
 
     }
     #endregion
-
-
     #region Jump,Slide and WallJump
 
     public void OnJump(InputAction.CallbackContext context)
@@ -371,7 +337,7 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessWallSlide()
     {
-        if (!touchingDirection.IsGround && touchingDirection.IsOnWall&&!canClimbLedge)
+        if (!touchingDirection.IsGround && touchingDirection.IsOnWall)
         {
             IsWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
@@ -411,20 +377,16 @@ public class PlayerController : MonoBehaviour
             if (direction.x > 0 && !IsFacingRight)
             {
                 // right
-                myAnimator.SetTrigger(AnimationString.IsTurnAround);
-                CreateDust();
+               
                 IsFacingRight = true;
             }
             else if (direction.x < 0 && IsFacingRight)
             {
-                //left
-                CreateDust();
-                myAnimator.SetTrigger(AnimationString.IsTurnAround);
+                //Left
                 IsFacingRight = false;
 
             }
         }
-
 
     }
 
@@ -433,7 +395,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         capsuleCollider2D.isTrigger = false;
         rb.gravityScale = 1;
-
     }
 
    
@@ -450,12 +411,10 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayMoveSoundLeftFoot()
     {
-
         SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[0], this.transform, .25f);
     }
     public void PlayMoveSoundRightFoot()
-    {
-
+    { 
         SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[1], this.transform, .25f);
     }
 

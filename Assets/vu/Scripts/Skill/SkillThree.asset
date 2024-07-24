@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdfd5f77946a1e4dae9116ed673d4c6, type: 3}
+  m_Name: SkillThree
+  m_EditorClassIdentifier: 
+  skillName: SkillThree
+  damage: 100
+  coolDownTime: 1
+  effectPrefab: {fileID: 5113928139953908053, guid: 9af25f44301788144834570c7163ee7c, type: 3}
+  soundEffect:
+  - {fileID: 8300000, guid: 5b889e2be2bbc3b47887e614460f2725, type: 3}
+  - {fileID: 8300000, guid: ef0084e727cc9f14ab72b0a012bfdf00, type: 3}

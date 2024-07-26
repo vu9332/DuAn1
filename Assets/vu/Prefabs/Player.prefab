@@ -5544,21 +5544,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df52f11bf1d093428152bdbf8d97c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   walkSpeed: 6
   runSpeed: 10
   moveWhileAttackSpeed: 20
-  _isMoving: 0
-  _isRunning: 0
   jumpForce: 15
   jumpTime: 5
-  _isJumping: 0
   dashSpeed: 30
   maxDashDistance: 5
   _isDash: 0
   rollSpeed: 17
   maxRollDistance: 7
   rollCD: 0.25
-  _isRolling: 0
   rayCastMaxDistance: 2
   enemyLayer:
     serializedVersion: 2
@@ -5567,7 +5564,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5be19836440df394985a3839f95a0c3b, type: 3}
   - {fileID: 8300000, guid: adbff260cce0a3e4cbee038c656df848, type: 3}
   - {fileID: 8300000, guid: 1fd344d5f8106844e93942ea8a062eab, type: 3}
-  _isWallSliding: 0
   wallSlidingSpeed: 2
   wallJumpPower: {x: 7, y: 15}
 --- !u!114 &3482554763992056168
@@ -5627,16 +5623,13 @@ MonoBehaviour:
   _normalAttack: 1
   skillOneData: {fileID: 11400000, guid: 09497c140434e7843bab2cfa2bb5003f, type: 2}
   maxDistanceSkillOneSlide: 2
-  _isSkillOne: 1
   slashPoint: {fileID: 6511058650952941690}
   skillTwoData: {fileID: 11400000, guid: 089e1642fb50c364dbeed0bd2b8411b2, type: 2}
   slashAttackRange: 5.3
-  _isSkillTwo: 1
   skillThreeData: {fileID: 11400000, guid: 2d772fe7561809f4f8e21f27ac6e99fc, type: 2}
   maxDistanceKnock: 3
   force: 40
   skillThreeAttackPoint: {fileID: 6511058650952941690}
-  _isSkillThree: 0
   _canAttack: 1
   attackSoundClip:
   - {fileID: 8300000, guid: 9bd9c3b8b6eacb646b3c1fc19b0774c8, type: 3}
@@ -5658,10 +5651,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d8183822379b44d91d7c860cd05047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  maxStamina: 50
+  playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   staminaRefresh: 1
   timeBtweenStaminaRefresh: 2
+  currentHealth: 0
+  currentStamina: 0
 --- !u!114 &7223761058501302747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5689,9 +5683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f148fab17e412264e8dd46de5ca93e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isSkillOneUnlock: 0
-  _isSkillTwoUnlock: 0
-  _isSkillThreeUnlock: 0
+  _isSkillOneUnlock: 1
+  _isSkillTwoUnlock: 1
+  _isSkillThreeUnlock: 1
 --- !u!114 &8644915073143656759
 MonoBehaviour:
   m_ObjectHideFlags: 0

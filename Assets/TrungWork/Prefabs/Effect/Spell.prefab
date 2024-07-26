@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bef986fbee0284cb720cafebc309fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offSet: {x: 0, y: 0}
   HitSpell: {fileID: 8668562907338234782}
 --- !u!114 &3445564295347598314
 MonoBehaviour:
@@ -145,7 +146,7 @@ GameObject:
   - component: {fileID: 10057747099165769}
   - component: {fileID: 2640722942049602983}
   - component: {fileID: 7640511099632695706}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,4 +225,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29be2bc261c09064d93fad64c9c90800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  bossBringerOfDeath: {fileID: 11400000, guid: d7502504617c43048b90327718d26742, type: 2}

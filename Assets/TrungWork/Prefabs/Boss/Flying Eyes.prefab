@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c9074376af9b345b667a9cbdc20cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossesManager: {fileID: 11400000, guid: 44b2227294c39334288b0f74229a79c4, type: 2}
+  bossFlyingEyes: {fileID: 11400000, guid: 50489a0058abdbc47a6c687480e887a1, type: 2}
 --- !u!1 &3603398676401655241
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f23591a58e2b8488a033fb58e6dd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBite: 5
+  bossFlyingEyes: {fileID: 11400000, guid: 50489a0058abdbc47a6c687480e887a1, type: 2}
 --- !u!1 &5662983751554445815
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ebaa5c08c68744db71b286a46180a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossesManager: {fileID: 11400000, guid: 44b2227294c39334288b0f74229a79c4, type: 2}
   healthBarObject: {fileID: 4677490912035118952}
   healthBar: {fileID: 5125626165810501395}
   textBoss: {fileID: 7439361424447500753}
@@ -921,6 +920,7 @@ MonoBehaviour:
   deathFall: {fileID: 7412472538161774448}
   isDead: 0
   BossIsDead: 0
+  bossFlyingEyes: {fileID: 11400000, guid: 50489a0058abdbc47a6c687480e887a1, type: 2}
 --- !u!70 &4454524905617139772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

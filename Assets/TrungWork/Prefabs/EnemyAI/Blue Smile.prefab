@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 8663394222343194094}
   - component: {fileID: 6938101266268273024}
   - component: {fileID: 2554751489283777028}
-  - component: {fileID: 647291260679118046}
   - component: {fileID: 6587799460870578463}
   - component: {fileID: 7566875386788862016}
   - component: {fileID: 6067812843724824832}
   - component: {fileID: 566945766706305223}
+  - component: {fileID: 4929024787980393070}
   m_Layer: 6
   m_Name: Blue Smile
   m_TagString: Untagged
@@ -192,27 +192,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &647291260679118046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316589640775191890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc09113cbdaa2147a096ecdf19d571e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackThrust: 15
-  Health: 30
-  hurtSFX: {fileID: 0}
-  deathSFXBlue: {fileID: 6875109949903131768, guid: 8c342c32af6231944bf4aeea817d1494, type: 3}
-  deathSFXBlack: {fileID: 0}
-  deathSFXPurple: {fileID: 0}
-  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
-  isHurting: 0
-  isDead: 0
 --- !u!114 &6587799460870578463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +246,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToAttackPlayer: 0
   canAttack: 0
+--- !u!114 &4929024787980393070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316589640775191890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3101b9317236e419b772ac8ffc5c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackThrust: 15
+  hurtSFX: {fileID: 0}
+  deathSFXBlue: {fileID: 6875109949903131768, guid: 8c342c32af6231944bf4aeea817d1494, type: 3}
+  deathSFXBlack: {fileID: 0}
+  deathSFXPurple: {fileID: 0}
+  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
+  isHurting: 0
+  isDead: 0
+  blueSmileSC: {fileID: 11400000, guid: 223716f0225b34848aeb06404d24c75b, type: 2}
 --- !u!1 &3341201310478203124
 GameObject:
   m_ObjectHideFlags: 0

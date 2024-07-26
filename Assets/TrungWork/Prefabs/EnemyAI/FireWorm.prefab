@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: 3615117511850217082}
   - component: {fileID: 125439529338030439}
   - component: {fileID: 8534424614917342496}
-  - component: {fileID: 8893942986640596551}
   - component: {fileID: 351833516852415212}
   - component: {fileID: 6336812990136156084}
   - component: {fileID: 5846848521832901465}
   - component: {fileID: 4861159310590934523}
   - component: {fileID: 8785882131259100965}
+  - component: {fileID: 5884631753482750485}
   m_Layer: 6
   m_Name: FireWorm
   m_TagString: Untagged
@@ -247,27 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e6dc2a61f2ad7469215bf74628a3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8893942986640596551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286719627087423492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc09113cbdaa2147a096ecdf19d571e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackThrust: 0
-  Health: 50
-  hurtSFX: {fileID: 0}
-  deathSFXBlue: {fileID: 0}
-  deathSFXBlack: {fileID: 0}
-  deathSFXPurple: {fileID: 0}
-  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
-  isHurting: 0
-  isDead: 0
 --- !u!114 &351833516852415212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +310,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e6dc2a61f2ad7469215bf74628a3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5884631753482750485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286719627087423492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e562fefb1acad049aa5b3c563c146f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackThrust: 0
+  hurtSFX: {fileID: 0}
+  deathSFXBlue: {fileID: 0}
+  deathSFXBlack: {fileID: 0}
+  deathSFXPurple: {fileID: 0}
+  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
+  isHurting: 0
+  isDead: 0
+  fireWormSC: {fileID: 11400000, guid: e501d6807f2494b4d94c75811a41e853, type: 2}
 --- !u!1 &1555787983421868906
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,29 +5,23 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    private int ID = 1;
-    public BossesManager bossesManager;
-    private int indexBoss;
-
-    private float damage;
+    private float damageAttack;
     private PlayerHealth playerHealth;
+    public bossFlyingEyes bossFlyingEyes;
     private void Awake()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
     }
     private void Start()
     {
-        if (bossesManager != null)
-        {
-            damage = bossesManager.listBosses[0].damage;
-        }
+        damageAttack = bossFlyingEyes.damage;
     }
     private void OnTriggerEnter2D(Collider2D enemy)
     {
         //Nếu Quai trúng Player thì trừ máu Player
         if (enemy.gameObject.GetComponent<PlayerController>())
         {
-            playerHealth.TakeDamage(damage);
+            playerHealth.TakeDamage(damageAttack);
             Debug.Log("Đã va chạm Player, Player con: "+playerHealth.currentHealth);
         }
     }

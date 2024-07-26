@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ShadowGrasp : MonoBehaviour
 {
-    [SerializeField] private float damage;
+    [SerializeField] private bossBringerOfDeath bossBringerOfDeath;
     private PlayerHealth playerHealth;
+    private float damageBossSkill;
     private void Awake()
     {
         playerHealth=GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+    }
+    private void Start()
+    {
+        damageBossSkill = bossBringerOfDeath.damageSkill;
     }
     private void OnTriggerEnter2D(Collider2D player)
     {
@@ -16,7 +21,7 @@ public class ShadowGrasp : MonoBehaviour
         {
             if (player!= null)
             {
-                playerHealth.TakeDamage(damage);
+                playerHealth.TakeDamage(damageBossSkill);
                 Debug.Log("Nhan vat da bi trung skill, mau con: "+playerHealth.currentHealth);
             }
         }

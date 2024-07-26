@@ -48,11 +48,11 @@ GameObject:
   - component: {fileID: 8076678653749615268}
   - component: {fileID: 5880537415430226468}
   - component: {fileID: 3911500651936604553}
-  - component: {fileID: 9123093412873456906}
   - component: {fileID: 1923601594821362691}
   - component: {fileID: 6333183467049288740}
   - component: {fileID: 642489326308149857}
   - component: {fileID: 7476631243350700477}
+  - component: {fileID: 551295732019277852}
   m_Layer: 6
   m_Name: Eagle
   m_TagString: Untagged
@@ -226,27 +226,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &9123093412873456906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222008441491063980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc09113cbdaa2147a096ecdf19d571e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackThrust: 15
-  Health: 30
-  hurtSFX: {fileID: 5785785142468859200, guid: af7ac2a846777e5458ce804cd6e3eb81, type: 3}
-  deathSFXBlue: {fileID: 0}
-  deathSFXBlack: {fileID: 0}
-  deathSFXPurple: {fileID: 0}
-  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
-  isHurting: 0
-  isDead: 0
 --- !u!114 &1923601594821362691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +280,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToAttackPlayer: 0
   canAttack: 0
+--- !u!114 &551295732019277852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222008441491063980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4ecec46a0f3484895c77abfe877c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackThrust: 15
+  hurtSFX: {fileID: 5785785142468859200, guid: af7ac2a846777e5458ce804cd6e3eb81, type: 3}
+  deathSFXBlue: {fileID: 0}
+  deathSFXBlack: {fileID: 0}
+  deathSFXPurple: {fileID: 0}
+  snd_death: {fileID: 8300000, guid: ae1a4390feed02941bd686e35cd9e6e9, type: 3}
+  isHurting: 0
+  isDead: 0
+  eagleSC: {fileID: 11400000, guid: 2cb7019405657f44f965cc1946b4a5c7, type: 2}
 --- !u!1 &2052162358113183456
 GameObject:
   m_ObjectHideFlags: 0

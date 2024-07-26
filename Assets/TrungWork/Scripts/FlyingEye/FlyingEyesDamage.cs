@@ -16,10 +16,10 @@ public class FlyingEyesDamage : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        //if (hit.GetComponent<EnemyHealth>() != null)
-        //{
-        //    //anim.SetTrigger("StartFight");
-        //    enemyHealth.TakeDamage(damage);
-        //}
+        if (hit.GetComponent<EnemyHealth>() != null)
+        {
+            //anim.SetTrigger("StartFight");
+            enemyHealth.TakeDamage(damage);
+        }
     }
 }

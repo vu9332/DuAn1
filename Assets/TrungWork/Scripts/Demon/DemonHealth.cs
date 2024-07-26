@@ -1,95 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class DemonHealth : MonoBehaviour
+public class DemonHealth : BringerOfDeathHealth
 {
-    Animator animator;
-    [SerializeField] private float _maxHealth;
-    public float MaxHealth
+    [SerializeField] private bossDemon bossDemon;
+    protected override void Awake()
     {
-        get
-        {
-            return _maxHealth;
-        }
-        set
-        {
-            _maxHealth = value;
-        }
+        base.Awake();
     }
-    [SerializeField] private float _health;
-    public float Health
+    private void Start()
     {
-        get
-        {
-            return _health;
-        }
-        set
-        {
-            _health = value;
-            if (_health <= 0)
-            {
-                IsAlive = false;
-            }
-        }
+        health = bossDemon.health;
+        currentHealth = health;
     }
-    [SerializeField] private bool _isAlive = true;
-    [SerializeField] private bool IsInvincible = false;
-    private float timeSinceHit = 0;
-    private float invincibilityTimer = 0.25f;
-
-    public bool IsAlive
+    public override void TakeDamage(float damage)
     {
-        get
-        {
-            return _isAlive;
-        }
-        set
-        {
-            _isAlive = value;
-            animator.SetBool(AnimationStrings.isAlive, value);
-            Debug.Log("Is Alive Set + " + value);
-        }
-    }
-
-    public bool IsHit
-    {
-        get
-        {
-            return animator.GetBool(AnimationStrings.isHit);
-        }
-        private set
-        {
-            animator.SetBool(AnimationStrings.isHit, value);
-        }
-
-    }
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
-    private void Update()
-    {
-        if (IsInvincible)
-        {
-            if (timeSinceHit > invincibilityTimer)
-            {
-                IsInvincible= false;
-                timeSinceHit = 0;
-            }
-            timeSinceHit += Time.deltaTime;
-        }
-    }
-    public void TakeDamage(float damage)
-    {
-        if (IsAlive && !IsInvincible)
-        {
-            IsHit = true;
-            Health -= damage;
-            IsInvincible = true;
-            Debug.Log("Da trung Player!");
-        }
+        base.TakeDamage(damage);
     }
 }

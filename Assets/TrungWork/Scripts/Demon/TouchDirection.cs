@@ -23,7 +23,7 @@ public class TouchDirection : MonoBehaviour
         private set
         {
             _isGrounded = value;
-            animator.SetBool(AnimationStrings.isGrounded, value);
+            //animator.SetBool(AnimationStrings.isGrounded, value);
         }
     }
     [SerializeField] private bool _isOnWall = true;
@@ -36,7 +36,7 @@ public class TouchDirection : MonoBehaviour
         private set
         {
             _isOnWall = value;
-            animator.SetBool(AnimationStrings.isOnWall, value);
+            //animator.SetBool(AnimationStrings.isOnWall, value);
         }
     }
     [SerializeField] private bool _isOnCelling = true;
@@ -49,7 +49,7 @@ public class TouchDirection : MonoBehaviour
         private set
         {
             _isGrounded = value;
-            animator.SetBool(AnimationStrings.isOnCelling, value);
+            //animator.SetBool(AnimationStrings.isOnCelling, value);
         }
     }
 

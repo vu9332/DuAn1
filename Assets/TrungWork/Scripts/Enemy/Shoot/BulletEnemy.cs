@@ -10,7 +10,8 @@ public class BulletEnemy : MonoBehaviour
     [SerializeField] private float heightY;
     [SerializeField] private GameObject SpllaterPrefabs;
     [Header("Damage")]
-    [SerializeField] private float damage;
+    [SerializeField] private GrapeProjectitle grapeProjectitle;
+    private float damage;
     private PlayerHealth playerHealth;
     private bool playerGetHit=false;
     private void Awake()
@@ -21,6 +22,7 @@ public class BulletEnemy : MonoBehaviour
     {
         Vector3 playerPos = PlayerController.Instance.transform.position;
         StartCoroutine(ProjectitleCurveRoutine(transform.position,playerPos));
+        damage=grapeProjectitle.damageAttack;
     }
     private IEnumerator ProjectitleCurveRoutine(Vector3 startPosition,Vector3 endPosition)
     {

@@ -5027,7 +5027,6 @@ GameObject:
   - component: {fileID: 7336326324453955207}
   - component: {fileID: 7790714996148349664}
   - component: {fileID: 7223761058501302747}
-  - component: {fileID: 7898518321222723626}
   - component: {fileID: 3473945412163789088}
   - component: {fileID: 8644915073143656759}
   m_Layer: 0
@@ -5598,6 +5597,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0.05
+  wallDistance: 0.05
   _isGround: 0
   _isOnWall: 0
   wallCheck: {fileID: 1795194691670574127}
@@ -5605,7 +5605,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   wallCheckSize: {x: 0.1, y: 1.47}
-  _isTouchingLedge: 0
+  _isOnWallNoSlide: 0
 --- !u!114 &7336326324453955207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5677,18 +5677,6 @@ MonoBehaviour:
   ghost: {fileID: 8993714808278641046, guid: daa48a632941e48448372c17a9b79f0d, type: 3}
   ghostDelay: 0.1
   makeGhost: 0
---- !u!114 &7898518321222723626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5801682784065055976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eaaf1c0503c0f44eb3c8b0d7a4f43c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3473945412163789088
 MonoBehaviour:
   m_ObjectHideFlags: 0

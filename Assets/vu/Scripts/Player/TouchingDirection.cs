@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TouchingDirection : MonoBehaviour
 {
    public static TouchingDirection Instance {  get;  set; }  
    
-   public ContactFilter2D castFilter; 
+    public ContactFilter2D castFilter; 
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
+    RaycastHit2D[] wallHits = new RaycastHit2D[5];
     public float groundDistance = 0.05f;
- 
+    public float wallDistance = 0.05f;
+    Vector2 wallDirection=>(playerController.IsFacingRight)?Vector2.right:Vector2.left;
 
     CapsuleCollider2D touchingColl;
     Animator myAnimator;
@@ -29,10 +29,10 @@ public class TouchingDirection : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private Vector2 wallCheckSize;
 
-    [Header("LedgeClimbCheck")]
+    [Header("OnWallNoSlide")]
     [SerializeField]
-    private bool _isTouchingLedge = false;
-    public bool IsTouchingLedge { get { return _isTouchingLedge; } set { _isTouchingLedge = value;myAnimator.SetBool(AnimationString.IsLedgeClimb, value); } }
+    private bool _isOnWallNoSlide = false;
+    public bool IsOnWallNoSlide { get { return _isOnWallNoSlide; } set { _isOnWallNoSlide = value;myAnimator.SetBool(AnimationString.IsLedgeClimb, value); } }
 
     //[SerializeField] private Transform ledgeCheck;
     //[SerializeField] private float ledgeCheckDistance;
@@ -60,9 +60,8 @@ public class TouchingDirection : MonoBehaviour
     private void FixedUpdate()
     {
         IsGround = touchingColl.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
-
-       // IsTouchingLedge = IsLedge();
-
+        IsOnWallNoSlide = touchingColl.Cast(wallDirection, castFilter, wallHits, groundDistance) > 0;
+       
     }
     //public bool IsLedge()
     //{

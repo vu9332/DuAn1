@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour,IDamageAble
 {
    // public static PlayerHealth Instance;
-    [SerializeField] float maxHealth;
-    [SerializeField] float maxStamina;
+    [SerializeField] PlayerData playerData;
     [SerializeField] float staminaRefresh;
     [SerializeField] float timeBtweenStaminaRefresh;
 
-    public float health { get { return maxHealth; } set { maxHealth = value; } }
-    public float currentHealth { get; set; }
-    // public float stamina { get { return maxStamina; } set { maxStamina = value; } }
-    public float currentStamina { get; set; }
+    public float health { get { return playerData.playerHealth; } set { playerData.playerHealth= value; } }
+    public float currentHealth;
+    public float stamina { get { return playerData.playerStamina; } set { playerData.playerStamina = value; } }
+  public  float currentStamina;
 
     private readonly string HEALTH_SliDER = "Health";
     private readonly string STAMINA_SliDER = "Stamina";
@@ -42,9 +41,9 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         healthSlider =GameObject.Find(HEALTH_SliDER).GetComponent<Slider>();
         staminaSlider =GameObject.Find(STAMINA_SliDER).GetComponent<Slider>();
         currentHealth =health;
-        currentStamina=maxStamina;
-        healthSlider.maxValue = maxHealth;
-        staminaSlider.maxValue= maxStamina; 
+        currentStamina= stamina;
+        healthSlider.maxValue = health;
+        staminaSlider.maxValue= stamina; 
         StartCoroutine(RefreshStaminaRoutine());    
     }
 
@@ -54,9 +53,9 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         healthSlider.value=currentHealth;
         staminaSlider .value=currentStamina;    
     }
-    public void RefreshStamina()
+    private void RefreshStamina()
     {
-        if (currentStamina<maxStamina)
+        if (currentStamina < stamina)
         {
             currentStamina += staminaRefresh;
 

@@ -12,12 +12,18 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     Vector3 startPos;
     Vector3 startScale;
 
+ [SerializeField]   string cardName;
+
     private void Start()
     {
         startPos = transform.position;
         startScale = transform.localScale;
     }
-
+    
+    public void Press()
+    {
+        SkillManager.Instance.UnLockSkill(cardName);
+    }    
     private IEnumerator MoveCard(bool startingAnmation)
     {
         Vector3 endPos;
@@ -66,4 +72,5 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     {
        StartCoroutine (MoveCard(false));
     }
+  
 }

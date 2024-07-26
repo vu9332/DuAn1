@@ -14,24 +14,26 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
+    [SerializeField] private PlayerData playerData;
+
     [Header("Move")]
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float moveWhileAttackSpeed;
-    [SerializeField] private bool _isMoving = false;
-    //moving
-    public bool IsMoving { get { return _isMoving; } private set { _isMoving = value; myAnimator.SetBool(AnimationString.IsMoving, value); } }
+
+  
+    public bool IsMoving { get { return playerData._isMoving; } private set { playerData._isMoving = value; myAnimator.SetBool(AnimationString.IsMoving, value); } }
     //running
-    [SerializeField] private bool _isRunning = false;
-    public bool IsRunning { get { return _isRunning; } private set { _isRunning = value; myAnimator.SetBool(AnimationString.IsRunning, value); } }
+    
+    public bool IsRunning { get { return playerData._isRunning; } private set { playerData._isRunning = value; myAnimator.SetBool(AnimationString.IsRunning, value); } }
 
 
     [Header("Jump")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpTime;
     private float jumpTimer;
-    [SerializeField] private bool _isJumping = false;
-    public bool IsJumping { get { return _isJumping; } private set { _isJumping = value; } }
+ 
+    public bool IsJumping { get { return playerData._isJumping; } private set { playerData._isJumping = value; } }
 
     // dash
     [Header("Dash")]
@@ -41,25 +43,24 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool _isDash = false;
     public bool IsDash { get { return _isDash; } private set { _isDash = value; } }
-    private bool CanDash = true;
+   
     //roll
     [Header("Roll")]
     [SerializeField] private float rollSpeed;
     [SerializeField] private float maxRollDistance;
     [SerializeField] float rollCD = .25f;
     Vector2 startRollPos;
-    [SerializeField] private bool _isRolling = false;
-    public bool IsRolling { get { return _isRolling; } private set { _isRolling = value; } }
+  
+    public bool IsRolling { get { return playerData._isRolling; } private set { playerData._isRolling = value; } }
     private bool CanRoll = true;
     [Range(0f, 10)] public float rayCastMaxDistance;
     [SerializeField] private LayerMask enemyLayer;
     [Header(" ")]
     [SerializeField] private List<AudioClip> movingSoundEffect;
 
-    [Header("WallSlide ")]
-    [SerializeField] private bool _isWallSliding = false;
-    public bool IsWallSliding { get { return _isWallSliding; } private set { _isWallSliding = value; myAnimator.SetBool(AnimationString.IsWalllSlide, value); } }
+    [Header("Wallslide")]
     [SerializeField] private float wallSlidingSpeed;
+    [SerializeField] public bool IsWallSliding { get { return playerData._isWallSliding; } private set { playerData._isWallSliding = value; myAnimator.SetBool(AnimationString.IsWalllSlide, value); } }
 
     [Header("WallJump ")]
     private bool isWallJumping;
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             if (CanMove)
             {
-                if (IsMoving &&!touchingDirection.IsOnWall&& !IsRolling)
+                if (IsMoving &&!touchingDirection.IsOnWallNoSlide&& !IsRolling)
                 {
                     if (IsRunning)
                     { //running
@@ -210,23 +211,26 @@ public class PlayerController : MonoBehaviour
     #region Dash
     public void OnDash(InputAction.CallbackContext context)
     {
-
-        if (CanPerformAction(context) && CanDash)
-        {
-            SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[0], this.transform, 1f);
-            CanDash = false;
-            IsDash = true;
-            startDashPos = this.rb.position;
-            ghost.makeGhost = true;
-            // rb.velocity = Vector2.zero;
-            myAnimator.SetTrigger(AnimationString.IsDashing);
-            Vector2 direction = (IsFacingRight) ? Vector2.right : Vector2.left;
-            rb.AddForce(new Vector2(dashSpeed * direction.x, 0), ForceMode2D.Impulse);
-            StartCoroutine(EndDashRoutine());
             Debug.Log("Do Dash");
+
+        if (CanPerformAction(context) &&playerData.CanDash)
+        {
+            ActiveDash();
         }
 
     }
+    public void ActiveDash()
+    {
+        SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[0], this.transform, 1f);
+        playerData.CanDash = false;
+        IsDash = true;
+        startDashPos = this.rb.position;
+        ghost.makeGhost = true;
+        myAnimator.SetTrigger(AnimationString.IsDashing);
+        Vector2 direction = (IsFacingRight) ? Vector2.right : Vector2.left;
+        rb.AddForce(new Vector2(dashSpeed * direction.x, 0), ForceMode2D.Impulse);
+        StartCoroutine(EndDashRoutine());
+    }    
     private void ApplyDashing()
     {
         if (IsDash)
@@ -242,14 +246,15 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator EndDashRoutine()
     {
-        float dashTime = .25f;
-        float dashCD = 5f;
+       
+       Player_Abilities.dashAbilityCoolDown();
+        float dashTime = .25f;        
         yield return new WaitForSeconds(dashTime);
         IsDash = false;
         ghost.makeGhost = false;
         //  trailRenderer.emitting = false;
-        yield return new WaitForSeconds(dashCD);
-        CanDash = true;
+        yield return new WaitForSeconds(playerData.dashCD);
+        playerData.CanDash = true;
     }
     #endregion
     #region Roll

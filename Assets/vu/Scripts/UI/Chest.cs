@@ -6,7 +6,7 @@ public class Chest : MonoBehaviour
 {
    BoxCollider2D box;
     Animator animator;
-   [SerializeField] private bool isOpen;
+  // [SerializeField] private bool isOpen;
    
 
     private void Start()
@@ -21,10 +21,10 @@ public class Chest : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
             animator.Play("Chest");
-            isOpen = true;
+           // isOpen = true;
             EventManager.OpenSkillMenu();
-    
-
+            //EventManager.IsUpdateCard();
+       
 
         }
        
@@ -34,7 +34,7 @@ public class Chest : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
            
-            isOpen = false;
+            //isOpen = false;
             animator.Play("Chest Close");
             EventManager.CloseSkillMenu();
 

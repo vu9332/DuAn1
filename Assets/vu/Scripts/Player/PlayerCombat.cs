@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    //public static PlayerCombat Instance {  get;set; }
+   public static PlayerCombat Instance {  get;set; }
 
     [Header("NormaAttack (Left Mouse) ")]
     [SerializeField] private bool trigger;
@@ -29,11 +29,11 @@ public class PlayerCombat : MonoBehaviour
     // Chieu 1
     [Header("Skill 1 ( F )")]
     [SerializeField] SkillData skillOneData;
-    public float maxDistanceSkillOneSlide;
-    public Vector2 startPointSlideSkillOne { get; set; }
+    [SerializeField] float maxDistanceSkillOneSlide;
+    private Vector2 startPointSlideSkillOne { get; set; }
     [SerializeField]
-    private bool _isSkillOne = true;
-    public bool IsSkillOne { get { return _isSkillOne; } set { _isSkillOne = value; } }
+   
+    public bool IsSkillOne { get { return skillOneData._DoSkill; } set { skillOneData._DoSkill = value; } }
 
     // Chieu 2
     [Header("Chieu 2 ( Q )")]
@@ -41,9 +41,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] SkillData skillTwoData;
     private Vector3 slashToEnemy;
     [Range(0, 100)] public float slashAttackRange;
-    [SerializeField]
-    private bool _isSkillTwo = true;
-    public bool IsSkillTwo { get { return _isSkillTwo; } set { _isSkillTwo = value; } }
+    
+    public bool IsSkillTwo { get { return skillTwoData._DoSkill; } set { skillTwoData._DoSkill = value; } }
 
 
 
@@ -55,9 +54,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Transform skillThreeAttackPoint;
     private Vector2 startPosknock;
     private bool doSkillThree = false;
-    [SerializeField]
-    private bool _isSkillThree = false;
-    public bool IsSkillThree { get { return _isSkillThree; } set { _isSkillThree = value; } }
+    
+    public bool IsSkillThree { get { return skillThreeData._DoSkill; } set { skillThreeData._DoSkill = value; } }
 
 
 
@@ -222,13 +220,16 @@ public class PlayerCombat : MonoBehaviour
 
         if (SkillManager.Instance.IsSkillOneUnlock)
         {
+           
             if (context.performed && TouchingDirection.Instance.IsGround && playerHealth.currentStamina > 2)
             {
+                
                 // rb.velocity = Vector2.zero;
                 if (IsSkillOne && CanAttack && (!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash))
                 {
+                    Debug.Log("Chiêu 1 ");
                     ActivateSkillOne();
-                    IsSkillOne = false;
+                  
                 }
             }
         }
@@ -236,8 +237,9 @@ public class PlayerCombat : MonoBehaviour
 
     }
 
-    private void ActivateSkillOne()
+    public void ActivateSkillOne()
     {
+        IsSkillOne = false;
         SoundFXManagement.Instance.PlaySoundFXClip(skillOneData.soundEffect[0], transform, 0.3f);
         // trailRenderer.emitting = true;
         playerHealth.currentStamina -= 2;
@@ -250,7 +252,8 @@ public class PlayerCombat : MonoBehaviour
     }
     IEnumerator SkillOneCoolDown(float coolDownTime)
     {
-        yield return new WaitForSeconds(1f);
+                    Player_Abilities.skill1AbilityCoolDown();
+        yield return new WaitForSeconds(.1f);
         //trailRenderer.emitting = false;
         CanAttack = true;
         IsNormalAttack = true;
@@ -279,7 +282,7 @@ public class PlayerCombat : MonoBehaviour
         }
         else Debug.Log("Chiêu 2 chưa mở");
     }
-    private void ActivateSkillTwo()
+    public void ActivateSkillTwo()
     {
         SoundFXManagement.Instance.PlaySoundFXClip(skillTwoData.soundEffect[0], transform, .5f);
         playerHealth.currentStamina -= 2;
@@ -291,6 +294,7 @@ public class PlayerCombat : MonoBehaviour
     }
     IEnumerator SkillTwoCoolDown(float coolDownTime)
     {
+                    Player_Abilities.skill2AbilityCoolDown();
         yield return new WaitForSeconds(coolDownTime);
         IsSkillTwo = true;
     }
@@ -345,29 +349,30 @@ public class PlayerCombat : MonoBehaviour
     {
         if (SkillManager.Instance.IsSkillThreeUnlock)
         {
-            if (!IsSkillThree && CanAttack)
+            if (IsSkillThree && CanAttack)
             {
                 if (context.performed)
                 {
 
-                    IsSkillThree = true;
-                    CanAttack = false;
-                    myAnimator.SetTrigger(AnimationString.IsSkillThree);
-                    startPosknock = this.transform.position;
+                   
                     ActivateSkillThree();
 
                 }
-                StartCoroutine(SkillThreeCoolDown());
+               
 
             }
         }
         else Debug.Log("Chiêu 3 chưa mở");
     }
 
-    void ActivateSkillThree()
+    public void ActivateSkillThree()
     {
         SoundFXManagement.Instance.PlaySoundFXClip(skillThreeData.soundEffect[0], transform, 1f);
-        if (IsSkillThree)
+        IsSkillThree = false;
+        CanAttack = false;
+        myAnimator.SetTrigger(AnimationString.IsSkillThree);
+        startPosknock = this.transform.position;
+        if (!IsSkillThree)
         {
             foreach (Transform chilld in this.transform)
             {
@@ -393,7 +398,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void SkillThreeAttack()
     {
-        if (IsSkillThree)
+        if (!IsSkillThree)
         {
             SoundFXManagement.Instance.PlaySoundFXClip(skillThreeData.soundEffect[1], transform, 1f);
             doSkillThree = true;
@@ -410,6 +415,7 @@ public class PlayerCombat : MonoBehaviour
         rb.AddForce(new Vector2(this.transform.localScale.x * -force, 0), ForceMode2D.Impulse);
         StartCoroutine(calculateDistance());
         StartCoroutine(ActivateEffect());
+        StartCoroutine(SkillThreeCoolDown());
     }
     IEnumerator calculateDistance()
     {
@@ -426,8 +432,9 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator SkillThreeCoolDown()
     {
+                    Player_Abilities.skill3AbilityCoolDown();
         yield return new WaitForSeconds(skillThreeData.coolDownTime);
-        IsSkillThree = false;
+        IsSkillThree = true;
     }
     #endregion
 
@@ -447,9 +454,5 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
         }
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(attackPoint.position, attackRange);
-        Gizmos.DrawSphere(this.transform.position, slashAttackRange);
-    }
+   
 }

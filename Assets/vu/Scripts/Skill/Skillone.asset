@@ -18,3 +18,5 @@ MonoBehaviour:
   effectPrefab: {fileID: 660365888051762079, guid: 3dd8dfcc35105b446b8ed04c8eebce74, type: 3}
   soundEffect:
   - {fileID: 8300000, guid: a86807a3d16199649b8f5c196edd232e, type: 3}
+  SkillIcon: {fileID: 0}
+  _DoSkill: 1

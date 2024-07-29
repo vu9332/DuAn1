@@ -7,6 +7,9 @@ public class bossDemon : ScriptableObject
 {
     public string Name;
     public float damageAttack;
-    public float damageSkill;
+    public float damageSkill_1;
+    public float damageSkill_2;
     public float health;
+    public GameObject healthBar;
+    public int amountExperiencesReceived;
 }

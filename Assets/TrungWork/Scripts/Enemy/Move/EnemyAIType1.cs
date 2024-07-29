@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemyAIType1 : MonoBehaviour
 {
     [SerializeField] private Transform posLeft;
@@ -19,20 +18,22 @@ public class EnemyAIType1 : MonoBehaviour
     }
     private void Start()
     {
-        posTarget = posLeft.position;
+        posTarget = Vector2.left;
         dirLineCast = 1;
     }
     private void Update()
     {
-        if (Vector2.Distance(transform.position, posLeft.position) <.1f)
+        if (Vector2.Distance(transform.position, posLeft.position) <.1f || transform.position.x < posLeft.position.x)
         {
-            posTarget=posRight.position;
+            //posTarget=posRight.position;
+            posTarget = Vector2.right;
             facingLeft = false;
             Flip();
         }
-        if (Vector2.Distance(transform.position, posRight.position) < .1f)
+        if (Vector2.Distance(transform.position, posRight.position) < .1f || transform.position.x > posRight.position.x)
         {
-            posTarget = posLeft.position;
+            //posTarget = posLeft.position;
+            posTarget = Vector2.left;
             facingLeft = true;
             Flip();
         }
@@ -41,7 +42,8 @@ public class EnemyAIType1 : MonoBehaviour
     {
         if (!enemyAIFindPlayer.canAttack)
         {
-            rb.MovePosition(rb.position + (posTarget - (Vector2)transform.position).normalized * speed * Time.fixedDeltaTime);
+            rb.velocity=new Vector2(speed * posTarget.x,rb.velocity.y);
+            //rb.MovePosition(rb.position + (posTarget - (Vector2)transform.position).normalized * speed * Time.fixedDeltaTime);
         }
     }
     private void Flip()

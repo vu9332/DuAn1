@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Demon Slime
   damageAttack: 10
-  damageSkill: 0
+  damageSkill_1: 20
+  damageSkill_2: 30
   health: 100
+  healthBar: {fileID: 0}
+  amountExperiencesReceived: 10

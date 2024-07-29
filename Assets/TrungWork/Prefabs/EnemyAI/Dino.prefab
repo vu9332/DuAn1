@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4623238517841041972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 2744759387506048733}
   - component: {fileID: 6955718567930289957}
   - component: {fileID: 3750982532058853996}
+  - component: {fileID: 530287930745937776}
   m_Layer: 6
   m_Name: Dino
   m_TagString: Untagged
@@ -113,8 +114,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1021987175
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 671a594cd6415e04ba0bf26a8eae3621, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -281,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e8b2c4af3997c4696435da17da3309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackThrust: 0
+  knockBackThrust: 10
   hurtSFX: {fileID: 5785785142468859200, guid: af7ac2a846777e5458ce804cd6e3eb81, type: 3}
   deathSFXBlue: {fileID: 0}
   deathSFXBlack: {fileID: 0}
@@ -290,6 +291,18 @@ MonoBehaviour:
   isHurting: 0
   isDead: 0
   dinoSC: {fileID: 11400000, guid: 2956a99351d333547a91818c910cac1d, type: 2}
+--- !u!114 &530287930745937776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803271111874725955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4021734219550816252
 GameObject:
   m_ObjectHideFlags: 0

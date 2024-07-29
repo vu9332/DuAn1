@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7701011189876069200}
   - component: {fileID: 4668643501156047215}
   - component: {fileID: 5512078674571823381}
-  - component: {fileID: 4165935806922164799}
-  - component: {fileID: 1755090135394829709}
+  - component: {fileID: 3833279842423526639}
+  - component: {fileID: 4223704657902922086}
   m_Layer: 0
   m_Name: FireSplash
   m_TagString: Untagged
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 495856231
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2092854411, guid: 7b427c77080489e45888bff256cf0abb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &4165935806922164799
+--- !u!60 &3833279842423526639
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,15 +180,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.17390771, y: 0.13293546}
-      - {x: -0.3289234, y: -0.15052533}
-      - {x: -0.6261385, y: -0.6623707}
+    - - {x: -0.084824204, y: 0.29759657}
+      - {x: -0.39769363, y: -0.2729702}
+      - {x: -0.68066025, y: -0.71470165}
       - {x: -0.9375, y: -1}
-      - {x: 0.7016597, y: -1.0098282}
-      - {x: 0.89236087, y: -0.7007879}
-      - {x: 0.8397718, y: -0.36227798}
+      - {x: 0.9375, y: -1}
+      - {x: 0.96171576, y: 0.18699992}
   m_UseDelaunayMesh: 0
---- !u!114 &1755090135394829709
+--- !u!114 &4223704657902922086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,7 +196,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 6114173131038844780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7f26534173f124c8b58ba8c59680cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9130baadcb00c4a4dbb35d0c3de7597c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 128
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundDistance: 0
+  bossDemon: {fileID: 11400000, guid: c278d207162a0cc43baa2a7317b38948, type: 2}

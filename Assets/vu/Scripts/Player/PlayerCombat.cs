@@ -155,8 +155,8 @@ public class PlayerCombat : MonoBehaviour
     #region normal attack
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
+       // if (!EventSystem.current.IsPointerOverGameObject())
+       // {
             if ((!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && touchingDirection.IsGround && playerHealth.currentStamina > 1)
             {
                 rb.velocity = Vector2.zero;
@@ -198,7 +198,7 @@ public class PlayerCombat : MonoBehaviour
                 playerHealth.currentStamina -= 1;
                 StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
             }
-        }
+       // }
        
     }
     public void PlayNormalAttackAudioClip()

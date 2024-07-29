@@ -728,6 +728,7 @@ GameObject:
   - component: {fileID: 4454524905617139772}
   - component: {fileID: 1224744160965306390}
   - component: {fileID: 6977046328949096734}
+  - component: {fileID: 737412169275780686}
   m_Layer: 6
   m_Name: Flying Eyes
   m_TagString: Untagged
@@ -797,8 +798,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1021987175
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 92723615, guid: 174e66ef4d43c01469e0e5e8b2362b94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -852,7 +853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleMoveSpeed: 4
   idleMoveDirection: {x: -1, y: 3}
-  attackMoveSpeed: 30
+  attackMoveSpeed: 35
   attackMoveDirection: {x: -1, y: 3}
   attackPlayerSpeed: 20
   groundCheckUp: {fileID: 4191425693117828582}
@@ -992,6 +993,18 @@ MonoBehaviour:
   offSet: {x: -0.25, y: -0.08, z: -0.02}
   hitGround: {fileID: 8300000, guid: 7934b0408819f1b49b87b5fd0ff9a6b6, type: 3}
   isTouchingGround: 0
+--- !u!114 &737412169275780686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5887618363876058481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6296499195860789317
 GameObject:
   m_ObjectHideFlags: 0

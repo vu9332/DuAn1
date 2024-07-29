@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody2D),typeof(TouchDirection))]
 public class Boss : MonoBehaviour
 {
     [SerializeField] protected float walkSpeed;
@@ -9,7 +12,7 @@ public class Boss : MonoBehaviour
     public DetectionZone attackZone;
     protected Animator animator;
     protected Transform playerPosition;
-    protected Vector2 directionTarget;
+    protected TouchDirection touchDirection;
     public enum WalkableDirection { Right, Left }
     protected WalkableDirection _walkDirection;
     public WalkableDirection WalkDirection
@@ -22,10 +25,12 @@ public class Boss : MonoBehaviour
                 if (value == WalkableDirection.Right)
                 {
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    walkDirectionVector = Vector2.right;
                 }
                 else if (value == WalkableDirection.Left)
                 {
                     gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    walkDirectionVector = Vector2.left;
                 }
             }
             _walkDirection = value;
@@ -56,18 +61,22 @@ public class Boss : MonoBehaviour
             return animator.GetBool(AnimationBoss.canMove);
         }
     }
+
+    protected Vector2 walkDirectionVector = Vector2.left;
     protected virtual void Awake()
     {
         playerPosition = FindAnyObjectByType<PlayerController>().GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        touchDirection=GetComponent<TouchDirection>();
     }
     public void Move()
     {
-        directionTarget = new Vector2(playerPosition.position.x, transform.position.y);
-        directionTarget.Normalize();
-        rb.MovePosition(rb.position + directionTarget * walkSpeed * Time.fixedDeltaTime);
-        SwitchBossDirection();
+        if(rb.bodyType!= RigidbodyType2D.Static)
+        {
+            rb.velocity = new Vector2(walkDirectionVector.x * walkSpeed, rb.velocity.y);
+            SwitchBossDirection();
+        }
     }
     protected virtual void FindCollider()
     {

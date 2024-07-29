@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4861159310590934523}
   - component: {fileID: 8785882131259100965}
   - component: {fileID: 5884631753482750485}
+  - component: {fileID: 4361996565457447838}
   m_Layer: 6
   m_Name: FireWorm
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.9478412, y: -1.6842935, z: 0.029366398}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 289016519108251859}
@@ -82,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1021987175
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1254270076, guid: f11119373f3d5334793bb5a00a96fa49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,7 +96,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &7126397827589537974
 Animator:
   serializedVersion: 5
@@ -125,14 +126,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286719627087423492}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -227,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  distanceToAttackPlayer: 5
+  distanceToAttackPlayer: 10
   posLeft: {fileID: 2547682007410056361}
   posRight: {fileID: 7748677857548650015}
   soundSpray: {fileID: 8300000, guid: 7502356c68688084f96b64307a19c182, type: 3}
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e562fefb1acad049aa5b3c563c146f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackThrust: 0
+  knockBackThrust: 10
   hurtSFX: {fileID: 0}
   deathSFXBlue: {fileID: 0}
   deathSFXBlack: {fileID: 0}
@@ -331,6 +332,18 @@ MonoBehaviour:
   isHurting: 0
   isDead: 0
   fireWormSC: {fileID: 11400000, guid: e501d6807f2494b4d94c75811a41e853, type: 2}
+--- !u!114 &4361996565457447838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286719627087423492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555787983421868906
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3507667137502171224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

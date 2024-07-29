@@ -13,7 +13,7 @@ public class BulletEnemy : MonoBehaviour
     [SerializeField] private GrapeProjectitle grapeProjectitle;
     private float damage;
     private PlayerHealth playerHealth;
-    private bool playerGetHit=false;
+    private bool playerGetGit;
     private void Awake()
     {
         playerHealth=GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
@@ -23,6 +23,10 @@ public class BulletEnemy : MonoBehaviour
         Vector3 playerPos = PlayerController.Instance.transform.position;
         StartCoroutine(ProjectitleCurveRoutine(transform.position,playerPos));
         damage=grapeProjectitle.damageAttack;
+    }
+    private void Update()
+    {
+        
     }
     private IEnumerator ProjectitleCurveRoutine(Vector3 startPosition,Vector3 endPosition)
     {
@@ -36,18 +40,18 @@ public class BulletEnemy : MonoBehaviour
             transform.position=Vector2.Lerp(startPosition, endPosition, linearT) + new Vector2(0f,height);
             yield return null;
         }
-        if (!playerGetHit)
+        if (!playerGetGit)
         {
             Instantiate(SpllaterPrefabs, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
     }
-    private void OnTriggerEnter2D(Collider2D player)
+    private void OnCollisionEnter2D(Collision2D player)
     {
         if (player.gameObject.GetComponent<PlayerController>())
         {
             playerHealth.TakeDamage(damage);
-            playerGetHit = true;
+            playerGetGit = true;
             Debug.Log("Mau Player con: " + playerHealth.currentHealth);
         }
     }

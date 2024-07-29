@@ -7,12 +7,11 @@ using UnityEditor;
 
 public class EnemyHealth : Enemy, IDamageAble
 {
-
     [Header("UI")]
-    [SerializeField] private GameObject healthBarObject;
-    [SerializeField] private Image healthBar;
-    [SerializeField] private TextMeshProUGUI textBoss;
-    [SerializeField] private GameObject NoticeYouKilledBoss;
+    [SerializeField] protected GameObject healthBarObject;
+    [SerializeField] protected Image healthBar;
+    [SerializeField] protected TextMeshProUGUI textBoss;
+    [SerializeField] protected GameObject NoticeYouKilledBoss;
     [Header("Effect")]
     [SerializeField] private GameObject deathSFX;
     [SerializeField] private GameObject hurtSFX;

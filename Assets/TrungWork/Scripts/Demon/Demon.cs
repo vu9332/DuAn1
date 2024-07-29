@@ -16,4 +16,8 @@ public class Demon : Boss
     {
         base.FindCollider();
     }
+    private void MoveMent()
+    {
+        base.Move();
+    }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 836785678616008638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,13 +46,11 @@ GameObject:
   - component: {fileID: 6814309622405470949}
   - component: {fileID: 4007619690850440252}
   - component: {fileID: 8076678653749615268}
-  - component: {fileID: 5880537415430226468}
   - component: {fileID: 3911500651936604553}
   - component: {fileID: 1923601594821362691}
   - component: {fileID: 6333183467049288740}
-  - component: {fileID: 642489326308149857}
-  - component: {fileID: 7476631243350700477}
   - component: {fileID: 551295732019277852}
+  - component: {fileID: 3244101421790826553}
   m_Layer: 6
   m_Name: Eagle
   m_TagString: Untagged
@@ -70,7 +68,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.7826228, y: -3.5247605, z: 0.019157551}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836785678616008638}
@@ -113,8 +111,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1021987175
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f240dfd4814d34d55a9b033f3c9d8a60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -183,22 +181,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5880537415430226468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222008441491063980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd3a8dffed343246b3bed2552460ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posLeft: {fileID: 4070058970311017661}
-  posRight: {fileID: 6797774209638387451}
-  speed: 3
-  facingLeft: 0
 --- !u!50 &3911500651936604553
 Rigidbody2D:
   serializedVersion: 4
@@ -207,7 +189,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222008441491063980}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -253,33 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackTime: 0.2
---- !u!114 &642489326308149857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222008441491063980}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d05c8223edf2e4448c543b976837d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 3
---- !u!114 &7476631243350700477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222008441491063980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7291c60f0b8e20641af11d8f46e00310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToAttackPlayer: 0
-  canAttack: 0
 --- !u!114 &551295732019277852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +256,18 @@ MonoBehaviour:
   isHurting: 0
   isDead: 0
   eagleSC: {fileID: 11400000, guid: 2cb7019405657f44f965cc1946b4a5c7, type: 2}
+--- !u!114 &3244101421790826553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222008441491063980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052162358113183456
 GameObject:
   m_ObjectHideFlags: 0

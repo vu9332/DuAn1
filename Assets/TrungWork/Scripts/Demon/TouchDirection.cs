@@ -8,7 +8,7 @@ public class TouchDirection : MonoBehaviour
     public float groundDistance = 0.05f;
     public float wallDistance = 0.2f;
     public float cellingDistance = 0.05f;
-    BoxCollider2D touchingCol;
+    CapsuleCollider2D touchingCol;
     RaycastHit2D[] groundHits=new RaycastHit2D[5];
     RaycastHit2D[] wallHits = new RaycastHit2D[5];
     RaycastHit2D[] cellingHits = new RaycastHit2D[5];
@@ -23,7 +23,7 @@ public class TouchDirection : MonoBehaviour
         private set
         {
             _isGrounded = value;
-            //animator.SetBool(AnimationStrings.isGrounded, value);
+            animator.SetBool(AnimationBoss.isGrounded, value);
         }
     }
     [SerializeField] private bool _isOnWall = true;
@@ -36,7 +36,7 @@ public class TouchDirection : MonoBehaviour
         private set
         {
             _isOnWall = value;
-            //animator.SetBool(AnimationStrings.isOnWall, value);
+            animator.SetBool(AnimationBoss.isOnWall, value);
         }
     }
     [SerializeField] private bool _isOnCelling = true;
@@ -49,14 +49,14 @@ public class TouchDirection : MonoBehaviour
         private set
         {
             _isGrounded = value;
-            //animator.SetBool(AnimationStrings.isOnCelling, value);
+            animator.SetBool(AnimationBoss.isOnCelling, value);
         }
     }
 
     private Vector2 walkCheckDirection => gameObject.transform.localScale.x > 0 ? Vector2.right: Vector2.left;
     private void Awake()
     {
-        touchingCol = GetComponent<BoxCollider2D>();
+        touchingCol = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
     }
     void Start()

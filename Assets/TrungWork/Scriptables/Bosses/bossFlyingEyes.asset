@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Flying Eyes
   damage: 10
-  health: 100
+  health: 30
   damageBite: 20

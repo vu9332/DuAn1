@@ -442,6 +442,24 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: isGrounded
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 9100000}
+  - m_Name: isOnCelling
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isOnWall
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -667,7 +685,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 1.5
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -835,20 +853,20 @@ AnimatorStateMachine:
   - {fileID: 1182967446630758344}
   m_EntryTransitions: []
   m_StateMachineTransitions:
+  - first: {fileID: 6446721530912781145}
+    second:
+    - {fileID: -1481646904342364084}
+  - first: {fileID: -724623374507103568}
+    second:
+    - {fileID: 447668219133570238}
+    - {fileID: -6490010028476963206}
+    - {fileID: 2966792404157050604}
   - first: {fileID: -379864180458242819}
     second:
     - {fileID: 3342784108021970028}
   - first: {fileID: 6740062289825624545}
     second:
     - {fileID: 3129269220724687034}
-  - first: {fileID: -724623374507103568}
-    second:
-    - {fileID: 447668219133570238}
-    - {fileID: -6490010028476963206}
-    - {fileID: 2966792404157050604}
-  - first: {fileID: 6446721530912781145}
-    second:
-    - {fileID: -1481646904342364084}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 280, y: 710, z: 0}
   m_EntryPosition: {x: -470, y: 390, z: 0}

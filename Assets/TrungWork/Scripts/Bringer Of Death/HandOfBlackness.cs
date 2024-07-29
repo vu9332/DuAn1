@@ -33,4 +33,16 @@ public class HandOfBlackness : MonoBehaviour,IBossSkill
     {
         animator.SetBool(AnimationBoss.canUseAbility, false);
     }
+    void SoundBlackness()
+    {
+        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_bringer_blackness);
+    }
+    void SoundLowAttackBringer()
+    {
+        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_low_pl_attack6);
+    }
+    void SoundBringerHurt()
+    {
+        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_bringer_hurt);
+    }
 }

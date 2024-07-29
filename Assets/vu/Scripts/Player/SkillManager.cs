@@ -41,7 +41,7 @@ public class SkillManager : MonoBehaviour
         {
             Instance = this;
         }
-        else Destroy(gameObject);
+        //else Destroy(gameObject);
 
     }
 

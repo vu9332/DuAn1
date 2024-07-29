@@ -12,7 +12,8 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     Vector3 startPos;
     Vector3 startScale;
 
- [SerializeField]   string cardName;
+    [SerializeField] public string cardName;
+    [SerializeField] private PlayerData playerData;
 
     private void Start()
     {
@@ -22,8 +23,45 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     
     public void Press()
     {
-        SkillManager.Instance.UnLockSkill(cardName);
-    }    
+        switch (cardName)
+        {
+            case "Health":
+                {
+                    if (playerData.playerCoin >= 10)
+                    {
+                        playerData.playerHealth += 5;
+                        PlayerHealth.Instance.UseCoin(10);
+                    }
+                    else Debug.Log("You Dont have a coin");
+
+                    
+                }                 
+                    break;                
+            case "Stamina":
+                if (playerData.playerCoin >= 5)
+                {
+                    playerData.playerStamina += 5;
+                    PlayerHealth.Instance.UseCoin(5);
+
+                }                         
+                 else Debug.Log("You Dont have a coin");
+                break;
+            case "More Exp":
+                if (playerData.playerCoin >= 50)
+                {
+                   playerData.playerExp += 50;
+
+                }
+                else Debug.Log("You Dont have a coin");
+               
+                break;
+               
+
+
+        }
+
+        // SkillManager.Instance.UnLockSkill(cardName);
+    }
     private IEnumerator MoveCard(bool startingAnmation)
     {
         Vector3 endPos;

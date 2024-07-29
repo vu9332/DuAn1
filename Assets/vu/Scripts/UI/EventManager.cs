@@ -10,13 +10,17 @@ public class EventManager : MonoBehaviour
     public delegate void SkillMenuDeleagte();
     public static event SkillMenuDeleagte OnOpenSkillMenu;
     public static event SkillMenuDeleagte OnCloseSkillMenu;
+    //public static event SkillMenuDeleagte OnChooseCard1;
+    //public static event SkillMenuDeleagte OnChooseCard2;
+    //public static event SkillMenuDeleagte OnChooseCard3;
+ 
   //  public static event SkillMenuDeleagte OnUpDateSkillMenu;
 
    // public SkillManager skillManager;
-    public  GameObject cardBoard;
+     public  GameObject cardBoard;
     //Transform[] card;
- [SerializeField]   List< bool> boolObj =  new List<bool>();
-    CardSelectionHandler[] chillObj;
+    //[SerializeField]   List< bool> boolObj =  new List<bool>();
+   // CardSelectionHandler[] chillObj;
 
     private void Awake()
     {
@@ -39,10 +43,12 @@ public class EventManager : MonoBehaviour
         OnCloseSkillMenu?.Invoke();
     }
   
+  
     private void OnEnable()
     {
         OnOpenSkillMenu += ShowSkillMenu;
         OnCloseSkillMenu += HideSkillMenu;
+        //ChooseSomeThings += CardSelectionManager.instance.Chosse;
         
     }
 
@@ -50,34 +56,20 @@ public class EventManager : MonoBehaviour
     {
        OnOpenSkillMenu -= ShowSkillMenu;
        OnCloseSkillMenu -= HideSkillMenu;
-      
+        //ChooseSomeThings -= CardSelectionManager.instance.Chosse;
+
     }
     void ShowSkillMenu()
     {
-        chillObj = cardBoard.GetComponentsInChildren<CardSelectionHandler>();
+        
         cardBoard.gameObject.SetActive(true);
-        if (chillObj != null)
-        {
-            boolObj.Add(SkillManager.Instance.IsSkillOneUnlock);
-            boolObj.Add(SkillManager.Instance.IsSkillTwoUnlock);
-            boolObj.Add(SkillManager.Instance.IsSkillThreeUnlock);
-            for (int i = 0; i < chillObj.Length; i++)
-            {
-                chillObj[i].gameObject.SetActive(!boolObj[i]);
-                boolObj.RemoveAt(i);
-            }    
-        }
-        else Debug.Log("Chill null");
-
-      
+           
     }
     void HideSkillMenu()
     {
         cardBoard.gameObject.SetActive(false);
        
-
-
     }
-    
+  
    
 }

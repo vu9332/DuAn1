@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private int currentLevel;
-    [SerializeField] private int experiencePoints;
+   
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private int currentLevel { get { return playerData.playerLevel ; } set { playerData.playerLevel = value; } }
+    [SerializeField] public float experiencePoints { get { return playerData.playerExp; } set { playerData.playerExp = value; } }
     [SerializeField] private int pointsPerLevel; 
   
     // Update is called once per frame

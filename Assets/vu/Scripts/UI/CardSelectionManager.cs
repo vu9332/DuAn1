@@ -4,37 +4,43 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using static EventManager;
 
 public class CardSelectionManager : MonoBehaviour
 {
     public static CardSelectionManager instance;
-
     public GameObject[] card;
+    [SerializeField] private PlayerData playerData;
   
+
     void Start()
     {
         if (instance == null)
         {
             instance = this;
         }
-       
+
     }
 
     private void OnEnable()
     {
 
         StartCoroutine(SelectAfterOneFrame());
+     
     }
 
-   
+
     IEnumerator SelectAfterOneFrame()
     {
         yield return null;
         EventSystem.current.SetSelectedGameObject(card[0]);
     }
-
    
+ 
 
-
+  
+   
+    
+  
 
 }

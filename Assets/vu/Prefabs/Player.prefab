@@ -5684,8 +5684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isSkillOneUnlock: 1
-  _isSkillTwoUnlock: 1
-  _isSkillThreeUnlock: 1
+  _isSkillTwoUnlock: 0
+  _isSkillThreeUnlock: 0
 --- !u!114 &8644915073143656759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5698,8 +5698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d38cad6c483674d962e7040fcfcd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  experiencePoints: 0
+  playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   pointsPerLevel: 100
 --- !u!1 &6640985347198314429
 GameObject:

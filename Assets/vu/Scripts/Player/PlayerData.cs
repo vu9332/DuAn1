@@ -9,6 +9,7 @@ public class PlayerData : ScriptableObject
     public float playerHealth;
     public float playerStamina;
     public float playerCoin;
+    public int playerLevel;
     public float playerExp;
 
     public bool _isMoving = false;

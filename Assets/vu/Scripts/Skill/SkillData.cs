@@ -14,4 +14,5 @@ public class SkillData : ScriptableObject
     public List<AudioClip> soundEffect;
     public Image SkillIcon;
     public bool _DoSkill = true;
+   
 }

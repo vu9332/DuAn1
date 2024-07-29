@@ -17,7 +17,7 @@ TagManager:
   - Ground
   - PlayerHitbox
   - EnemyHitbox
-  - 
+  - OutSide
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: terrain
     uniqueID: 4146209411
+    locked: 0
+  - name: OutSide
+    uniqueID: 986992273
     locked: 0

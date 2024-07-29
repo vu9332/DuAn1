@@ -15,7 +15,7 @@ MonoBehaviour:
   TitleId: B44FA
   DeveloperSecretKey: N3MOFUJA7RFUHGJXT86ZR553X4Q6YRTYYAI9RWWCADFE3O44TX
   ProductionEnvironmentUrl: 
-  RequestType: 2
+  RequestType: 0
   DisableDeviceInfo: 0
   DisableFocusTimeCollection: 0
   RequestTimeout: 2000

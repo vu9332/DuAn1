@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e985447ea823fbf48a65629a7c9b80d9, type: 3}
   m_Name: newData
   m_EditorClassIdentifier: 
-  playerHealth: 190
-  playerStamina: 90
-  playerCoin: 465
+  playerHealth: 100
+  playerStamina: 100
+  playerCoin: 500
   playerLevel: 3
   playerExp: 0
   _isMoving: 0

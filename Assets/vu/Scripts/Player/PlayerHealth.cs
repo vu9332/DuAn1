@@ -60,7 +60,10 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         CoinText = GameObject.Find(Coin_Text).GetComponent<TextMeshProUGUI>();
         currentHealth =health;
         currentStamina= stamina;
-        
+        if(healthSlider==null)
+        {
+            Debug.Log("Dang null");
+        }
        
         StartCoroutine(RefreshStaminaRoutine());    
     }
@@ -68,8 +71,8 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     // Update is called once per frame
     void Update()
     {
-        healthSlider.value=currentHealth;
-        staminaSlider .value=currentStamina;
+        healthSlider.value=(float)currentHealth/health;
+        staminaSlider.value=currentStamina;
         CoinText.text = currentCoin.ToString();
     }
     private void RefreshStamina()

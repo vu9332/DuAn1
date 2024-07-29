@@ -48,7 +48,7 @@ public class BulletEnemy : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D player)
     {
-        if (player.gameObject.GetComponent<PlayerController>())
+        if (player.gameObject.GetComponent<PlayerController>() !=null)
         {
             playerHealth.TakeDamage(damage);
             playerGetGit = true;

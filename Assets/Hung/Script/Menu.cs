@@ -28,7 +28,9 @@ public class Menu : MonoBehaviour
     [SerializeField] private Slider sliderVolume;
     public AudioSource audioSource;
 
-
+    [Header("Other")]
+    public TextMeshProUGUI userNameText;
+    public TextMeshProUGUI LoginText;
     private void Start()
     {
         panelMenu.SetActive(false);
@@ -36,9 +38,9 @@ public class Menu : MonoBehaviour
         panelLogin.SetActive(false);
         panelReg.SetActive(false);
 
-        audioSource = GetComponent<AudioSource>();
-        sliderVolume.value = audioSource.volume;
-        sliderVolume.onValueChanged.AddListener(SetVolume);
+        //audioSource = GetComponent<AudioSource>();
+        //sliderVolume.value = audioSource.volume;
+        //sliderVolume.onValueChanged.AddListener(SetVolume);
     }
 
     public void SetVolume(float volume)

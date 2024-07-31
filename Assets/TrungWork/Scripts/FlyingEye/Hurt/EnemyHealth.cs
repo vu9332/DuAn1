@@ -90,7 +90,7 @@ public class EnemyHealth : Enemy, IDamageAble
             anim.SetTrigger("StartFight");
             SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
             Instantiate(hurtSFX, transform.position, Quaternion.identity);
-            StartCoroutine(flash.FlashRoutine());
+            AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level1);
         }
         if (isStartFight && countHit > 1)
         {
@@ -108,6 +108,7 @@ public class EnemyHealth : Enemy, IDamageAble
     {
         if(currentHealth <= 0)
         {
+            AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level1);
             if (FlyingEyes.Instance.Body.activeInHierarchy || FlyingEyes.Instance.Bite.activeInHierarchy)
             {
                 FlyingEyes.Instance.Body.SetActive(false);
@@ -131,6 +132,7 @@ public class EnemyHealth : Enemy, IDamageAble
         NoticeYouKilledBoss.SetActive(true);
         yield return new WaitForSeconds(5);
         NoticeYouKilledBoss.SetActive(false);
+        pl.playerExp += bossFlyingEyes.amountExperiencesReceived;
     }
     IEnumerator StartDeathSFX()
     {

@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 3330232226276222206}
   - component: {fileID: 184403857733903656}
   - component: {fileID: 1255912499858737441}
+  - component: {fileID: 3861431090160090468}
   m_Layer: 6
   m_Name: Blue Smile
   m_TagString: Untagged
@@ -290,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142b05a3b238ec24488e151b7a056199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pl: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   knockBackThrust: 30
   hurtSFX: {fileID: 0}
   deathSFXBlue: {fileID: 0}
@@ -311,6 +313,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3861431090160090468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735393028226166947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b60227c614096408fcc50698fabca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: d66f9392e7f8ce24d922676a3e93e7e0, type: 2}
+  restoreDefaultMaterial: 0.5
 --- !u!1 &5533076946986787439
 GameObject:
   m_ObjectHideFlags: 0

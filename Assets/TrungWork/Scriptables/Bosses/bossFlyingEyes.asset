@@ -16,3 +16,4 @@ MonoBehaviour:
   damage: 10
   health: 30
   damageBite: 20
+  amountExperiencesReceived: 90

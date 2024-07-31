@@ -906,6 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ebaa5c08c68744db71b286a46180a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pl: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   healthBarObject: {fileID: 4677490912035118952}
   healthBar: {fileID: 5125626165810501395}
   textBoss: {fileID: 7439361424447500753}

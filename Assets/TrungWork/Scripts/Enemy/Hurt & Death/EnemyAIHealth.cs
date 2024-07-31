@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyAIHealth : Enemy,IDamageAble
 {
+    public static EnemyAIHealth EAHInstance;
     [SerializeField] protected float knockBackThrust;
     [Header("Effect")]
     [SerializeField] protected GameObject hurtSFX;
@@ -15,17 +18,22 @@ public class EnemyAIHealth : Enemy,IDamageAble
     protected Flash flash;
     protected KnockBack knockBack;
     protected Collider2D coll;
+    protected AlmostDead almostDead;
     public bool isHurting=false;
     public bool isDead = false;
     protected override void Awake()
     {
+        EAHInstance = this;
         flash = GetComponent<Flash>();
         knockBack=GetComponent<KnockBack>();
         coll=GetComponent<Collider2D>();
+        rb=GetComponent<Rigidbody2D>();
+        almostDead=GetComponent<AlmostDead>();
     }
     //Nếu va chạm với kiếm của Player thì quái sẽ bị trừ máu
     public override void TakeDamage(float damage)
     {
+        CharacterEvents.characterDamaged.Invoke(gameObject,damage);
         base.TakeDamage(damage);
         isHurting = true;
         StartCoroutine(flash.FlashRoutine());
@@ -34,6 +42,16 @@ public class EnemyAIHealth : Enemy,IDamageAble
         {
             Die();
         }
+        StartCoroutine(a());
+        if (currentHealth <= 5)
+        {
+            StartCoroutine(almostDead.FlashRoutine());
+        }
+    }
+    IEnumerator a()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isHurting = false;
     }
     //Nếu máu về 0
     public override void Die()

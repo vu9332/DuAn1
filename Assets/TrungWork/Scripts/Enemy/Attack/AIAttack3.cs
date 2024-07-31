@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class AIAttack3 : MonoBehaviour
 {
-    [SerializeField] private float damage;
+    [SerializeField] private DinoSC dinoSC;
+    private float damage;
     private PlayerHealth playerHealth;
     private bool isHitPlayer = false;
     private void Awake()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+    }
+    private void Start()
+    {
+        damage = dinoSC.damageAttack;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

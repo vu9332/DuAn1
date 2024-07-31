@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dino
   m_EditorClassIdentifier: 
   Name: Dino
-  damageAttack: 0
+  damageAttack: 3
   health: 30

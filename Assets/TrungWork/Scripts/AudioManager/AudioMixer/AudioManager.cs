@@ -33,8 +33,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip snd_bringer_death;
     public AudioClip snd_bringer_hurt;
     public AudioClip snd_demon_knives;
+    public AudioClip snd_fire_splash;
     public AudioClip snd_hellball;
     public AudioClip snd_demon_death;
+    public AudioClip snd_boss_Defeated;
 
 
     [Header("Other")]
@@ -59,8 +61,24 @@ public class AudioManager : MonoBehaviour
         musicSFX.clip= clip;
         musicSFX.Play();
     }
+    public void StopMusicSFX(AudioClip clip)
+    {
+        musicSFX.clip= clip;
+        musicSFX.Stop();
+    }
     public void PlaySoundSFX(AudioClip clip)
     {
         soundSFX.PlayOneShot(clip);
+    }
+    public void PlaySoundLoopSFX(AudioClip clip)
+    {
+        soundSFX.clip= clip;
+        soundSFX.loop= true;
+        soundSFX.Play();
+    }
+    public void StopSoundSFX(AudioClip clip)
+    {
+        soundSFX.clip = clip;
+        soundSFX.Stop();
     }
 }

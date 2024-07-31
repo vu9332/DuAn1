@@ -21,5 +21,7 @@ public class BlackSmileHealth : EnemyAIHealth
     public override void Die()
     {
         base.Die();
+        pl.playerExp += blackSmileSC.experience;
+        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
     }
 }

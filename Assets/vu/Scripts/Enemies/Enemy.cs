@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IDamageAble
 {
@@ -9,9 +10,10 @@ public class Enemy : MonoBehaviour, IDamageAble
 
     public float health { get ; set ; }
     public float currentHealth { get ; set; }
-    private int amountExperiencesReceived;
+    private int amountExperiencesReceived=0;
     protected Collider2D colliderBoss;
     protected Rigidbody2D rb;
+    [SerializeField] protected PlayerData pl;
 
     protected virtual void Awake()
     {
@@ -48,10 +50,5 @@ public class Enemy : MonoBehaviour, IDamageAble
     public virtual void GetAmountExperience(int _amountExperiencesReceived)
     {
         amountExperiencesReceived = _amountExperiencesReceived;
-    }
-    public virtual int AddExperiences(int currentExperiencePlayer)
-    {
-        Rewards.rewardInstance.GiveExperienceToPlayer(currentExperiencePlayer, amountExperiencesReceived);
-        return currentExperiencePlayer;
     }
 }

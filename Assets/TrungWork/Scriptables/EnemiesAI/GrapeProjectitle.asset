@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GrapeProjectitle
   m_EditorClassIdentifier: 
   Name: Grape Projectitle
-  damageAttack: 10
-  health: 100
+  damageAttack: 5
+  health: 30

@@ -82,6 +82,9 @@ GameObject:
   - component: {fileID: 1872695249399605632}
   - component: {fileID: 7787347918971486828}
   - component: {fileID: 8491892917785952787}
+  - component: {fileID: 1811526134878534836}
+  - component: {fileID: 1353511408171528086}
+  - component: {fileID: 2740861661549104876}
   m_Layer: 6
   m_Name: Demon
   m_TagString: Untagged
@@ -248,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09aacb9373316fd41a31c416af804b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pl: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   bossBringerOfDeath: {fileID: 0}
   healthBar: {fileID: 5238812648269755692}
   bossDemon: {fileID: 11400000, guid: c278d207162a0cc43baa2a7317b38948, type: 2}
@@ -359,6 +363,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1811526134878534836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295879687656812753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71d68925dae67945aba2fc95e750f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
+--- !u!114 &1353511408171528086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295879687656812753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ea7b1755fa5a143b84889c544ba46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteMaterial: {fileID: 2100000, guid: 86f5aa213a085a440b288b332c9f610f, type: 2}
+  restoreDefaultMaterial: 0.2
+--- !u!114 &2740861661549104876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295879687656812753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b60227c614096408fcc50698fabca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  restoreDefaultMaterial: 0
 --- !u!1 &4549192863666551628
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,8 +28,9 @@ public class Rewards : MonoBehaviour
     }
 
     //Tăng kinh nghiệm
-    public void GiveExperienceToPlayer(int playerExperiencePoints,int amountExeriencesRecieved)
+    public float GiveExperienceToPlayer(float playerExperiencePoints,int amountExeriencesRecieved)
     {
         playerExperiencePoints += amountExeriencesRecieved;
+        return playerExperiencePoints;
     }
 }

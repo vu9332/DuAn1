@@ -20,4 +20,8 @@ public class Demon : Boss
     {
         base.Move();
     }
+    void PlaySFXWhenTheBossAttackByBloodKnives()
+    {
+        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_demon_knives);
+    }
 }

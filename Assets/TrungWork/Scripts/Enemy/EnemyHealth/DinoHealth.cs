@@ -21,5 +21,7 @@ public class DinoHealth : EnemyAIHealth
     public override void Die()
     {
         base.Die();
+        pl.playerExp += dinoSC.experience;
+        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
     }
 }

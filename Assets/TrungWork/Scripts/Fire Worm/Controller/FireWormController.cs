@@ -103,7 +103,10 @@ public class FireWormController : MonoBehaviour
     //Di chuyển tới Player
     public void MoveToPlayer()
     {
-       rb.MovePosition(rb.position + moveSpeed * directionMove * Time.fixedDeltaTime);
+        if(!enemyAIHealth.isHurting && rb.bodyType != RigidbodyType2D.Static)
+        {
+            rb.MovePosition(rb.position + moveSpeed * directionMove * Time.fixedDeltaTime);
+        }
     }
     public void Flip()
     {

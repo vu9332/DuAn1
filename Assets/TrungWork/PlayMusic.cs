@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayMusic : MonoBehaviour
 {
-    [SerializeField] private AudioClip music;
     private void Start()
     {
-        AudioManager.Instance.PlayMusicSFX(music);
+        AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.mainMenu);
     }
 }

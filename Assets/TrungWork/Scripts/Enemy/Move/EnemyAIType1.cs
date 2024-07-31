@@ -10,11 +10,13 @@ public class EnemyAIType1 : MonoBehaviour
     private Vector2 posTarget;
     private Rigidbody2D rb;
     private EnemyAIFindPlayer enemyAIFindPlayer;
+    private EnemyAIHealth enemyAIHealth;
     public int dirLineCast { get; set; }
     private void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
         enemyAIFindPlayer = GetComponent<EnemyAIFindPlayer>();
+        enemyAIHealth = GetComponent<EnemyAIHealth>();
     }
     private void Start()
     {
@@ -40,7 +42,7 @@ public class EnemyAIType1 : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!enemyAIFindPlayer.canAttack)
+        if (!enemyAIFindPlayer.canAttack && !enemyAIHealth.isHurting)
         {
             rb.velocity=new Vector2(speed * posTarget.x,rb.velocity.y);
             //rb.MovePosition(rb.position + (posTarget - (Vector2)transform.position).normalized * speed * Time.fixedDeltaTime);

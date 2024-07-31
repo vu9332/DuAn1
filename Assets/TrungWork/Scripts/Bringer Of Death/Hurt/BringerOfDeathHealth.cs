@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class BringerOfDeathHealth : Enemy
 {
     [SerializeField] private bossBringerOfDeath bossBringerOfDeath;
-    [SerializeField] protected Image healthBar;
     protected Animator animator;
+    protected KnockBack knockBack;
+    [SerializeField] protected Image healthBar;
+    [SerializeField] private float knockBackThrust;
     public bool IsAlive
     {
         get
@@ -19,11 +21,17 @@ public class BringerOfDeathHealth : Enemy
     {
         base.Awake();
         animator=GetComponent<Animator>();
+        knockBack=GetComponent<KnockBack>();
     }
     private void Start()
     {
+        AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level2);
         health = bossBringerOfDeath.health;
         currentHealth= health;
+    }
+    private void Update()
+    {
+        
     }
     public override void TakeDamage(float damage)
     {
@@ -35,9 +43,16 @@ public class BringerOfDeathHealth : Enemy
         {
             Die();
         }
+        else
+        {
+            knockBack.GetKnockBack(PlayerController.Instance.transform, knockBackThrust);
+        }
     }
     public override void Die()
-    { 
+    {
+        AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level2);
+        pl.playerExp += bossBringerOfDeath.amountExperiencesReceived;
+        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
         base.Die();
         base.GetAmountExperience(bossBringerOfDeath.amountExperiencesReceived);
         animator.SetTrigger("Death");
@@ -53,8 +68,8 @@ public class BringerOfDeathHealth : Enemy
     {
         AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_bringer_death);
     }
-    void BringerOfDeathHurtSFX()
+    void BossIsDefeated()
     {
-        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_bringer_hurt);
+        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_boss_Defeated);
     }
 }

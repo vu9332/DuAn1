@@ -14,9 +14,11 @@ public class BulletEnemy : MonoBehaviour
     private float damage;
     private PlayerHealth playerHealth;
     private bool playerGetGit;
+    private GameObject enemyIsShooting;
     private void Awake()
     {
         playerHealth=GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+        enemyIsShooting = FindAnyObjectByType<AIAttack2>().gameObject;
     }
     private void Start()
     {
@@ -26,7 +28,10 @@ public class BulletEnemy : MonoBehaviour
     }
     private void Update()
     {
-        
+        if(enemyIsShooting == null)
+        {
+            Destroy(gameObject);
+        }
     }
     private IEnumerator ProjectitleCurveRoutine(Vector3 startPosition,Vector3 endPosition)
     {

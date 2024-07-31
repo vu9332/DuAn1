@@ -8,4 +8,5 @@ public class EagleSC : ScriptableObject
     public string Name;
     public float damageAttack;
     public float health;
+    public float experience;
 }

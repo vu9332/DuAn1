@@ -7,6 +7,7 @@ public class FireSplashDamage : FireSplash
     [SerializeField] private bossDemon bossDemon;
     protected override void Awake()
     {
+        AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_fire_splash);
         base.Awake();
     }
     protected override void Start()

@@ -15,10 +15,10 @@ MonoBehaviour:
   playerHealth: 100
   playerStamina: 100
   playerCoin: 500
-  playerLevel: 3
+  playerLevel: 2
   playerExp: 0
   _isMoving: 0
-  _isJumping: 1
+  _isJumping: 0
   _isRunning: 0
   CanDash: 0
   dashCD: 5

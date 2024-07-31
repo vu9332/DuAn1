@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 6955718567930289957}
   - component: {fileID: 3750982532058853996}
   - component: {fileID: 530287930745937776}
+  - component: {fileID: 1136685069321031676}
   m_Layer: 6
   m_Name: Dino
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.35, y: -2.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1729087119842078373}
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b4ea79e8242db4faf7f7cb8a4e2c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  dinoSC: {fileID: 11400000, guid: 2956a99351d333547a91818c910cac1d, type: 2}
 --- !u!114 &3750982532058853996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e8b2c4af3997c4696435da17da3309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pl: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   knockBackThrust: 10
   hurtSFX: {fileID: 5785785142468859200, guid: af7ac2a846777e5458ce804cd6e3eb81, type: 3}
   deathSFXBlue: {fileID: 0}
@@ -303,6 +305,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ab2a25c8750174699fa60fc532890e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1136685069321031676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803271111874725955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b60227c614096408fcc50698fabca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: d66f9392e7f8ce24d922676a3e93e7e0, type: 2}
+  restoreDefaultMaterial: 0.5
 --- !u!1 &4021734219550816252
 GameObject:
   m_ObjectHideFlags: 0

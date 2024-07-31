@@ -18,4 +18,4 @@ MonoBehaviour:
   damageSkill_2: 30
   health: 100
   healthBar: {fileID: 0}
-  amountExperiencesReceived: 10
+  amountExperiencesReceived: 290

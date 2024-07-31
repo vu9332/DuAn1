@@ -25,4 +25,5 @@ internal static class AnimationString
     public static string IsSkillOne = "IsSkillOne";
     public static string IsSkillThree = "SkillThree";
     public static string IsLedgeClimb = "canLedgeClimb";
+    public static string IsDeath = "Death";
 }

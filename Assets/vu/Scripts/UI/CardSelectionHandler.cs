@@ -17,19 +17,19 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
 
     private void Start()
     {
-        startPos = transform.position;
-        startScale = transform.localScale;
+        startPos =this.transform.position;
+        startScale =this.transform.localScale;
     }
     
     public void Press()
     {
         switch (cardName)
         {
-            case "Health":
+            case "Skill 1":
                 {
-                    if (playerData.playerCoin >= 10)
+                    if (playerData.playerCoin >= 10&&playerData.playerLevel>=2)
                     {
-                        playerData.playerHealth += 5;
+                       
                         PlayerHealth.Instance.UseCoin(10);
                     }
                     else Debug.Log("You Dont have a coin");

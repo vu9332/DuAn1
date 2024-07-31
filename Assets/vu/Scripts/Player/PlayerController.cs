@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
                 if (!IsRolling && !IsDash)
                     rb.velocity = new Vector2(moveInput.x * currentMoveSpeed, rb.velocity.y);
             }
-           //else if (!CanMove) moveInput = Vector2.zero;
+           else if (!CanMove) moveInput = Vector2.zero;
 
     }
     #endregion

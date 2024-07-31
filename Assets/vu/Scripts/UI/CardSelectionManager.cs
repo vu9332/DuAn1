@@ -24,7 +24,6 @@ public class CardSelectionManager : MonoBehaviour
 
     private void OnEnable()
     {
-
         StartCoroutine(SelectAfterOneFrame());
      
     }
@@ -36,11 +35,4 @@ public class CardSelectionManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(card[0]);
     }
    
- 
-
-  
-   
-    
-  
-
 }

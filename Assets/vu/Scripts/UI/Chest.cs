@@ -20,7 +20,8 @@ public class Chest : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            animator.Play("Chest");
+        
+          //  animator.Play("Chest");
            // isOpen = true;
             EventManager.OpenSkillMenu();
             //EventManager.IsUpdateCard();
@@ -35,7 +36,7 @@ public class Chest : MonoBehaviour
         {
            
             //isOpen = false;
-            animator.Play("Chest Close");
+           // animator.Play("Chest Close");
             EventManager.CloseSkillMenu();
 
 

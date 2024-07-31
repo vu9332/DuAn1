@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     [SerializeField] PlayerData playerData;
     [SerializeField] float staminaRefresh;
     [SerializeField] float timeBtweenStaminaRefresh;
+    [SerializeField] float knockBackThurust;
 
     public float health { get { return playerData.playerHealth; } set { playerData.playerHealth= value; healthSlider.maxValue = health; } }
     public float currentHealth;
@@ -27,16 +28,25 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     Slider staminaSlider;
     
     TextMeshProUGUI CoinText;
+    KnockBack Knockback;
     public void Die()
     {
        
     }
+    public void PlayerTakeDamage(float damage,Transform damgeSource)
+    {
+        TakeDamage(damage);
+        Knockback.GetKnockBack(damgeSource, knockBackThurust);
 
+
+    }
     public void TakeDamage(float damage)
     {
         currentHealth-=damage;
+        healthSlider.value = (float)currentHealth / health;
 
     }
+ 
     public void UseStamina(float staminaUse)
     {
         currentStamina-=staminaUse;
@@ -58,6 +68,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         healthSlider =GameObject.Find(HEALTH_SliDER).GetComponent<Slider>();
         staminaSlider =GameObject.Find(STAMINA_SliDER).GetComponent<Slider>();
         CoinText = GameObject.Find(Coin_Text).GetComponent<TextMeshProUGUI>();
+        Knockback=GetComponent<KnockBack>();
         currentHealth =health;
         currentStamina= stamina;
         if(healthSlider==null)
@@ -71,7 +82,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     // Update is called once per frame
     void Update()
     {
-        healthSlider.value=(float)currentHealth/health;
+       
         staminaSlider.value=currentStamina;
         CoinText.text = currentCoin.ToString();
     }

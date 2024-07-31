@@ -1,5 +1,6 @@
     using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -17,12 +18,13 @@ public class LevelManager : MonoBehaviour
         {
             LevelUp();
         }
+        CheckUnlockSkills(currentLevel);
     }
     void LevelUp()
     {
         currentLevel++;
         experiencePoints = 0;
-        CheckUnlockSkills(currentLevel);    
+       
     }
     void CheckUnlockSkills (int Level)
     {
@@ -40,4 +42,8 @@ public class LevelManager : MonoBehaviour
         }
 
     }
+    public void levelUp()
+    {
+        experiencePoints += 100;
+    }    
 }

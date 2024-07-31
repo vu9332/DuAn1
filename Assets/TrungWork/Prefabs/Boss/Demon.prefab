@@ -254,7 +254,9 @@ MonoBehaviour:
   pl: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   bossBringerOfDeath: {fileID: 0}
   healthBar: {fileID: 5238812648269755692}
+  knockBackThrust: 0
   bossDemon: {fileID: 11400000, guid: c278d207162a0cc43baa2a7317b38948, type: 2}
+  panel: {fileID: 5992854539920238201}
 --- !u!114 &2715221311932610545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,12 +737,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8097275096763687000, guid: 3d6853938075e7441ad05cf554756149, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6293
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097275096763687000, guid: 3d6853938075e7441ad05cf554756149, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6293
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097275096763687000, guid: 3d6853938075e7441ad05cf554756149, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6293
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097275096763687000, guid: 3d6853938075e7441ad05cf554756149, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 614
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 8097275096763687000, guid: 3d6853938075e7441ad05cf554756149, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 278
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -764,3 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5992854539920238201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2501337029405859422, guid: 3d6853938075e7441ad05cf554756149, type: 3}
+  m_PrefabInstance: {fileID: 8186538848282228775}
+  m_PrefabAsset: {fileID: 0}

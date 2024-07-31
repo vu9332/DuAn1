@@ -16,7 +16,7 @@ MonoBehaviour:
   playerStamina: 100
   playerCoin: 500
   playerLevel: 2
-  playerExp: 0
+  playerExp: 10
   _isMoving: 0
   _isJumping: 0
   _isRunning: 0

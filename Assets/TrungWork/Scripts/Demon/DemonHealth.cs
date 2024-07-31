@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DemonHealth : BringerOfDeathHealth
 {
     [SerializeField] private bossDemon bossDemon;
+    [SerializeField] private GameObject panel;
     
     protected override void Awake()
     {
@@ -13,6 +14,7 @@ public class DemonHealth : BringerOfDeathHealth
     }
     private void Start()
     {
+        panel.SetActive(false);
         AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level3);
         health = bossDemon.health;
         currentHealth = health;
@@ -27,6 +29,7 @@ public class DemonHealth : BringerOfDeathHealth
     }
     public override void Die()
     {
+        panel.SetActive(true);
         pl.playerExp += bossDemon.amountExperiencesReceived;
         Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level3);

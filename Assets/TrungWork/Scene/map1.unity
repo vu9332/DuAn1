@@ -175,10 +175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Smile
       objectReference: {fileID: 0}
-    - target: {fileID: 6192324365356081032, guid: 9e183e936417321438dba307051ebc49, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3133,10 +3129,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7575420597809247349, guid: f55db32948780bb44abc9bb4b8101a58, type: 3}
-      propertyPath: experiences
-      value: 
-      objectReference: {fileID: 1216459787}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10065,6 +10057,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1182135914324663291, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 396.3884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182135914324663291, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 76.1905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182135914324663291, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.267914
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182135914324663291, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 162.81117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311517378725166062, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 396.5567
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311517378725166062, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 76.1905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311517378725166062, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311517378725166062, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 162.81117
+      objectReference: {fileID: 0}
     - target: {fileID: 4037487900778239199, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.18
@@ -10105,14 +10129,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4114625260911232001, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
-      propertyPath: pl
-      value: 
-      objectReference: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
-    - target: {fileID: 4114625260911232001, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
-      propertyPath: experiences
-      value: 
-      objectReference: {fileID: 1216459787}
+    - target: {fileID: 5662983751554445815, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5887618363876058481, guid: 385316dc463cc0b4e9f11f6bfc4b210f, type: 3}
       propertyPath: m_Name
       value: Flying Eyes
@@ -10182,10 +10202,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7381366238583756878, guid: a773e6e4b53f0054780a5e2b5bf2117b, type: 3}
-      propertyPath: experiences
-      value: 
-      objectReference: {fileID: 1216459787}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

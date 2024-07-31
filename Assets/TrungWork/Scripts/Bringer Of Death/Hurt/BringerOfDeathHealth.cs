@@ -10,6 +10,7 @@ public class BringerOfDeathHealth : Enemy
     protected KnockBack knockBack;
     [SerializeField] protected Image healthBar;
     [SerializeField] private float knockBackThrust;
+    [SerializeField] private GameObject panel;
     public bool IsAlive
     {
         get
@@ -25,6 +26,7 @@ public class BringerOfDeathHealth : Enemy
     }
     private void Start()
     {
+        panel.SetActive(false);
         AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level2);
         health = bossBringerOfDeath.health;
         currentHealth= health;
@@ -50,6 +52,7 @@ public class BringerOfDeathHealth : Enemy
     }
     public override void Die()
     {
+        panel.SetActive(true);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level2);
         pl.playerExp += bossBringerOfDeath.amountExperiencesReceived;
         Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);

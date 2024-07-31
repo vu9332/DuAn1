@@ -38,7 +38,6 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         TakeDamage(damage);
         Knockback.GetKnockBack(damgeSource, knockBackThurust);
 
-
     }
     public void TakeDamage(float damage)
     {

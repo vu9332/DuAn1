@@ -6,11 +6,11 @@ public class AIAttack3 : MonoBehaviour
 {
     [SerializeField] private DinoSC dinoSC;
     private float damage;
-    private PlayerHealth playerHealth;
+    //private PlayerHealth playerHealth;
     private bool isHitPlayer = false;
     private void Awake()
     {
-        playerHealth = FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+       // playerHealth = FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
     }
     private void Start()
     {
@@ -20,9 +20,16 @@ public class AIAttack3 : MonoBehaviour
     {
         if(collision.GetComponent<PlayerHealth>() != null && !isHitPlayer)
         {
-            playerHealth.TakeDamage(damage);
-            Debug.Log("Mau Player con: " + playerHealth.currentHealth);
-            isHitPlayer = true;
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            if(playerHealth != null)
+            {
+                playerHealth.PlayerTakeDamage(damage, this.transform);
+                //PlayerHealth.Instance.PlayerTakeDamage(damage,this.gameObject.transform);
+                Debug.Log("Mau Player con: " + playerHealth.currentHealth);
+                isHitPlayer = true;
+
+            }
+           
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

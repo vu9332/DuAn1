@@ -10,7 +10,7 @@ public class BringerOfDeathHealth : Enemy
     protected KnockBack knockBack;
     [SerializeField] protected Image healthBar;
     [SerializeField] private float knockBackThrust;
-    [SerializeField] private GameObject panel;
+    [SerializeField] protected GameObject panel;
     public bool IsAlive
     {
         get
@@ -64,7 +64,7 @@ public class BringerOfDeathHealth : Enemy
     //Nhận thưởng khi boss chết
     void Reward()
     {
-        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.chest, transform, 1);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, 1);
     }
     //SoundSFX
     void BringerOfDeathDeathSFX()

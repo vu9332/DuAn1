@@ -23,7 +23,7 @@ public class Rewards : MonoBehaviour
     {
         for(int i=0; i<amount;i++)
         {
-            Instantiate(chest, pos.position, Quaternion.identity);
+            Instantiate(rewards, pos.position, Quaternion.identity);
         }
     }
 

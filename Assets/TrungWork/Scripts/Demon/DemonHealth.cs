@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class DemonHealth : BringerOfDeathHealth
 {
     [SerializeField] private bossDemon bossDemon;
-    [SerializeField] private GameObject panel;
     
     protected override void Awake()
     {

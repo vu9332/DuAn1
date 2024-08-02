@@ -40,6 +40,16 @@ public class Enemy : MonoBehaviour, IDamageAble
         Debug.Log("curenthealt" + currentHealth);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        PlayerHealth playr=collision.gameObject.GetComponent<PlayerHealth>();
+        if (playr != null)
+        {
+            playr.gameObject.GetComponent<PlayerHealth>().TakeDamage(10);
+        }
+        else Debug.Log("Null");
+    }
     public virtual void Die()
     {
         colliderBoss.enabled = false;

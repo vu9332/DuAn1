@@ -5,22 +5,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using static EventManager;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CardSelectionManager : MonoBehaviour
 {
     public static CardSelectionManager instance;
     public GameObject[] card;
-    [SerializeField] private PlayerData playerData;
+   // private bool[] isCardActive;
+   // [SerializeField] private PlayerData playerData;
   
 
     void Start()
     {
+    
         if (instance == null)
         {
             instance = this;
         }
-
+        
     }
+   
 
     private void OnEnable()
     {

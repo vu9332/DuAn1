@@ -9,10 +9,16 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     [SerializeField] private float moveTime = .1f;
     [Range(0f, 2f),SerializeField] private float scaleAmount = 1.1f;
 
+
+    [SerializeField] private float horizontalMoveAmount = 30f;
+    [SerializeField] private float horizontalVoveTime = .1f;
+    [Range(0f, 2f),SerializeField] private float horizontalScaleAmount = 1.1f;
+
     Vector3 startPos;
     Vector3 startScale;
 
     [SerializeField] public string cardName;
+    [SerializeField] public bool isSelected=false;
     [SerializeField] private PlayerData playerData;
 
     private void Start()
@@ -23,44 +29,94 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     
     public void Press()
     {
+       
         switch (cardName)
         {
             case "Skill 1":
                 {
                     if (playerData.playerCoin >= 10&&playerData.playerLevel>=2)
                     {
-                       
-                        PlayerHealth.Instance.UseCoin(10);
+                        isSelected = true;
+                        this.gameObject.SetActive(false);
+                        SkillManager.Instance.UnLockSkill(cardName);
+                        PlayerHealth.Instance.UseCoin(5);
                     }
-                    else Debug.Log("You Dont have a coin");
+                    else StartCoroutine(MoveCardHorizontal(true));
 
                     
                 }                 
                     break;                
-            case "Stamina":
-                if (playerData.playerCoin >= 5)
+            case "Skill 2":
+                if (playerData.playerCoin >= 10 && playerData.playerLevel >= 3)
                 {
-                    playerData.playerStamina += 5;
+                    isSelected = true;
+                    this.gameObject.SetActive(false);
+                    SkillManager.Instance.UnLockSkill(cardName);
                     PlayerHealth.Instance.UseCoin(5);
 
-                }                         
-                 else Debug.Log("You Dont have a coin");
+                }
+                else StartCoroutine(MoveCardHorizontal(true));
                 break;
-            case "More Exp":
-                if (playerData.playerCoin >= 50)
+            case "Skill 3":
+                if (playerData.playerCoin >= 10 && playerData.playerLevel >= 5)
                 {
-                   playerData.playerExp += 50;
+                    isSelected = true;
+                    this.gameObject.SetActive(false);
+                    SkillManager.Instance.UnLockSkill(cardName);
+                    PlayerHealth.Instance.UseCoin(5);
 
                 }
-                else Debug.Log("You Dont have a coin");
-               
+                else StartCoroutine(MoveCardHorizontal(true));
+
                 break;
-               
-
-
         }
+       // this.gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        switch (cardName)
+        {
+            case "Skill 1":
+                {
+                    if ( playerData.playerLevel >= 2&&playerData._isSkillOneUnlock)
+                    {
 
-        // SkillManager.Instance.UnLockSkill(cardName);
+                        this.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        this.gameObject.SetActive(true);
+                        Debug.Log("You Dont have a coin");
+                    }
+
+                }
+                break;
+            case "Skill 2":
+                if (playerData.playerLevel >= 3 && playerData._isSkillTwoUnlock)
+                {
+                    this.gameObject.SetActive(false);
+
+                }
+                else
+                {
+                    this.gameObject.SetActive(true);
+                Debug.Log("You Dont have a coin");
+                }
+                break;
+            case "Skill 3":
+                if ( playerData.playerLevel >= 5&& playerData._isSkillThreeUnlock)
+                {
+                    this.gameObject.SetActive(false);
+
+                }
+                else
+                {
+                    this.gameObject.SetActive(true);
+                    Debug.Log("You Dont have a coin");
+                }
+
+                break;
+        }
     }
     private IEnumerator MoveCard(bool startingAnmation)
     {
@@ -74,7 +130,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
 
             if (startingAnmation)
             {
-                endPos = startPos + new Vector3(0, verticalMoveAmount, 0);
+                endPos = startPos + new Vector3(0,verticalMoveAmount, 0);
                 endScale = startScale * scaleAmount;
             }
             else
@@ -84,6 +140,34 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
             }
             Vector3 lerpPos= Vector3.Lerp(this.transform.position,endPos,(eclapsedTime/moveTime));
             Vector3 lerpScale=Vector3.Lerp(this.transform.localScale,endScale,(eclapsedTime/moveTime));
+
+            this.transform.position = lerpPos;
+            this.transform.localScale = endScale;
+            yield return null;
+        }
+    }
+     private IEnumerator MoveCardHorizontal(bool startingAnmation)
+    {
+        Vector3 endPos;
+        Vector3 endScale;
+
+        float eclapsedTime = 0f;
+        while (eclapsedTime < moveTime)
+        {
+            eclapsedTime += Time.deltaTime;
+
+            if (startingAnmation)
+            {
+                endPos = startPos + new Vector3(0,-horizontalMoveAmount,0);
+                endScale = startScale * horizontalScaleAmount;
+            }
+            else
+            {
+                endPos = startPos;
+                endScale = startScale;
+            }
+            Vector3 lerpPos= Vector3.Lerp(this.transform.position,endPos,(eclapsedTime/ horizontalVoveTime));
+            Vector3 lerpScale=Vector3.Lerp(this.transform.localScale,endScale,(eclapsedTime/ horizontalVoveTime));
 
             this.transform.position = lerpPos;
             this.transform.localScale = endScale;

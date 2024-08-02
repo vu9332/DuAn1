@@ -23,8 +23,9 @@ public class AIAttack3 : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if(playerHealth != null)
             {
-                playerHealth.PlayerTakeDamage(damage, this.transform);
+               // playerHealth.PlayerTakeDamage(damage, this.transform);
                 //PlayerHealth.Instance.PlayerTakeDamage(damage,this.gameObject.transform);
+                playerHealth.TakeDamage(damage);
                 Debug.Log("Mau Player con: " + playerHealth.currentHealth);
                 isHitPlayer = true;
 

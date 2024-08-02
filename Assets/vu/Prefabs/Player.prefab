@@ -5026,9 +5026,9 @@ GameObject:
   - component: {fileID: 3482554763992056168}
   - component: {fileID: 7336326324453955207}
   - component: {fileID: 7790714996148349664}
+  - component: {fileID: 9178393359861039502}
   - component: {fileID: 7223761058501302747}
   - component: {fileID: 3473945412163789088}
-  - component: {fileID: 8644915073143656759}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -5552,7 +5552,7 @@ MonoBehaviour:
   jumpTime: 5
   dashSpeed: 30
   maxDashDistance: 5
-  _isDash: 0
+  CanDash: 1
   rollSpeed: 17
   maxRollDistance: 7
   rollCD: 0.25
@@ -5654,8 +5654,26 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   staminaRefresh: 1
   timeBtweenStaminaRefresh: 2
+  knockBackThurust: 100
+  range: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   currentHealth: 0
   currentStamina: 0
+--- !u!114 &9178393359861039502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801682784065055976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577695b114b66a248854fb155c0cba3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
 --- !u!114 &7223761058501302747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5683,23 +5701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f148fab17e412264e8dd46de5ca93e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isSkillOneUnlock: 1
-  _isSkillTwoUnlock: 0
-  _isSkillThreeUnlock: 0
---- !u!114 &8644915073143656759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5801682784065055976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d38cad6c483674d962e7040fcfcd6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
-  pointsPerLevel: 100
+  Abilities: {fileID: 0}
 --- !u!1 &6640985347198314429
 GameObject:
   m_ObjectHideFlags: 0

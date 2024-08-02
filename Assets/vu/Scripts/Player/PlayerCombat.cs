@@ -79,6 +79,9 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] float attackRange;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
+
+
+  
     public float playerDamage
     {
         get
@@ -86,13 +89,13 @@ public class PlayerCombat : MonoBehaviour
             if (!IsSkillOne)
                 return skillOneData.damage;
             else
-                return 5;
+                return PlayerController.Instance.playerData.playerDamage;
         }
-        private set { }
+        private set { PlayerController.Instance.playerData.playerDamage = value; }
     }
 
     // public bool CanMove { get { return myAnimator.GetBool(AnimationString.canMove); } }
-
+    
 
     void Start()
     {
@@ -106,15 +109,16 @@ public class PlayerCombat : MonoBehaviour
         comboTempo = comboTiming;
         trailRenderer = GetComponent<TrailRenderer>();
         skillManager = GetComponent<SkillManager>();
+        if(Instance==null)
+            Instance = this;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
-
-
+        NormalAttackSlide();
+        SK1Slide();
         comboTempo -= Time.deltaTime;
         if (comboTempo < 0)
         {
@@ -123,24 +127,7 @@ public class PlayerCombat : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!CanAttack)
-        {
-
-            if (IsNormalAttack)
-            {
-
-                if (Vector2.Distance(startMoveWhileAttackPos, this.transform.position) <= maxDistanceWhileAttack)
-                {
-
-                    NormalAttackSlide();
-                    Debug.Log("Normal");
-                }
-                else rb.velocity = Vector2.zero;
-
-            }
-
-
-        }
+       
     }
     #region normal attack
     public void OnAttack(InputAction.CallbackContext context)
@@ -150,22 +137,22 @@ public class PlayerCombat : MonoBehaviour
             if ((!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && touchingDirection.IsGround && playerHealth.currentStamina > 1)
             {
                 rb.velocity = Vector2.zero;
-                if (context.started && comboTempo < 0 && CanAttack)
+                if (context.started && comboTempo < 0 &&IsNormalAttack)
                 {
                     //  SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3], transform, .5f);
                     playerHealth.currentStamina -= 1;
-                    IsNormalAttack = true;
+                    IsNormalAttack = false;
                     startMoveWhileAttackPos = rb.position;
                     StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
                     myAnimator.SetTrigger(AnimationString.IsNormalAttack + combo);
                     comboTempo = comboTiming;
 
                 }
-                else if (context.started && (comboTempo > 0 && comboTempo <= 1f) && CanAttack)
+                else if (context.started && (comboTempo > 0 && comboTempo <= 1f) &&IsNormalAttack)
                 {
                     // SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3], transform, .5f);
 
-                    IsNormalAttack = true;
+                    IsNormalAttack = false;
                     combo++;
                     if (combo > comboNumber)
                     {
@@ -180,12 +167,13 @@ public class PlayerCombat : MonoBehaviour
                 }
                 else if (comboTempo < 0 && context.canceled)
                 {
-                    IsNormalAttack = false;
+                    IsNormalAttack = true;
                 }
 
             }
-            else if (!touchingDirection.IsGround && context.started && CanAttack)
+            else if (!touchingDirection.IsGround && context.started && IsNormalAttack)
             {
+                IsNormalAttack = false;PlayerController.Instance. moveInput = Vector2.zero;
                 myAnimator.SetTrigger(AnimationString.IsAirAttack);
                 playerHealth.currentStamina -= 1;
                 StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
@@ -195,7 +183,18 @@ public class PlayerCombat : MonoBehaviour
     }
     void NormalAttackSlide()
     {
-        rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
+        if (!IsNormalAttack)
+        {
+
+            if (Vector2.Distance(startMoveWhileAttackPos, this.transform.position) <= maxDistanceWhileAttack)
+            {
+
+                rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed, 0), ForceMode2D.Impulse);
+
+            }
+            else rb.velocity = Vector2.zero;
+
+        }
     }
     public void PlayNormalAttackAudioClip()
     {
@@ -204,10 +203,11 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator NormalAttackCoolDown(float coolDownTime)
     {
 
-        CanAttack = false;
+       
         yield return new WaitForSeconds(coolDownTime);
-        CanAttack = true;
+        IsNormalAttack = true;
     }
+   
     #endregion
 
     #region Skill 1
@@ -230,29 +230,33 @@ public class PlayerCombat : MonoBehaviour
 
 
     }
-    IEnumerator SK1Slide()
+    void SK1Slide()
     {
-        Debug.Log("c1");
-        GameObject ff = Instantiate(skillOneData.effectPrefab, transform.position, transform.rotation);
-        ff.transform.localScale = this.transform.localScale;
-        Destroy(ff, .25f);
-        while (!IsSkillOne)
+       
+      
+       if(!IsSkillOne&&!CanAttack)
         {
-            yield return new WaitForSeconds(0.02f);
+
             if (Vector2.Distance(startPointSlideSkillOne, this.transform.position) <= maxDistanceSkillOneSlide)
             {
 
-                rb.AddForce(new Vector2(this.transform.localScale.x * 100, 0), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed * 10, 0), ForceMode2D.Impulse);
+                GameObject ff = Instantiate(skillOneData.effectPrefab, transform.position, transform.rotation);
+                ff.transform.localScale = this.transform.localScale;
+                Destroy(ff, .25f);
 
             }
             else rb.velocity = Vector2.zero;
         }
+       
+          
+        
 
 
     }
     public void ActivateSkillOne()
     {
-        if (SkillManager.Instance.IsSkillOneUnlock)
+        if (SkillManager.Instance.IsSkillOneUnlock&& IsSkillOne)
         {
             IsSkillOne = false;
             SoundFXManagement.Instance.PlaySoundFXClip(skillOneData.soundEffect[0], transform, 0.3f);
@@ -260,10 +264,11 @@ public class PlayerCombat : MonoBehaviour
             playerHealth.currentStamina -= 2;
             startPointSlideSkillOne = this.transform.position;
             CanAttack = false;
-            StartCoroutine(SK1Slide());
+          //  StartCoroutine(SK1Slide());
             IsNormalAttack = false;
             myAnimator.SetTrigger(AnimationString.IsSkillOne);
             StartCoroutine(SkillOneCoolDown(skillOneData.coolDownTime));
+         
         }
         else Debug.Log("Chiêu 1 chưa mở");
     }
@@ -300,7 +305,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void ActivateSkillTwo()
     {
-        if (SkillManager.Instance.IsSkillTwoUnlock)
+        if (SkillManager.Instance.IsSkillTwoUnlock&& IsSkillTwo)
         {
             SoundFXManagement.Instance.PlaySoundFXClip(skillTwoData.soundEffect[0], transform, .5f);
             playerHealth.currentStamina -= 2;
@@ -314,7 +319,7 @@ public class PlayerCombat : MonoBehaviour
     }
     IEnumerator SkillTwoCoolDown(float coolDownTime)
     {
-        Player_Abilities.skill2AbilityCoolDown();
+        Player_Abilities.Skill2AbilityCoolDown();
         yield return new WaitForSeconds(coolDownTime);
         IsSkillTwo = true;
     }
@@ -385,7 +390,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void ActivateSkillThree()
     {
-        if (SkillManager.Instance.IsSkillThreeUnlock)
+        if (SkillManager.Instance.IsSkillThreeUnlock&& IsSkillThree)
         {
             SoundFXManagement.Instance.PlaySoundFXClip(skillThreeData.soundEffect[0], transform, 1f);
             IsSkillThree = false;
@@ -454,7 +459,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator SkillThreeCoolDown()
     {
-        Player_Abilities.skill3AbilityCoolDown();
+        Player_Abilities.Skill3AbilityCoolDown();
         yield return new WaitForSeconds(skillThreeData.coolDownTime);
         IsSkillThree = true;
     }
@@ -476,5 +481,5 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
         }
     }
-
+  
 }

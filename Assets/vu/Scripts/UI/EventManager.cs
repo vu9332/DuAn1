@@ -61,15 +61,22 @@ public class EventManager : MonoBehaviour
     }
     void ShowSkillMenu()
     {
-        
-        cardBoard.gameObject.SetActive(true);
-           
+        foreach (Transform item in cardBoard.transform)
+        { 
+            if (!item.gameObject.GetComponent<CardSelectionHandler>().isSelected)
+                    item.gameObject.SetActive(true);
+        }
+
     }
     void HideSkillMenu()
     {
-        cardBoard.gameObject.SetActive(false);
-       
+        foreach (Transform item in cardBoard.transform)
+        {
+           
+                 item.gameObject.SetActive(false);
+        }
+
     }
-  
-   
+
+
 }

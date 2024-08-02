@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/ShopPassiveSkill.uss?fileID=7433441132597879392&amp;guid=80d4a5086aff9f64eaa16665b8f0041a&amp;type=3#ShopPassiveSkill" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:GroupBox style="background-image: url(&apos;project://database/Assets/vu/Sprite/SpriteSheet.png?fileID=-1066975101&amp;guid=0813b7bf0fdd9c44090029b89ec99cad&amp;type=3#SpriteSheet_23&apos;); height: 500px; width: 500px; left: 59px; top: 315px;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" class="button" style="left: -47px; top: 44px; -unity-background-scale-mode: stretch-to-fill; width: 100px; height: 100px; background-image: url(&apos;project://database/Assets/vu/Sprite/SpriteSheet.png?fileID=680319506&amp;guid=0813b7bf0fdd9c44090029b89ec99cad&amp;type=3#SpriteSheet_54&apos;);" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" class="button" style="left: -47px; top: 56px; width: 100px; height: 100px; background-image: url(&apos;project://database/Assets/vu/Sprite/SpriteSheet.png?fileID=680319506&amp;guid=0813b7bf0fdd9c44090029b89ec99cad&amp;type=3#SpriteSheet_54&apos;);" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" class="button" style="left: -47px; top: 71px;" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

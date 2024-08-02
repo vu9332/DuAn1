@@ -12,9 +12,9 @@ using static UnityEngine.Rendering.DebugUI;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection))]
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance;
+    public static PlayerController Instance {  get; set; }
 
-    [SerializeField] private PlayerData playerData;
+    [SerializeField] public PlayerData playerData;
 
     [Header("Move")]
     [SerializeField] private float walkSpeed;
@@ -40,9 +40,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashSpeed;
     [SerializeField] private float maxDashDistance;
     Vector2 startDashPos;
-
-    [SerializeField] private bool _isDash = false;
-    public bool IsDash { get { return _isDash; } private set { _isDash = value; } }
+    public bool CanDash = true;
+    public bool IsDash { get { return playerData. _isDash; } private set { playerData. _isDash = value; } }
    
     //roll
     [Header("Roll")]
@@ -69,7 +68,8 @@ public class PlayerController : MonoBehaviour
     float wallJumptimer;
     public Vector2 wallJumpPower = new Vector2(5f, 8f);
 
-   
+    private bool PassiveSkillsBoardOpen = false;
+      
     
     public float currentMoveSpeed
     {
@@ -112,9 +112,9 @@ public class PlayerController : MonoBehaviour
     PlayerHealth playerHealth;
     TouchingDirection touchingDirection;
     Rigidbody2D rb;
-    Animator myAnimator;
+  public  Animator myAnimator;
     ParticleSystem partic;
-    Vector2 moveInput;
+  public  Vector2 moveInput;
 
 
     // set direction
@@ -141,7 +141,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if(Instance==null)
+            Instance = this;
     }
     void Start()
     {
@@ -204,16 +205,16 @@ public class PlayerController : MonoBehaviour
                 if (!IsRolling && !IsDash)
                     rb.velocity = new Vector2(moveInput.x * currentMoveSpeed, rb.velocity.y);
             }
-           else if (!CanMove) moveInput = Vector2.zero;
+          // else if (!CanMove) moveInput = Vector2.zero;
 
     }
     #endregion
     #region Dash
     public void OnDash(InputAction.CallbackContext context)
     {
-            Debug.Log("Do Dash");
+          
 
-        if (CanPerformAction(context) &&playerData.CanDash)
+        if (CanPerformAction(context) &&CanDash)
         {
             ActiveDash();
         }
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
     public void ActiveDash()
     {
         SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[0], this.transform, 1f);
-        playerData.CanDash = false;
+        CanDash = false;
         IsDash = true;
         startDashPos = this.rb.position;
         ghost.makeGhost = true;
@@ -254,7 +255,7 @@ public class PlayerController : MonoBehaviour
         ghost.makeGhost = false;
         //  trailRenderer.emitting = false;
         yield return new WaitForSeconds(playerData.dashCD);
-        playerData.CanDash = true;
+        CanDash = true;
     }
     #endregion
     #region Roll
@@ -423,5 +424,22 @@ public class PlayerController : MonoBehaviour
         SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[1], this.transform, .25f);
     }
 
-
+    public void OpenPassiveSkillsBoard(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {          
+            if (!PassiveSkillsBoardOpen)
+            {
+                StatusManagement.PressShowBoard();
+                PassiveSkillsBoardOpen = true;
+                
+            }
+            else if (PassiveSkillsBoardOpen)
+            {
+                StatusManagement.PressHideBoard();
+                PassiveSkillsBoardOpen = false;
+            }
+        }
+    }
+    
 }

@@ -322,3 +322,4 @@ MonoBehaviour:
   Hit: {fileID: 0}
   snd_low_pl_attack6: {fileID: 8300000, guid: 28b283f8b15d2f649b4bfb4e42e37b3f, type: 3}
   snd_click_1: {fileID: 8300000, guid: 6bad7298a839cc8418c83098f78de442, type: 3}
+  snd_coin: {fileID: 8300000, guid: dca73554c95de554da1bb6a48d9f5632, type: 3}

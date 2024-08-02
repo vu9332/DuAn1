@@ -10,6 +10,6 @@ public class bossDemon : ScriptableObject
     public float damageSkill_1;
     public float damageSkill_2;
     public float health;
-    public GameObject healthBar;
     public int amountExperiencesReceived;
+    public int amountCoinsReveived;
 }

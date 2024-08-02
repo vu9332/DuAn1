@@ -4,27 +4,20 @@ using UnityEngine;
 
 public class AlmostDead : MonoBehaviour
 {
-    [SerializeField] private Material redMaterial;
-    [SerializeField] private float restoreDefaultMaterial;
-    private Material defaultMaterial;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private float timeSwitch;
     private void Awake()
     {
-        defaultMaterial = GetComponent<Material>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-    private void Start()
-    {
-        defaultMaterial = spriteRenderer.material;
     }
     public IEnumerator FlashRoutine()
     {
         while(true)
         {
-            spriteRenderer.material = redMaterial;
-            yield return new WaitForSeconds(restoreDefaultMaterial);
-            spriteRenderer.material = defaultMaterial;
-            yield return new WaitForSeconds(restoreDefaultMaterial);
+            spriteRenderer.color = new Color(1, 1, 1);
+            yield return new WaitForSeconds(timeSwitch);
+            spriteRenderer.color = new Color(1, 0, 0);
+            yield return new WaitForSeconds(timeSwitch);
         }
     }
 }

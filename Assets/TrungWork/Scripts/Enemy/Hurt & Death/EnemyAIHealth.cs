@@ -15,6 +15,9 @@ public class EnemyAIHealth : Enemy,IDamageAble
     [SerializeField] protected GameObject deathSFXPurple;
     [Header("Sound Effect")]
     [SerializeField] protected AudioClip snd_death;
+
+    [Header("UI")]
+    [SerializeField] protected Image healthBarEnemy;
     protected Flash flash;
     protected KnockBack knockBack;
     protected Collider2D coll;
@@ -38,12 +41,13 @@ public class EnemyAIHealth : Enemy,IDamageAble
         isHurting = true;
         StartCoroutine(flash.FlashRoutine());
         knockBack.GetKnockBack(PlayerController.Instance.transform, knockBackThrust);
+        healthBarEnemy.fillAmount = (float)currentHealth / health;
         if (currentHealth <= 0)
         {
             Die();
         }
         StartCoroutine(a());
-        if (currentHealth <= 5)
+        if (currentHealth <= 5 && currentHealth >0)
         {
             StartCoroutine(almostDead.FlashRoutine());
         }

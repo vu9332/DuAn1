@@ -16,4 +16,5 @@ MonoBehaviour:
   damageAttack: 10
   damageSkill: 10
   health: 10
-  amountExperiencesReceived: 190
+  amountExperiencesReceived: 200
+  amountCoinsReveived: 15

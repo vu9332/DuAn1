@@ -23,6 +23,5 @@ public class GrapeHealth : EnemyAIHealth
     {
         base.Die();
         pl.playerExp += grape.experience;
-        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
     }
 }

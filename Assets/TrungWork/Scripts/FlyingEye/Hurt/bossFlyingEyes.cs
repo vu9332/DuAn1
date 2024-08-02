@@ -10,4 +10,5 @@ public class bossFlyingEyes : ScriptableObject
     public float health;
     public float damageBite;
     public int amountExperiencesReceived;
+    public int amountCoinsReveived;
 }

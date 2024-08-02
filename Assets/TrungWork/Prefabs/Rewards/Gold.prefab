@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7307254374525725189}
   - component: {fileID: 231987699291503479}
   - component: {fileID: 8748238741801265058}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &231987699291503479
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,4 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
-  valueCoin: 1
+  speed: 5
+  pos: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512

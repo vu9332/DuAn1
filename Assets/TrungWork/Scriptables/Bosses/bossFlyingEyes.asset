@@ -17,3 +17,4 @@ MonoBehaviour:
   health: 30
   damageBite: 20
   amountExperiencesReceived: 90
+  amountCoinsReveived: 15

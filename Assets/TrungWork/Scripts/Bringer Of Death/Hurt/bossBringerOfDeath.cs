@@ -10,4 +10,5 @@ public class bossBringerOfDeath : ScriptableObject
     public float damageSkill;
     public float health;
     public int amountExperiencesReceived;
+    public int amountCoinsReveived;
 }

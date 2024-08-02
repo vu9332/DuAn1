@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: Grape Projectitle
   damageAttack: 5
   health: 30
+  experience: 10

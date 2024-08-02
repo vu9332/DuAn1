@@ -55,16 +55,14 @@ public class BringerOfDeathHealth : Enemy
         panel.SetActive(true);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level2);
         pl.playerExp += bossBringerOfDeath.amountExperiencesReceived;
-        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
         base.Die();
-        base.GetAmountExperience(bossBringerOfDeath.amountExperiencesReceived);
         animator.SetTrigger("Death");
         animator.SetBool(AnimationBoss.isAlive, false);
     }
     //Nhận thưởng khi boss chết
     void Reward()
     {
-        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, 1);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, bossBringerOfDeath.amountCoinsReveived);
     }
     //SoundSFX
     void BringerOfDeathDeathSFX()

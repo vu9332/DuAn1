@@ -43,6 +43,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip Hit;
     public AudioClip snd_low_pl_attack6;
     public AudioClip snd_click_1;
+    public AudioClip snd_coin;
+    public AudioClip snd_pick_up;
 
     private void Awake()
     {

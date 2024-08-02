@@ -21,7 +21,6 @@ public class FireWormHealth : EnemyAIHealth
     public override void Die()
     {
         pl.playerExp += fireWormSC.experience;
-        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
         base.Die();
     }
 }

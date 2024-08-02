@@ -10,7 +10,7 @@ public class Gold : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private Vector3 posTarget;
     private Vector3 gameObjectPos;
-    private bool isCollectedCoin=true;
+    private bool isCollectedCoin=false;
     private Rigidbody2D rb;
     private Collider2D coll;
     private void Awake()

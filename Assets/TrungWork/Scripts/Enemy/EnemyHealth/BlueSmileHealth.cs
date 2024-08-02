@@ -22,6 +22,5 @@ public class BlueSmileHealth : EnemyAIHealth
     {
         base.Die();
         pl.playerExp += blueSmileSC.experience;
-        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
     }
 }

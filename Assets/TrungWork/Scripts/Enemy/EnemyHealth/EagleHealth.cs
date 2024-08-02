@@ -21,5 +21,6 @@ public class EagleHealth : EnemyAIHealth
     public override void Die()
     {
         base.Die();
+        pl.playerExp += eagleSC.experience;
     }
 }

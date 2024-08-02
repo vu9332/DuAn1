@@ -43,5 +43,6 @@ public class DemonHealth : BringerOfDeathHealth
     void BossIsDefeated()
     {
         AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_boss_Defeated);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, bossDemon.amountCoinsReveived);
     }
 }

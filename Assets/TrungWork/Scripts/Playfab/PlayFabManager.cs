@@ -276,6 +276,7 @@ public class PlayFabManager : MonoBehaviour
         {
             Data = new Dictionary<string, string>
             {
+                {"Level",playerStatistics.playerLevel.ToString()},
                 {"Coins",playerStatistics.playerCoin.ToString()},
                 {"Experiences",playerStatistics.playerExp.ToString()},
                 {"SkillLevel1",SkillManager.Instance.IsSkillOneUnlock.ToString()},

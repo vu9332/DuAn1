@@ -148,6 +148,7 @@ public class EnemyHealth : Enemy, IDamageAble
     void BossWasDefeated()
     {
         SoundFXManagement.Instance.PlaySoundFXClip(bossDefeat,transform,100);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, bossFlyingEyes.amountCoinsReveived);
     }
     void Explosion()
     {

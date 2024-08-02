@@ -22,6 +22,5 @@ public class DinoHealth : EnemyAIHealth
     {
         base.Die();
         pl.playerExp += dinoSC.experience;
-        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
     }
 }

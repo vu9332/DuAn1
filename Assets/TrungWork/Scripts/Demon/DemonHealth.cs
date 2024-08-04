@@ -28,17 +28,21 @@ public class DemonHealth : BringerOfDeathHealth
     }
     public override void Die()
     {
+        StartCoroutine(DisplayTextExp());
         panel.SetActive(true);
-        pl.playerExp += bossDemon.amountExperiencesReceived;
-        Level.levelInstance.UpLevelIfPlayerGotFull(pl.playerExp);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level3);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.snd_hellball);
         AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_demon_death);
         colliderBoss.enabled = false;
         rb.bodyType = RigidbodyType2D.Static;
-        base.GetAmountExperience(bossDemon.amountExperiencesReceived);
         animator.SetTrigger("Death");
         animator.SetBool(AnimationBoss.isAlive, false);
+    }
+    IEnumerator DisplayTextExp()
+    {
+        yield return new WaitForSeconds(3f);
+        pl.playerExp += bossDemon.amountExperiencesReceived;
+        CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, bossDemon.amountExperiencesReceived);
     }
     void BossIsDefeated()
     {

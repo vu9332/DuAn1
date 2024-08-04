@@ -45,16 +45,11 @@ public class BringerOfDeathHealth : Enemy
         {
             Die();
         }
-        else
-        {
-            knockBack.GetKnockBack(PlayerController.Instance.transform, knockBackThrust);
-        }
     }
     public override void Die()
     {
         panel.SetActive(true);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level2);
-        pl.playerExp += bossBringerOfDeath.amountExperiencesReceived;
         base.Die();
         animator.SetTrigger("Death");
         animator.SetBool(AnimationBoss.isAlive, false);
@@ -72,5 +67,7 @@ public class BringerOfDeathHealth : Enemy
     void BossIsDefeated()
     {
         AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_boss_Defeated);
+        pl.playerExp += bossBringerOfDeath.amountExperiencesReceived;
+        CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab,PlayerController.Instance.gameObject, bossBringerOfDeath.amountExperiencesReceived);
     }
 }

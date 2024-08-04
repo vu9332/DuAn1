@@ -34,6 +34,7 @@ public class HealthBarFollowGameObject : MonoBehaviour
         }
         if (obj == null)
         {
+            objHealthBar.SetActive(false);
             Destroy(gameObject);
         }
     }

@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: Dino
   damageAttack: 3
   health: 30
+  coins: 3
+  experience: 20

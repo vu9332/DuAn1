@@ -8,5 +8,6 @@ public class FireWormSC : ScriptableObject
     public string Name;
     public float damageAttack;
     public float health;
+    public int coins;
     public float experience;
 }

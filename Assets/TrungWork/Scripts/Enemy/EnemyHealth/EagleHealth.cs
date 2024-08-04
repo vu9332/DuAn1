@@ -22,5 +22,7 @@ public class EagleHealth : EnemyAIHealth
     {
         base.Die();
         pl.playerExp += eagleSC.experience;
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, eagleSC.coins);
+        CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, eagleSC.experience);
     }
 }

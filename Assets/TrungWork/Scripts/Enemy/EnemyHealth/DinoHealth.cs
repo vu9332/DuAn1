@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class DinoHealth : EnemyAIHealth
@@ -22,5 +23,7 @@ public class DinoHealth : EnemyAIHealth
     {
         base.Die();
         pl.playerExp += dinoSC.experience;
+        CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, dinoSC.experience);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, dinoSC.coins);
     }
 }

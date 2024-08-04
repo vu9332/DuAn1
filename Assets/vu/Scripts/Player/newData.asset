@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   playerStamina: 100
-  playerCoin: 514
+  playerCoin: 503
   playerLevel: 1
-  playerExp: 60
+  playerExp: 40
   _isMoving: 0
   _isJumping: 0
   _isRunning: 0

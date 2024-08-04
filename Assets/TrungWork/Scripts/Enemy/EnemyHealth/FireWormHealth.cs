@@ -21,6 +21,8 @@ public class FireWormHealth : EnemyAIHealth
     public override void Die()
     {
         pl.playerExp += fireWormSC.experience;
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, fireWormSC.coins);
+        CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, fireWormSC.experience);
         base.Die();
     }
 }

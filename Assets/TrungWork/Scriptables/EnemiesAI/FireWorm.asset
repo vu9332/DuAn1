@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: FireWorm
   damageAttack: 0
   health: 100
+  coins: 7
+  experience: 30

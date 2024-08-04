@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274d76719e5597940867ce5ba7f6a432, type: 3}
-  m_Name: bossDemon
+  m_Script: {fileID: 11500000, guid: d62dd09368035b44e9035ace85f64f58, type: 3}
+  m_Name: Level & Experience Manager
   m_EditorClassIdentifier: 
-  Name: Demon Slime
-  damageAttack: 10
-  damageSkill_1: 20
-  damageSkill_2: 30
-  health: 100
-  amountExperiencesReceived: 300
-  amountCoinsReveived: 20
+  maxLevel: 10
+  rateExperiencesUpLevel: 10

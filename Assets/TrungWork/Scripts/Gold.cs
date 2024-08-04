@@ -35,6 +35,7 @@ public class Gold : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
+            CharacterEvents.characterTookItem.Invoke(UIManager.UIManagerInstance.coinTextPrefab,gameObject, 1);
             AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_pick_up);
             playerData.playerCoin = ++playerData.playerCoin;
             isCollectedCoin=true;

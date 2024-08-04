@@ -132,7 +132,6 @@ public class EnemyHealth : Enemy, IDamageAble
         NoticeYouKilledBoss.SetActive(true);
         yield return new WaitForSeconds(5);
         NoticeYouKilledBoss.SetActive(false);
-        pl.playerExp += bossFlyingEyes.amountExperiencesReceived;
     }
     IEnumerator StartDeathSFX()
     {
@@ -149,6 +148,8 @@ public class EnemyHealth : Enemy, IDamageAble
     {
         SoundFXManagement.Instance.PlaySoundFXClip(bossDefeat,transform,100);
         Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, bossFlyingEyes.amountCoinsReveived);
+        pl.playerExp += bossFlyingEyes.amountExperiencesReceived;
+        CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, bossFlyingEyes.amountExperiencesReceived);
     }
     void Explosion()
     {

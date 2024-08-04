@@ -12,17 +12,23 @@ public class Level : MonoBehaviour
     [SerializeField] private Image experiences;
     [SerializeField] private PlayerData pl;
     [SerializeField] private TextMeshProUGUI playerLevel;
-    [SerializeField] private int maxLevel;
+    [SerializeField] private ex_Level exLevel;
+    private int maxLevel;
+    private float rateExperiencesUpLevel;
+    private float experiencesDefault;
     private float experiencesPlayerNeedToUpLevel;
     private bool isMaxLevel;
     private void Start()
     {
-        if(pl.playerLevel >= maxLevel)
+        experiencesDefault = 100;
+        maxLevel=exLevel.maxLevel;
+        rateExperiencesUpLevel= 1 + (float)exLevel.rateExperiencesUpLevel/100;
+        if (pl.playerLevel >= maxLevel)
         {
             isMaxLevel = true;
         }
         levelInstance = this;
-        experiencesPlayerNeedToUpLevel = 100;
+        experiencesPlayerNeedToUpLevel = experiencesDefault*Mathf.Pow(rateExperiencesUpLevel,pl.playerLevel);
         experiencesBar.SetActive(true);
     }
     private void Update()
@@ -34,7 +40,7 @@ public class Level : MonoBehaviour
             if (pl.playerExp >= experiencesPlayerNeedToUpLevel)
             {
                 pl.playerLevel = ++pl.playerLevel;
-                experiencesPlayerNeedToUpLevel += 100;
+                experiencesPlayerNeedToUpLevel = experiencesDefault * Mathf.Pow(rateExperiencesUpLevel, pl.playerLevel);
                 pl.playerExp = 0;
             }
         }
@@ -47,13 +53,5 @@ public class Level : MonoBehaviour
         {
             isMaxLevel = true;
         }
-    }
-    public void UpLevelIfPlayerGotFull(float a)
-    {
-        if(pl.playerExp >= experiencesPlayerNeedToUpLevel)
-        {
-            pl.playerLevel = pl.playerLevel++;
-        }
-        experiencesPlayerNeedToUpLevel += 100;
     }
 }

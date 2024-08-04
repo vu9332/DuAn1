@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class HealthText : MonoBehaviour
 {
+    [SerializeField] private float timeDeleted;
     private Vector3 moveSpeed = new Vector3(0, 100, 0);
-    private float timeToFade = 1.0f;
+    [SerializeField] private float timeToFade;
     private float timeElapsed = 0f;
     RectTransform textHealth;
     TextMeshProUGUI textDamage;
-    private Color startColor =new Color(1,0,0);
+    public Color startColor;
     private void Awake()
     {
         textHealth = GetComponent<RectTransform>();
@@ -29,7 +30,7 @@ public class HealthText : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject,5f);
+            Destroy(gameObject, timeDeleted);
         }
     }
 }

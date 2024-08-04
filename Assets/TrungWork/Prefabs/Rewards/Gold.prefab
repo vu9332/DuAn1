@@ -184,8 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
-  speed: 5
-  pos: {fileID: 0}
+  speed: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 512

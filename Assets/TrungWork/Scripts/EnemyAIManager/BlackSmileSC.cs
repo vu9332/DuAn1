@@ -9,4 +9,5 @@ public class BlackSmileSC : ScriptableObject
     public float damageAttack;
     public float health;
     public float experience;
+    public int coins;
 }

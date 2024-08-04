@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4930250050465502124}
   - component: {fileID: 1157555665436394035}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtExperiences
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -203.72552, y: -118.4606}
-  m_SizeDelta: {x: 205.451, y: 69.0788}
+  m_AnchoredPosition: {x: -57.9659, y: -123.166595}
+  m_SizeDelta: {x: 525.0592, y: 173.9934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3171792362794742556
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Damage
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bfd8a7fd990b094799b4a480242700d, type: 2}
   m_sharedMaterial: {fileID: 3027991474068906375, guid: 8bfd8a7fd990b094799b4a480242700d, type: 2}
@@ -93,15 +93,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -147,3 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3312be85a24fab5cfb335261afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeDeleted: 7
+  timeToFade: 2
+  startColor: {r: 0.2982936, g: 1, b: 0, a: 1}

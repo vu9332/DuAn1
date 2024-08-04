@@ -143,7 +143,7 @@ public class PlayFabManager : MonoBehaviour
         StartCoroutine(Loading());
         currentPlayFabId = result.PlayFabId;
         GetUserAccountInfo();
-        //LoadData();
+        LoadData();
         PlayerPrefs.SetString("email", emailInput.text);
         PlayerPrefs.SetString("password", passwordInput.text);
         PlayerPrefs.SetString("id", currentPlayFabId);
@@ -190,7 +190,7 @@ public class PlayFabManager : MonoBehaviour
         passwordInput.text = null;
         userNameText.text = null;
         screenLogin.SetActive(true);
-        //SaveData();
+        SaveData();
         PlayerPrefs.SetInt("status", 0);
         PlayerPrefs.Save();
     }
@@ -304,11 +304,12 @@ public class PlayFabManager : MonoBehaviour
     {
         Debug.Log("Dữ liệu của bạn đã được load!");
         if (result.Data != null 
-        && result.Data.ContainsKey("Coins") && result.Data.ContainsKey("Experiences") && result.Data.ContainsKey("SkillLevel1")
+        && result.Data.ContainsKey("Level") && result.Data.ContainsKey("Coins") && result.Data.ContainsKey("Experiences") && result.Data.ContainsKey("SkillLevel1")
         && result.Data.ContainsKey("SkillLevel2") && result.Data.ContainsKey("SkillLevel3"))
         {
-            playerStatistics.playerCoin = int.Parse(result.Data["Coins"].Value);
-            playerStatistics.playerExp = int.Parse(result.Data["Experiences"].Value);
+            playerStatistics.playerLevel = int.Parse(result.Data["Level"].Value);
+            playerStatistics.playerCoin = float.Parse(result.Data["Coins"].Value);
+            playerStatistics.playerExp = float.Parse(result.Data["Experiences"].Value);
             SkillManager.Instance.IsSkillOneUnlock = bool.Parse(result.Data["SkillLevel1"].Value);
             SkillManager.Instance.IsSkillTwoUnlock = bool.Parse(result.Data["SkillLevel2"].Value);
             SkillManager.Instance.IsSkillThreeUnlock = bool.Parse(result.Data["SkillLevel3"].Value);

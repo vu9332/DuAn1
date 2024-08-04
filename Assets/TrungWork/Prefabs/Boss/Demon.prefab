@@ -255,8 +255,8 @@ MonoBehaviour:
   bossBringerOfDeath: {fileID: 0}
   healthBar: {fileID: 5238812648269755692}
   knockBackThrust: 0
-  bossDemon: {fileID: 11400000, guid: c278d207162a0cc43baa2a7317b38948, type: 2}
   panel: {fileID: 5992854539920238201}
+  bossDemon: {fileID: 11400000, guid: c278d207162a0cc43baa2a7317b38948, type: 2}
 --- !u!114 &2715221311932610545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,8 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b60227c614096408fcc50698fabca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redMaterial: {fileID: 0}
-  restoreDefaultMaterial: 0
+  timeSwitch: 0
 --- !u!1 &4549192863666551628
 GameObject:
   m_ObjectHideFlags: 0

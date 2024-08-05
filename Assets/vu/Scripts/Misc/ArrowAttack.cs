@@ -31,7 +31,7 @@ public class ArrowAttack: MonoBehaviour
     {
         if( othe.gameObject.GetComponent<Enemy>() )
         {
-            Enemy.Instance.TakeDamage(arrowDamage);
+           // Enemy.Instance.TakeDamage(arrowDamage);
             Destroy(this.gameObject, timeDestroy);
         }
     }

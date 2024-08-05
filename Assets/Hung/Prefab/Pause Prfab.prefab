@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 3213159660630111690}
   - component: {fileID: 9036311667278819471}
   m_Layer: 5
-  m_Name: Slider Sound
+  m_Name: Slider Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 427307458316171566}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetSoundVolume
+        m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -620,8 +620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37853456f2bf1764b96f5f6a86589702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 2086968589911865665}
-  soundSlider: {fileID: 9036311667278819471}
+  musicSlider: {fileID: 9036311667278819471}
+  soundSlider: {fileID: 2086968589911865665}
 --- !u!1 &1727743653623726039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,7 +1761,7 @@ GameObject:
   - component: {fileID: 5127801236711641411}
   - component: {fileID: 2086968589911865665}
   m_Layer: 5
-  m_Name: Slider Music
+  m_Name: Slider Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1842,7 +1842,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 427307458316171566}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetMusicVolume
+        m_MethodName: SetSoundVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

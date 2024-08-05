@@ -78,14 +78,17 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
 
-        UpdateIcon();
+       
         if (Instance == null)
         {
             Instance = this;
         }
     }
-
-   public void UpdateIcon()
+    private void OnEnable()
+    {
+        UpdateIcon();
+    }
+    public void UpdateIcon()
     {
         IsSkillThreeUnlock = playerData._isSkillThreeUnlock;
         IsSkillTwoUnlock = playerData._isSkillTwoUnlock;
@@ -103,18 +106,18 @@ public class SkillManager : MonoBehaviour
         {
             case "Skill 1":
                 IsSkillOneUnlock = true;
-                UpdateIcon();
+                
                 break;
             case "Skill 2":
                 IsSkillTwoUnlock = true;
-                UpdateIcon();
+               
                 break;
             case "Skill 3":
                 IsSkillThreeUnlock = true;
-                UpdateIcon();
+
                 break;
         }
-
+        UpdateIcon();
     }
 
  

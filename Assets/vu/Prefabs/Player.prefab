@@ -5055,6 +5055,7 @@ Transform:
   - {fileID: 5155384324395012326}
   - {fileID: 7361466519278091868}
   - {fileID: 1126538480944369110}
+  - {fileID: 1578696449285951995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6716420844082460494
@@ -5103,7 +5104,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.3125, y: 2.25}
+  m_Size: {x: 1.1875, y: 2.3125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5384,6 +5385,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 61977d9e-eb71-4fab-beec-07455ba9bafa
     m_ActionName: Player/Buff[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4208143976791275025}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OpenPassiveSkillsBoard
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: be07e76b-9ecd-4a8d-84c4-e7fffcda831e
+    m_ActionName: Player/OpenPassive[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5566,6 +5583,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1fd344d5f8106844e93942ea8a062eab, type: 3}
   wallSlidingSpeed: 2
   wallJumpPower: {x: 7, y: 15}
+  myAnimator: {fileID: 0}
+  moveInput: {x: 0, y: 0}
+  _cameraFollowGo: {fileID: 8586724618941813505}
 --- !u!114 &3482554763992056168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5653,14 +5673,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   staminaRefresh: 1
+  healthRefresh: 0
   timeBtweenStaminaRefresh: 2
-  knockBackThurust: 100
-  range: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  currentHealth: 0
-  currentStamina: 0
+  timeBtweenHealthRefresh: 0
+  knockBackThurust: 163.9
+  itemDamage: {fileID: 11400000, guid: d4dbd3be6d60e0c47bc5c052a5d9e3e5, type: 2}
 --- !u!114 &9178393359861039502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5871,3 +5888,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1126538480944369110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8586724618941813505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578696449285951995}
+  - component: {fileID: 5599142566380588051}
+  m_Layer: 0
+  m_Name: CameraFollowObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578696449285951995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586724618941813505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -222.74652, y: 470.28455, z: 4.2105675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6653207102611590483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5599142566380588051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586724618941813505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5def37aea8b86428374941f11c10d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 6653207102611590483}
+  _flipYRotationTime: 0.5

@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: SkillTwo
   damage: 10
-  coolDownTime: 1
+  coolDownTime: 3
   effectPrefab: {fileID: 1081375381543351283, guid: e2c50c87c7361b641a1530493c4006f3, type: 3}
   soundEffect:
   - {fileID: 8300000, guid: f19dc805de8dfad4980d018c31a80d9f, type: 3}
   - {fileID: 8300000, guid: f3734897adb4d5449ac86b29694abc8a, type: 3}
+  SkillIcon: {fileID: 0}
+  _DoSkill: 1

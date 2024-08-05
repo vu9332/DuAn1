@@ -21,6 +21,10 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     [SerializeField] public bool isSelected=false;
     [SerializeField] private PlayerData playerData;
 
+    [Space(10)]
+    [SerializeField] private AudioClip hoverAudio;
+    [SerializeField] private AudioClip clickAudio;
+
     private void Start()
     {
         startPos =this.transform.position;
@@ -34,14 +38,20 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
         {
             case "Skill 1":
                 {
-                    if (playerData.playerCoin >= 10&&playerData.playerLevel>=2)
+                    if (playerData.playerCoin >= 10 && playerData.playerLevel >= 2)
                     {
                         isSelected = true;
                         this.gameObject.SetActive(false);
                         SkillManager.Instance.UnLockSkill(cardName);
                         PlayerHealth.Instance.UseCoin(5);
+                        MessageManager.istance.StartPopUp("Purchase completed successfully", 1.5f);
                     }
-                    else StartCoroutine(MoveCardHorizontal(true));
+                    else
+                    {
+                        StartCoroutine(MoveCardHorizontal(true));
+                        MessageManager.istance.StartPopUp("Not eligible to purchase "+cardName, 1.5f);
+                    }
+
 
                     
                 }                 
@@ -53,9 +63,14 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                     this.gameObject.SetActive(false);
                     SkillManager.Instance.UnLockSkill(cardName);
                     PlayerHealth.Instance.UseCoin(5);
+                    MessageManager.istance.StartPopUp("Purchase completed successfully", 1.5f);
 
                 }
-                else StartCoroutine(MoveCardHorizontal(true));
+                else
+                {
+                    StartCoroutine(MoveCardHorizontal(true));
+                    MessageManager.istance.StartPopUp("Not eligible to purchase " + cardName, 1.5f);
+                }
                 break;
             case "Skill 3":
                 if (playerData.playerCoin >= 10 && playerData.playerLevel >= 5)
@@ -64,13 +79,19 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                     this.gameObject.SetActive(false);
                     SkillManager.Instance.UnLockSkill(cardName);
                     PlayerHealth.Instance.UseCoin(5);
+                    MessageManager.istance.StartPopUp("Purchase completed successfully", 1.5f);
 
                 }
-                else StartCoroutine(MoveCardHorizontal(true));
+                else
+                {
+                    StartCoroutine(MoveCardHorizontal(true));
+                    MessageManager.istance.StartPopUp("Not eligible to purchase " + cardName, 1.5f);
+                }
 
                 break;
         }
-       // this.gameObject.SetActive(false);
+        SoundFXManagement.Instance.PlaySoundFXClip(clickAudio, this.transform, .5f);
+        // this.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
@@ -85,8 +106,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                     }
                     else
                     {
-                        this.gameObject.SetActive(true);
-                        Debug.Log("You Dont have a coin");
+                        this.gameObject.SetActive(true);                       
                     }
 
                 }
@@ -100,7 +120,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                 else
                 {
                     this.gameObject.SetActive(true);
-                Debug.Log("You Dont have a coin");
+ 
                 }
                 break;
             case "Skill 3":
@@ -112,7 +132,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                 else
                 {
                     this.gameObject.SetActive(true);
-                    Debug.Log("You Dont have a coin");
+
                 }
 
                 break;
@@ -188,6 +208,8 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
     public void OnSelect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(true));
+        SoundFXManagement.Instance.PlaySoundFXClip(hoverAudio, this.transform, .5f);
+
     }
 
     void IDeselectHandler.OnDeselect(BaseEventData eventData)

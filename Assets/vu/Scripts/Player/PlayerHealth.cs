@@ -134,7 +134,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         }     
         StartCoroutine(RefreshStaminaRoutine());
 
-        playerData.playerMaxDamage = playerData.playeMaxLevel * itemDamage.howMuchMore;
+       // playerData.playerMaxDamage = playerData.playeMaxLevel * itemDamage.howMuchMore;
     }
     
     // Update is called once per frame

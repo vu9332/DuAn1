@@ -25,7 +25,7 @@ public class PlayerData : ScriptableObject
     public float playerExp;
     [Space(10)]
     [Header("Damage")]
-    public float playerMaxDamage;
+  //  public float playerMaxDamage;
     public float playerDamage;
 
 

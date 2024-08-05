@@ -136,6 +136,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if ((!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && touchingDirection.IsGround && playerHealth.currentStamina > 1)
             {
+              
                 rb.velocity = Vector2.zero;
                 if (context.started && comboTempo < 0 &&IsNormalAttack)
                 {
@@ -239,12 +240,10 @@ public class PlayerCombat : MonoBehaviour
 
             if (Vector2.Distance(startPointSlideSkillOne, this.transform.position) <= maxDistanceSkillOneSlide)
             {
-
                 rb.AddForce(new Vector2(PlayerController.Instance.currentMoveSpeed * 10, 0), ForceMode2D.Impulse);
                 GameObject ff = Instantiate(skillOneData.effectPrefab, transform.position, transform.rotation);
                 ff.transform.localScale = this.transform.localScale;
-                Destroy(ff, .25f);
-
+                Destroy(ff, .2f);
             }
             else rb.velocity = Vector2.zero;
         }
@@ -268,6 +267,7 @@ public class PlayerCombat : MonoBehaviour
             IsNormalAttack = false;
             myAnimator.SetTrigger(AnimationString.IsSkillOne);
             StartCoroutine(SkillOneCoolDown(skillOneData.coolDownTime));
+            CameraShake.instance.ShakeCamera();
          
         }
         else Debug.Log("Chiêu 1 chưa mở");
@@ -306,7 +306,7 @@ public class PlayerCombat : MonoBehaviour
     public void ActivateSkillTwo()
     {
         if (SkillManager.Instance.IsSkillTwoUnlock&& IsSkillTwo)
-        {
+        {           
             SoundFXManagement.Instance.PlaySoundFXClip(skillTwoData.soundEffect[0], transform, .5f);
             playerHealth.currentStamina -= 2;
             IsSkillTwo = false;
@@ -339,6 +339,7 @@ public class PlayerCombat : MonoBehaviour
 
             //    slash.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
+        CameraShake.instance.ShakeCamera();
     }
 
     void FindingEnemy()
@@ -387,12 +388,12 @@ public class PlayerCombat : MonoBehaviour
         }
 
     }
-
     public void ActivateSkillThree()
     {
         if (SkillManager.Instance.IsSkillThreeUnlock&& IsSkillThree)
         {
             SoundFXManagement.Instance.PlaySoundFXClip(skillThreeData.soundEffect[0], transform, 1f);
+            CameraZoom.instance.ZoomIn();
             IsSkillThree = false;
             CanAttack = false;
             myAnimator.SetTrigger(AnimationString.IsSkillThree);
@@ -442,6 +443,8 @@ public class PlayerCombat : MonoBehaviour
         rb.AddForce(new Vector2(this.transform.localScale.x * -force, 0), ForceMode2D.Impulse);
         StartCoroutine(calculateDistance());
         StartCoroutine(ActivateEffect());
+        CameraShake.instance.ShakeCamera();
+        CameraZoom.instance.ZoomOut();
         StartCoroutine(SkillThreeCoolDown());
     }
     IEnumerator calculateDistance()
@@ -475,10 +478,15 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] HitsEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (var enemy in HitsEnemies)
         {
-            GameObject ps = Instantiate(particleOnHitPrefabVFX, enemy.transform.position, transform.rotation);
-            Destroy(ps, .15f);
-            Debug.Log("Enemy: " + enemy.name);
-            enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
+            if(enemy!=null)
+            {
+                GameObject ps = Instantiate(particleOnHitPrefabVFX, enemy.transform.position, transform.rotation);
+                Destroy(ps, .15f);
+                Debug.Log("Enemy: " + enemy.name);
+                enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
+                CameraShake.instance.ShakeCamera();
+            }
+          
         }
     }
   

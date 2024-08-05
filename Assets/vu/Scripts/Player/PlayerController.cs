@@ -138,7 +138,10 @@ public class PlayerController : MonoBehaviour
 
     public bool CanMove { get { return myAnimator.GetBool(AnimationString.canMove); } }
 
-
+    [Header("Camera Stuff")]
+    [SerializeField] private GameObject _cameraFollowGo; 
+    private CameraFollowObject _cameraFollowObjet;
+    private float _fallSpeedYDamingChangeThreshold;
     private void Awake()
     {
         if(Instance==null)
@@ -154,6 +157,8 @@ public class PlayerController : MonoBehaviour
         partic = GameObject.FindAnyObjectByType<ParticleSystem>();
         playerHealth = GetComponent<PlayerHealth>();
         ghost = GetComponent<Ghost>();
+        _cameraFollowObjet=_cameraFollowGo.GetComponent<CameraFollowObject>();
+      // _fallSpeedYDamingChangeThreshold=CameraManager.instance.fallSpeedYDampingChangeThreshold;
     }
 
     void Update()
@@ -167,6 +172,19 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
         ProcessWallSlide();
         ProcessWallJump();
+
+        //
+        //if (rb.velocity.y<=-_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&!CameraManager.instance.LerpededFromPlayerFalling)
+        //{
+        //    CameraManager.instance.LerpYDamping(true);        
+        //}
+        //if (rb.velocity.y>=-_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&CameraManager.instance.LerpededFromPlayerFalling)
+        //{
+        //    CameraManager.instance.LerpededFromPlayerFalling=false;
+        //    CameraManager.instance.LerpYDamping(false);        
+        //}
+        //
+
         
     }
     #region Move
@@ -385,11 +403,13 @@ public class PlayerController : MonoBehaviour
                 // right
                
                 IsFacingRight = true;
+                _cameraFollowObjet.CallTurn();
             }
             else if (direction.x < 0 && IsFacingRight)
             {
                 //Left
                 IsFacingRight = false;
+                _cameraFollowObjet.CallTurn();
 
             }
         }

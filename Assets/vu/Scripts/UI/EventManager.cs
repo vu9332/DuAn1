@@ -61,6 +61,7 @@ public class EventManager : MonoBehaviour
     }
     void ShowSkillMenu()
     {
+        StatusManagement.PressHideUI();
         foreach (Transform item in cardBoard.transform)
         { 
             if (!item.gameObject.GetComponent<CardSelectionHandler>().isSelected)
@@ -70,6 +71,7 @@ public class EventManager : MonoBehaviour
     }
     void HideSkillMenu()
     {
+        StatusManagement.PressShowUI();
         foreach (Transform item in cardBoard.transform)
         {
            

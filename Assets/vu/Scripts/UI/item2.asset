@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ea07f61c56fea4ab603eda43d07fde, type: 3}
   m_Name: item2
   m_EditorClassIdentifier: 
-  NumberOfPurchases: 0
-  price: 50
+  LevePassiveSkill: 3
+  maxPurchaseLimit: 10
+  NumberOfPurchases: 10
+  price: 500
   howMuchMore: 10
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  saveSlideValue: 0.33333334

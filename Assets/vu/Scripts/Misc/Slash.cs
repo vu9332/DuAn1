@@ -9,6 +9,7 @@ public class Slash : MonoBehaviour
     [SerializeField] float damageSlash;
     [SerializeField] private float slashSpeed;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
+    [SerializeField] private SkillData skillData;
 
     Rigidbody2D rb;
     Vector2 slashDirection;
@@ -21,7 +22,8 @@ public class Slash : MonoBehaviour
         {
             this.transform.localScale *= new Vector2(-1, 1);
         }
-        rb.AddForce(slashDirection * slashSpeed, ForceMode2D.Impulse);  
+        rb.AddForce(slashDirection * slashSpeed, ForceMode2D.Impulse);
+        damageSlash += skillData.damage;
     }
     public Vector2 SetSlashDirection(Vector2 dir)
     {

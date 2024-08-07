@@ -98,7 +98,10 @@ public class SkillManager : MonoBehaviour
     {
         
     }
-  
+ public void FullLevel()
+    {
+        playerData.playerLevel += 10;
+    }
     // Update is called once per frame
     public void UnLockSkill( string skillName )
     {

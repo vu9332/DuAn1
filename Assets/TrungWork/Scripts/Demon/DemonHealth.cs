@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class DemonHealth : BringerOfDeathHealth
 {
     [SerializeField] private bossDemon bossDemon;
+    [SerializeField] private PlayerData playData;
+    [SerializeField] private GameObject Bar;
+    [SerializeField] private GameObject panelWin;
+
     
     protected override void Awake()
     {
@@ -20,7 +25,10 @@ public class DemonHealth : BringerOfDeathHealth
     }
     private void Update()
     {
-        
+        if (playData.playerCurrentHealth <= 0)
+        {
+            healthBar.gameObject.SetActive(false);
+        }
     }
     public override void TakeDamage(float damage)
     {
@@ -28,6 +36,7 @@ public class DemonHealth : BringerOfDeathHealth
     }
     public override void Die()
     {
+        panelWin.SetActive(true);
         StartCoroutine(DisplayTextExp());
         panel.SetActive(true);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level3);
@@ -49,4 +58,5 @@ public class DemonHealth : BringerOfDeathHealth
         AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_boss_Defeated);
         Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, bossDemon.amountCoinsReveived);
     }
+    
 }

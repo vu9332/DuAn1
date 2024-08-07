@@ -18,6 +18,7 @@ public class EventManager : MonoBehaviour
 
    // public SkillManager skillManager;
      public  GameObject cardBoard;
+     public  GameObject toolBoard;
     //Transform[] card;
     //[SerializeField]   List< bool> boolObj =  new List<bool>();
    // CardSelectionHandler[] chillObj;
@@ -32,6 +33,17 @@ public class EventManager : MonoBehaviour
     private void Start()
     {
       
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.CapsLock))
+        {
+            toolBoard.SetActive(true);
+        } 
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            toolBoard.SetActive(false);
+        }
     }
     public static void OpenSkillMenu()
     {

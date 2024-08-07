@@ -5029,6 +5029,7 @@ GameObject:
   - component: {fileID: 9178393359861039502}
   - component: {fileID: 7223761058501302747}
   - component: {fileID: 3473945412163789088}
+  - component: {fileID: 6817300963022364964}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -5677,7 +5678,9 @@ MonoBehaviour:
   timeBtweenStaminaRefresh: 2
   timeBtweenHealthRefresh: 0
   knockBackThurust: 163.9
+  iSDeath: 0
   itemDamage: {fileID: 11400000, guid: d4dbd3be6d60e0c47bc5c052a5d9e3e5, type: 2}
+  playerDie: {fileID: 6645710117548392900, guid: 579316d9060b2594d97e8b330c39f0f6, type: 3}
 --- !u!114 &9178393359861039502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5720,6 +5723,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   Abilities: {fileID: 0}
+--- !u!114 &6817300963022364964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801682784065055976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ea7b1755fa5a143b84889c544ba46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteMaterial: {fileID: 2100000, guid: 86f5aa213a085a440b288b332c9f610f, type: 2}
+  restoreDefaultMaterial: 0.2
 --- !u!1 &6640985347198314429
 GameObject:
   m_ObjectHideFlags: 0

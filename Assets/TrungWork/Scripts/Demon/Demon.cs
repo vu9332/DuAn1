@@ -24,4 +24,5 @@ public class Demon : Boss
     {
         AudioManager.Instance.PlaySoundSFX(AudioManager.Instance.snd_demon_knives);
     }
+    
 }

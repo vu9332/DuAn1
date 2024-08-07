@@ -186,3 +186,4 @@ MonoBehaviour:
   arrowSpeed: 25
   arrowDamage: 5
   timeDestroy: 0.1
+  skillData: {fileID: 11400000, guid: 2d772fe7561809f4f8e21f27ac6e99fc, type: 2}

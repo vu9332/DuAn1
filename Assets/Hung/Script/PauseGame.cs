@@ -75,7 +75,7 @@ public class PauseGame : MonoBehaviour
     public void BackToMenu()
     {
         //them phan luu data cua nv vao
-        SceneManager.LoadScene("Menu2");
+        SceneManager.LoadScene(1);
     }
 
     public void Exit()

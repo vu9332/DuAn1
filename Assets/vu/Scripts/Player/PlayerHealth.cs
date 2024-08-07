@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour,IDamageAble
 {
@@ -15,8 +17,8 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     [SerializeField] float timeBtweenStaminaRefresh;
     [SerializeField] float timeBtweenHealthRefresh;
     [SerializeField] float knockBackThurust;
-    
 
+    public bool iSDeath=false;
     public float health
     { 
         get
@@ -74,15 +76,33 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
 
     Slider healthSlider;
     Slider staminaSlider;
-    //Animator myAnimator;
+   // Animator myAnimator;
     TextMeshProUGUI CoinText;
     Knockback Knockback;
+    Flash flash;
     Rigidbody2D rb;
-   public  ShopDataBase itemDamage;
+   [SerializeField] private ShopDataBase itemDamage;
+    [SerializeField] private GameObject playerDie;
+    [SerializeField] private GameObject panelDie;
     public void Die()
     {
-       
+        //PlayerController.Instance.myAnimator.Play("Die");
+        iSDeath = true;        
+       this.transform.GetComponent<SpriteRenderer>().enabled = false;
+        this.transform.GetComponent<CapsuleCollider2D>().size = new Vector2(0.1f, 0.1f);
+        GameObject plDie = Instantiate(playerDie, this.transform.position,Quaternion.identity);
+        SpriteRenderer spr= plDie.GetComponent<SpriteRenderer>();
+        spr.DOFade(0, 4f).OnComplete(()=>Destroy(plDie));
+        //rb.velocity=Vector2.zero;
+        StartCoroutine(DieRoutine());
+        panelDie.gameObject.SetActive(true);
     }
+   IEnumerator DieRoutine()
+    {
+        yield return new WaitForSeconds(.5f);
+        this.transform.gameObject.SetActive(false);
+       
+    }    
     public void PlayerTakeDamage(float damage,Transform damgeSource)
     {
         //TakeDamage(damage);
@@ -91,16 +111,35 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     }
     public void TakeDamage(float damage)
     {
-       
-        currentHealth -=damage;
-        PlayerController.Instance.myAnimator.SetTrigger(AnimationString.Hurt);
-        Vector2 direction=(PlayerController.Instance.IsFacingRight)?Vector2.left:Vector2.right;
-        rb.AddForce(direction*knockBackThurust, ForceMode2D.Impulse);
+            
+        if (currentHealth <= 0)
+        {
+
+            Die();
+            CameraZoom.instance.ZoomIn();
+
+        }
+        else
+        {
+            CameraShake.instance.ShakeCamera();
+            currentHealth -= damage;
+            StartCoroutine(flash.FlashRoutine());
+            //Vector2 direction = (PlayerController.Instance.IsFacingRight) ? Vector2.right : Vector2.left;
+            //rb.AddForce(direction * knockBackThurust, ForceMode2D.Impulse);
+            PlayerController.Instance.myAnimator.SetTrigger(AnimationString.Hurt); 
+        }
     }
 
    
     
-   
+   public void BatTu()
+    {
+        currentHealth += 100000;
+    }    
+    public void hackvang()
+    {
+        currentCoin += 1000000;
+    }    
     // private Transform GetTransform() { return enemyTransform; }
     public void UseStamina(float staminaUse)
     {
@@ -124,6 +163,8 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         staminaSlider =GameObject.Find(STAMINA_SliDER).GetComponent<Slider>();
         CoinText = GameObject.Find(Coin_Text).GetComponent<TextMeshProUGUI>();
         Knockback=GetComponent<Knockback>();
+        flash=GetComponent<Flash>();
+        
         healthSlider.value = (float)currentHealth / health;
         staminaSlider.value = currentStamina / stamina;
         rb =GetComponent<Rigidbody2D>();
@@ -144,6 +185,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
       
         CoinText.text = currentCoin.ToString();
     }
+   
     private void RefreshStamina()
     {
         if (currentStamina < stamina)
@@ -176,4 +218,5 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
 
         }
     }
+    
 }

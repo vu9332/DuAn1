@@ -167,7 +167,7 @@ public class StatusManagement : MonoBehaviour
     private void ShowPassiveSkillsBoard()
     {
         passiveSkillsBoard.SetActive(true);
-         passiveSkillsBoard.transform.DOMoveX(400, .5f).SetEase(Ease.InOutBack);
+         passiveSkillsBoard.transform.DOMoveX(450, .5f).SetEase(Ease.InOutBack);
         HideUIFunction();
         StartCoroutine(show());
 

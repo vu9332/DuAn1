@@ -95,21 +95,26 @@ public class PlayerCombat : MonoBehaviour
     }
 
     // public bool CanMove { get { return myAnimator.GetBool(AnimationString.canMove); } }
-    
 
-    void Start()
+    private void Awake()
     {
-        // skillTwo=GetComponent<SkillTwo>();
         //  skillOne = GetComponent<SkillOne>();
         knockback = GetComponent<Knockback>();
         playerHealth = GetComponent<PlayerHealth>();
         myAnimator = GetComponent<Animator>();
         touchingDirection = GetComponent<TouchingDirection>();
         rb = GetComponent<Rigidbody2D>();
-        comboTempo = comboTiming;
         trailRenderer = GetComponent<TrailRenderer>();
         skillManager = GetComponent<SkillManager>();
-        if(Instance==null)
+    }
+    void Start()
+    {
+        
+        IsSkillOne = true;
+        IsSkillTwo= true;
+        IsSkillThree = true;
+        comboTempo = comboTiming;
+        if (Instance==null)
             Instance = this;
     }
 

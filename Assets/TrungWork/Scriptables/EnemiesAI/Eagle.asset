@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Eagle
   damageAttack: 0
-  health: 100
+  health: 30
   coins: 4
   experience: 20

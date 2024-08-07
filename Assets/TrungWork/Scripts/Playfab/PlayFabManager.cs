@@ -37,19 +37,27 @@ public class PlayFabManager : MonoBehaviour
     private string currentPlayFabId;
 
     public PlayerData playerStatistics;
-   
 
+    public GameObject leaderBoardObj;
+    public Button btnPlay;
+    public Button btnLeaderboard;
+    public Button btnlogOut;
+    public Button btnExit;
+    public Button btnSetting;
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("status") == 1)
-        {
-            string emailSaved = PlayerPrefs.GetString("email");
-            string passwordSaved = PlayerPrefs.GetString("password");
-            AutoLogin(emailSaved, passwordSaved);
-        }
+        //if (PlayerPrefs.GetInt("status") == 1)
+        //{
+        //    string emailSaved = PlayerPrefs.GetString("email");
+        //    string passwordSaved = PlayerPrefs.GetString("password");
+        //    AutoLogin(emailSaved, passwordSaved);
+        //}
     }
 
-
+    private void Start()
+    {
+        leaderBoardObj.SetActive(false);
+    }
     //Hiển thị màn hình đăng nhập và đăng kí tài khoản
 
     public void goToSignUp()
@@ -93,6 +101,24 @@ public class PlayFabManager : MonoBehaviour
         LoginText.text=null;
     }
 
+    public void DisplayLeaderBoardPlease()
+    {
+        leaderBoardObj.SetActive(true);
+        btnPlay.GetComponent<Button>().enabled = false;
+        btnLeaderboard.GetComponent<Button>().enabled = false;
+        btnSetting.GetComponent<Button>().enabled = false;
+        btnlogOut.GetComponent<Button>().enabled = false;
+        btnExit.GetComponent<Button>().enabled = false;
+    }
+    public void HideLeaderBoardPlease()
+    {
+        leaderBoardObj.SetActive(false);
+        btnPlay.GetComponent<Button>().enabled = true;
+        btnLeaderboard.GetComponent<Button>().enabled = true;
+        btnSetting.GetComponent<Button>().enabled = true;
+        btnlogOut.GetComponent<Button>().enabled = true;
+        btnExit.GetComponent<Button>().enabled = true;
+    }
     //Thiết lập nút đăng kí tài khoản và lưu lên PlayFab
     public void RegisterButton()
     {
@@ -107,17 +133,16 @@ public class PlayFabManager : MonoBehaviour
     }
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        RegisterText.text = "Bạn đã đăng ký tài khoản thành công!";
+        RegisterText.text = "You have successfully registered a new account!";
         RegisterText.color = new Color(0, 0.636f, 0);
         currentPlayFabId = result.PlayFabId;
         Debug.Log("Bạn đã đăng ký tài khoản thành công!");
         //StartCoroutine(PleaseReturnToLogInAgain());
-        //SendLeaderboard(0);
     }
     void OnErrorRegister(PlayFabError error)
     {
         Debug.Log("Đăng kí thất bại!");
-        RegisterText.text = "Đăng kí thất bại!";
+        RegisterText.text = "Account registration failed!";
         RegisterText.color = Color.red;
     }
     IEnumerator PleaseReturnToLogInAgain()
@@ -137,7 +162,7 @@ public class PlayFabManager : MonoBehaviour
     }
     void OnLoginSuccess(LoginResult result)
     {
-        LoginText.text = "Đăng nhập thành công!";
+        LoginText.text = "Login successfully!";
         LoginText.color = new Color(0, 0.636f, 0);
         Debug.Log("Đăng nhập thành công!");
         StartCoroutine(Loading());
@@ -158,7 +183,7 @@ public class PlayFabManager : MonoBehaviour
     }
     void OnErrorLogin(PlayFabError error)
     {
-        LoginText.text = "Đăng nhập thất bại!";
+        LoginText.text = "Login failed!";
         LoginText.color = Color.red;
         Debug.Log("Đăng nhập thất bại!");
     }
@@ -192,7 +217,9 @@ public class PlayFabManager : MonoBehaviour
         screenLogin.SetActive(true);
         SaveData();
         PlayerPrefs.SetInt("status", 0);
+        PlayerPrefs.SetString("id", null);
         PlayerPrefs.Save();
+        SendLeaderboard(playerStatistics.playerLevel);
     }
 
     // Lấy thông tin tài khoản người dùng sau khi đăng nhập
@@ -210,7 +237,7 @@ public class PlayFabManager : MonoBehaviour
         var accountInfo = result.AccountInfo;
         string displayName = accountInfo.TitleInfo.DisplayName;
         userNameText.text= "Hello, "+displayName+"!";
-        userNameText.color = new Color(1, 0, 0);
+        userNameText.color = new Color(0.009217262f, 1, 0);
         PlayerPrefs.SetString("_yourName", displayName);
         string email = accountInfo.PrivateInfo.Email;
         //emailUserText.text = email;
@@ -246,7 +273,7 @@ public class PlayFabManager : MonoBehaviour
         var request = new SendAccountRecoveryEmailRequest
         {
             Email = emailInput.text,
-            TitleId = "B44FA"
+            TitleId = "5EE4D"
         };
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnErrorResetPassword);
     }
@@ -279,9 +306,9 @@ public class PlayFabManager : MonoBehaviour
                 {"Level",playerStatistics.playerLevel.ToString()},
                 {"Coins",playerStatistics.playerCoin.ToString()},
                 {"Experiences",playerStatistics.playerExp.ToString()},
-                {"SkillLevel1",SkillManager.Instance.IsSkillOneUnlock.ToString()},
-                {"SkillLevel2",SkillManager.Instance.IsSkillTwoUnlock.ToString()},
-                {"SkillLevel3",SkillManager.Instance.IsSkillThreeUnlock.ToString()}
+                {"SkillLevel1",playerStatistics._isSkillOneUnlock.ToString()},
+                {"SkillLevel2",playerStatistics._isSkillTwoUnlock.ToString()},
+                {"SkillLevel3",playerStatistics._isSkillThreeUnlock.ToString()}
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnSaveDataSuccess, OnSaveDataError);
@@ -310,9 +337,20 @@ public class PlayFabManager : MonoBehaviour
             playerStatistics.playerLevel = int.Parse(result.Data["Level"].Value);
             playerStatistics.playerCoin = float.Parse(result.Data["Coins"].Value);
             playerStatistics.playerExp = float.Parse(result.Data["Experiences"].Value);
-            SkillManager.Instance.IsSkillOneUnlock = bool.Parse(result.Data["SkillLevel1"].Value);
-            SkillManager.Instance.IsSkillTwoUnlock = bool.Parse(result.Data["SkillLevel2"].Value);
-            SkillManager.Instance.IsSkillThreeUnlock = bool.Parse(result.Data["SkillLevel3"].Value);
+            playerStatistics._isSkillOneUnlock = bool.Parse(result.Data["SkillLevel1"].Value);
+            playerStatistics._isSkillTwoUnlock = bool.Parse(result.Data["SkillLevel2"].Value);
+            playerStatistics._isSkillThreeUnlock = bool.Parse(result.Data["SkillLevel3"].Value);
+        }
+        else
+        {
+            playerStatistics.playerLevel = 1;
+            SendLeaderboard(playerStatistics.playerLevel);
+            playerStatistics.playerCoin = 0;
+            playerStatistics.playerExp = 0;
+            playerStatistics._isSkillOneUnlock = true;
+            playerStatistics._isSkillTwoUnlock = false;
+            playerStatistics._isSkillThreeUnlock = false;
+            SaveData();
         }
     }
     void OnDataLoadError(PlayFabError error)
@@ -322,7 +360,7 @@ public class PlayFabManager : MonoBehaviour
 
 
     //Thiết lập bảng xếp hạng điểm của tất cả người chơi
-    public void SendLeaderboard(int score)
+    public void SendLeaderboard(int level)
     {
         var request = new UpdatePlayerStatisticsRequest
         {
@@ -331,7 +369,7 @@ public class PlayFabManager : MonoBehaviour
                 new StatisticUpdate
                 {
                     StatisticName="Smarterboard",
-                    Value=score
+                    Value=level
                 }
             }
         };
@@ -358,34 +396,19 @@ public class PlayFabManager : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        List<InfoRankPlayer> listRankPlayers= new List<InfoRankPlayer>();
-        listRankPlayers.Clear();
-        foreach (var item in result.Leaderboard)
-        {
-            listRankPlayers.Add(new InfoRankPlayer(item.PlayFabId, YourRank(item.StatValue)));
-        }
-        var highestScores = result.Leaderboard.Join(listRankPlayers, player1 => player1.PlayFabId, player2 => player2.playerID, (player1, player2) => new
-        {
-            player1.Position,
-            player1.DisplayName,
-            player1.StatValue,
-            player1.PlayFabId,
-            player2.yourRank
-        });
+        var highestScores = result.Leaderboard.Take(10);
         foreach (var item in highestScores)
         {
-            if (item.PlayFabId == PlayerPrefs.GetString("_yourCurrentPlayerID"))
+            if (item.PlayFabId == PlayerPrefs.GetString("id"))
             {
                 GameObject newGo = Instantiate(templatePlayerPrefab, posInstance);
                 TextMeshProUGUI[] texts = newGo.GetComponentsInChildren<TextMeshProUGUI>();
                 texts[0].text = (item.Position + 1).ToString();
-                texts[0].color = Color.yellow;
+                texts[0].color = new Color(0, 0.6682706f, 1);
                 texts[1].text = item.DisplayName ?? "(Blank)";
-                texts[1].color = Color.yellow;
+                texts[1].color = new Color(0, 0.6682706f, 1);
                 texts[2].text = item.StatValue.ToString();
-                texts[2].color = Color.yellow;
-                texts[3].text = YourRank(item.StatValue);
-                texts[3].color = Color.yellow;
+                texts[2].color = new Color(0, 0.6682706f, 1);
             }
             else
             {
@@ -394,7 +417,6 @@ public class PlayFabManager : MonoBehaviour
                 texts[0].text = (item.Position + 1).ToString();
                 texts[1].text = item.DisplayName ?? "(Blank)";
                 texts[2].text = item.StatValue.ToString();
-                texts[3].text = YourRank(item.StatValue);
             }
         }
     }

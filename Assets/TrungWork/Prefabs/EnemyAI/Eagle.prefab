@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posLeft: {fileID: 4070058970311017661}
   posRight: {fileID: 6797774209638387451}
-  speed: 0
+  speed: 5
   facingLeft: 0
 --- !u!114 &3466632172855664204
 MonoBehaviour:

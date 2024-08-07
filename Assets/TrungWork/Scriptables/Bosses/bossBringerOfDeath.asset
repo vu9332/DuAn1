@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: Bringer Of Death
   damageAttack: 10
   damageSkill: 10
-  health: 10
+  health: 100
   amountExperiencesReceived: 200
   amountCoinsReveived: 15

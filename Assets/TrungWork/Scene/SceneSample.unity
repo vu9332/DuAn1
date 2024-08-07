@@ -721,6 +721,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824427290}
   m_CullTransparentMesh: 1
+--- !u!1001 &858475649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 214038099280591225, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_Name
+      value: UIPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893007468817394721, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ad5474ce6a4c1042a188c07a047b6fb, type: 3}
 --- !u!1 &940198837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7367,9 +7424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f148fab17e412264e8dd46de5ca93e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isSkillOneUnlock: 1
-  _isSkillTwoUnlock: 1
-  _isSkillThreeUnlock: 1
+  playerData: {fileID: 0}
+  Abilities: {fileID: 0}
 --- !u!114 &3482554764257436535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7463,7 +7519,7 @@ MonoBehaviour:
   jumpTime: 5
   dashSpeed: 30
   maxDashDistance: 5
-  _isDash: 0
+  CanDash: 1
   rollSpeed: 17
   maxRollDistance: 7
   rollCD: 0.25
@@ -7477,6 +7533,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1fd344d5f8106844e93942ea8a062eab, type: 3}
   wallSlidingSpeed: 2
   wallJumpPower: {x: 7, y: 15}
+  myAnimator: {fileID: 0}
+  moveInput: {x: 0, y: 0}
+  _cameraFollowGo: {fileID: 0}
 --- !u!4 &4265556291878740551
 Transform:
   m_ObjectHideFlags: 0
@@ -8090,9 +8149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   staminaRefresh: 1
+  healthRefresh: 0
   timeBtweenStaminaRefresh: 2
-  currentHealth: 0
-  currentStamina: 0
+  timeBtweenHealthRefresh: 0
+  knockBackThurust: 0
+  itemDamage: {fileID: 0}
 --- !u!1 &7797211425411792137
 GameObject:
   m_ObjectHideFlags: 0
@@ -8139,8 +8200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d38cad6c483674d962e7040fcfcd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  experiencePoints: 0
+  playerData: {fileID: 0}
   pointsPerLevel: 100
 --- !u!212 &8907567784541098730
 SpriteRenderer:
@@ -8216,3 +8276,4 @@ SceneRoots:
   - {fileID: 1102301701}
   - {fileID: 1856541665}
   - {fileID: 7129626547907879951}
+  - {fileID: 858475649}

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using static StatusManagement;
 
 
 public class PauseGame : MonoBehaviour
@@ -14,30 +15,47 @@ public class PauseGame : MonoBehaviour
 
     [Header("Setting Pause")]
     [SerializeField] private GameObject pauseSetting;
+    bool isPause=false;
 
     private void Start()
     {
         pausePanel.SetActive(false);
         pauseSetting.SetActive(false);
+
     }
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            bool isPause = !pausePanel.activeSelf;
-            pausePanel.SetActive(isPause);
+            if (!isPause)
 
-            if(isPause )
             {
-                Time.timeScale = 0f;
+                isPause = true;
+                pausePanel.SetActive(isPause);
+               
+            }
+            else if (isPause)
+            {
+                isPause = false;
+                pausePanel.SetActive(isPause);
+            }
+            // = !pausePanel.activeSelf;
+
+
+
+            if (isPause)
+            {
+                StatusManagement.PressHideBoard();
+                StartCoroutine(delay());
+                
             }
             else
             {
-                Time .timeScale = 1f;
+                Time.timeScale = 1f;
+                
             }
         }
-        
     }
     public void DeActivePanel(GameObject panelActive)
     {
@@ -67,8 +85,13 @@ public class PauseGame : MonoBehaviour
         Application.Quit();
     }
 
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = 0f;
 
-    
+    }
+
 
 
 

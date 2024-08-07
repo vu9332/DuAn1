@@ -26,7 +26,9 @@ public class Result : MonoBehaviour
 
 
         //// Nếu người chơi chơi hết mạng trước khi thắng boss cuối hiện text You lose!
-
-        //txtResult.text = "You lose!";
+        if (PlayerHealth.Instance.currentHealth <= 0)
+        {
+            txtResult.text = "You lose!";
+        }
     }
 }

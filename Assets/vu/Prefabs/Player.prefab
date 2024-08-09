@@ -5677,10 +5677,10 @@ MonoBehaviour:
   healthRefresh: 0
   timeBtweenStaminaRefresh: 2
   timeBtweenHealthRefresh: 0
-  knockBackThurust: 163.9
+  cameraShakeForce: 2
   iSDeath: 0
-  itemDamage: {fileID: 11400000, guid: d4dbd3be6d60e0c47bc5c052a5d9e3e5, type: 2}
   playerDie: {fileID: 6645710117548392900, guid: 579316d9060b2594d97e8b330c39f0f6, type: 3}
+  panelDie: {fileID: 0}
 --- !u!114 &9178393359861039502
 MonoBehaviour:
   m_ObjectHideFlags: 0

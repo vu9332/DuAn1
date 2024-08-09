@@ -6,7 +6,7 @@ public class ArrowAttack: MonoBehaviour
 {
     
     [SerializeField] private float arrowSpeed;
-    [SerializeField] private float arrowDamage;
+    private float arrowDamage;
     [SerializeField] private float timeDestroy;
     [SerializeField] private SkillData skillData;
     private Vector2 arrowDir;
@@ -14,7 +14,7 @@ public class ArrowAttack: MonoBehaviour
     {
       
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(arrowDir.x * arrowSpeed, 0), ForceMode2D.Impulse);
-        arrowDamage += skillData.damage;
+        arrowDamage += skillData.damage + PlayerCombat.Instance.playerDamage; Debug.Log(arrowDamage);
     }
 
     // Update is called once per frame

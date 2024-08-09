@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkillThree
   m_EditorClassIdentifier: 
   skillName: SkillThree
-  damage: 20
+  damage: 5
   coolDownTime: 3
   effectPrefab: {fileID: 5113928139953908053, guid: 9af25f44301788144834570c7163ee7c, type: 3}
   soundEffect:

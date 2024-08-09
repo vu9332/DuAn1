@@ -19,7 +19,6 @@ public class CameraZoom : MonoBehaviour
         {
             instance = this;
         }
-
         originalSize=virtualCamera.m_Lens.OrthographicSize;
     }
     public void ZoomIn()

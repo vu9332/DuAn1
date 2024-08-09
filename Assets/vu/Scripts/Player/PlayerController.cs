@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Stuff")]
     [SerializeField] private GameObject _cameraFollowGo; 
     private CameraFollowObject _cameraFollowObjet;
-    private float _fallSpeedYDamingChangeThreshold;
+    //private float _fallSpeedYDamingChangeThreshold;
     private void Awake()
     {
         if(Instance==null)
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         ghost = GetComponent<Ghost>();
         _cameraFollowObjet=_cameraFollowGo.GetComponent<CameraFollowObject>();
-      // _fallSpeedYDamingChangeThreshold=CameraManager.instance.fallSpeedYDampingChangeThreshold;
+      ///_fallSpeedYDamingChangeThreshold=CameraManager.instance.fallSpeedYDampingChangeThreshold;
     }
 
     void Update()
@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
         if (!isWallJumping&&!PlayerHealth.Instance.iSDeath)
         {
         ApplyMovement();
+          
         }
         ApplyRolling();
         ApplyDashing();
@@ -196,11 +197,13 @@ public class PlayerController : MonoBehaviour
             moveInput = context.ReadValue<Vector2>();
             IsMoving = moveInput != Vector2.zero;
             SetFacingDirection(moveInput);
+            Debug.Log("Move");
         }
         else
         {
             IsMoving = false;
-            moveInput = Vector2.zero;
+           // moveInput = Vector2.zero;
+          //  Debug.Log("NotMove");
         }
         // if (!IsRolling)
 
@@ -221,9 +224,9 @@ public class PlayerController : MonoBehaviour
             if (CanMove)
             {
                 if (!IsRolling && !IsDash)
-                    rb.velocity = new Vector2(moveInput.x * currentMoveSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(moveInput.x * currentMoveSpeed, rb.velocity.y);
             }
-          // else if (!CanMove) moveInput = Vector2.zero;
+          else if (!CanMove) moveInput = Vector2.zero;
 
     }
     #endregion
@@ -331,6 +334,7 @@ public class PlayerController : MonoBehaviour
     {
         if (touchingDirection.IsGround && CanJump(context))
         {
+            Debug.Log("DoJump");
             SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[2], this.transform, .7f);
             myAnimator.SetTrigger(AnimationString.IsJumping);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -409,7 +413,7 @@ public class PlayerController : MonoBehaviour
             {
                 //Left
                 IsFacingRight = false;
-                _cameraFollowObjet.CallTurn();
+               _cameraFollowObjet.CallTurn();
 
             }
         }

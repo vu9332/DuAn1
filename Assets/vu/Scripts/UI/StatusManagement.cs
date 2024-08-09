@@ -26,7 +26,7 @@ public class StatusManagement : MonoBehaviour
     //[SerializeField] private ShopDataBase itemData3;
     [SerializeField] private item item3;
 
-    [SerializeField] private PlayerHealth playerHealth;
+   [SerializeField] private PlayerData newData;
 
     [SerializeField] private GameObject passiveSkillsBoard;
     [SerializeField] private GameObject SkillsBar;
@@ -90,7 +90,7 @@ public class StatusManagement : MonoBehaviour
             // itemData1.price += 50;
             // item1.coutSlideValue++;
             //StartCoroutine(item1.UpdateSliderInParts());
-            item1.Buying();
+            item1.Buying( ref newData.playerHealth);
             item1.CheckValue();
         SoundFXManagement.Instance.PlaySoundFXClip(clickAudio, item1.transform, .5f);
         
@@ -120,7 +120,7 @@ public class StatusManagement : MonoBehaviour
             //itemData2.price += 50;
             //item2.coutSlideValue++;
             //StartCoroutine(item2.UpdateSliderInParts());
-            item2.Buying();
+            item2.Buying(ref newData.playerStamina);
            item2.CheckValue();
         SoundFXManagement.Instance.PlaySoundFXClip(clickAudio, item2.transform, .5f);
         // PlayerHealth.Instance.UseCoin(playerData.playerCoin)
@@ -132,7 +132,7 @@ public class StatusManagement : MonoBehaviour
     private void UpdateDamageBar()
     {
        
-            item3.Buying();
+        item3.Buying(ref newData.playerDamage);
         item3.CheckValue();
         SoundFXManagement.Instance.PlaySoundFXClip(clickAudio, item3.transform, .5f);
         //itemData3.playerData.playerDamage += itemData3.howMuchMore;

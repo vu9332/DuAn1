@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - destroy
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - EnemyHitbox
   - OutSide
   - Gold
-  - 
+  - MiniCamera
   - 
   - 
   - 
@@ -55,4 +56,7 @@ TagManager:
     locked: 0
   - name: OutSide
     uniqueID: 986992273
+    locked: 0
+  - name: MiniCamera
+    uniqueID: 2745667607
     locked: 0

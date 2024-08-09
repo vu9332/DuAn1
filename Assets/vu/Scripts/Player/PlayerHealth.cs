@@ -16,7 +16,8 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     [SerializeField] float healthRefresh;
     [SerializeField] float timeBtweenStaminaRefresh;
     [SerializeField] float timeBtweenHealthRefresh;
-    [SerializeField] float knockBackThurust;
+    [SerializeField] float cameraShakeForce;
+   
 
     public bool iSDeath=false;
     public float health
@@ -28,7 +29,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         set
         {
             playerData.playerHealth=value; 
-            healthSlider.maxValue = health;
+          SliderManager.Instance.healthSlider.maxValue = health;
         }
     }
     public float currentHealth 
@@ -40,7 +41,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         set
         {
             playerData.playerCurrentHealth = value;
-            healthSlider.value = (float)currentHealth / health;
+            //SliderManager.Instance.healthSlider.value = (float)currentHealth / health;
         } 
     }
     public float stamina
@@ -52,7 +53,7 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         set 
         { 
             playerData.playerStamina = value;
-            staminaSlider.maxValue = stamina;
+            SliderManager.Instance.staminaSlider.maxValue = stamina;
         }
     }
     public  float currentStamina
@@ -64,26 +65,21 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         set 
         { 
             playerData.playerCurrentStamina = value;
-            staminaSlider.value = currentStamina / stamina;
+            //staminaSlider.value = currentStamina / stamina;
         } 
     }
 
     public float currentCoin { get { return playerData.playerCoin; } set { playerData.playerCoin = value; } }
 
-    private readonly string HEALTH_SliDER = "Health";
-    private readonly string STAMINA_SliDER = "Stamina";
-    private readonly string Coin_Text = "CoinText";
 
-    Slider healthSlider;
-    Slider staminaSlider;
-   // Animator myAnimator;
-    TextMeshProUGUI CoinText;
+    // Animator myAnimator;
+ 
     Knockback Knockback;
     Flash flash;
     Rigidbody2D rb;
-   [SerializeField] private ShopDataBase itemDamage;
     [SerializeField] private GameObject playerDie;
     [SerializeField] private GameObject panelDie;
+    [SerializeField] private AudioClip[] audioClips;
     public void Die()
     {
         //PlayerController.Instance.myAnimator.Play("Die");
@@ -95,24 +91,20 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         spr.DOFade(0, 4f).OnComplete(()=>Destroy(plDie));
         //rb.velocity=Vector2.zero;
         StartCoroutine(DieRoutine());
-        panelDie.gameObject.SetActive(true);
+        SoundFXManagement.Instance.PlaySoundFXClip(audioClips[1], this.transform, 1f);
     }
    IEnumerator DieRoutine()
     {
         yield return new WaitForSeconds(.5f);
         this.transform.gameObject.SetActive(false);
-       
-    }    
-    public void PlayerTakeDamage(float damage,Transform damgeSource)
-    {
-        //TakeDamage(damage);
-      //  Knockback.GetKnockBack(damgeSource, knockBackThurust);
+        yield return new WaitForSeconds(.5f);
+        panelDie.gameObject.SetActive(true);
 
-    }
+    }    
     public void TakeDamage(float damage)
     {
             
-        if (currentHealth <= 0)
+        if (currentHealth <= 0&& !iSDeath)
         {
 
             Die();
@@ -121,11 +113,10 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
         }
         else
         {
-            CameraShake.instance.ShakeCamera();
+            SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], this.transform,1f);
+            CameraShake.instance.ShakeCamera(cameraShakeForce);
             currentHealth -= damage;
             StartCoroutine(flash.FlashRoutine());
-            //Vector2 direction = (PlayerController.Instance.IsFacingRight) ? Vector2.right : Vector2.left;
-            //rb.AddForce(direction * knockBackThurust, ForceMode2D.Impulse);
             PlayerController.Instance.myAnimator.SetTrigger(AnimationString.Hurt); 
         }
     }
@@ -159,14 +150,11 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     // Start is called before the first frame update
     void Start()
     {
-        healthSlider =GameObject.Find(HEALTH_SliDER).GetComponent<Slider>();
-        staminaSlider =GameObject.Find(STAMINA_SliDER).GetComponent<Slider>();
-        CoinText = GameObject.Find(Coin_Text).GetComponent<TextMeshProUGUI>();
+      
+        
         Knockback=GetComponent<Knockback>();
         flash=GetComponent<Flash>();
-        
-        healthSlider.value = (float)currentHealth / health;
-        staminaSlider.value = currentStamina / stamina;
+            
         rb =GetComponent<Rigidbody2D>();
        
         if(Knockback == null)
@@ -178,14 +166,6 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
        // playerData.playerMaxDamage = playerData.playeMaxLevel * itemDamage.howMuchMore;
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-       
-      
-        CoinText.text = currentCoin.ToString();
-    }
-   
     private void RefreshStamina()
     {
         if (currentStamina < stamina)

@@ -7,12 +7,13 @@ public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance;
     private CinemachineVirtualCamera cinemachineVirtualCamera;
-    private float shakeIntensity = 1f;
+   // private float shakeIntensity = 5f;
     private float shakeTime = 0.2f;
 
     private float timer = 0;
     private CinemachineBasicMultiChannelPerlin _cbmcp;
 
+    [SerializeField] private Transform cameraTransform;
     private void Awake()
     {
         cinemachineVirtualCamera=GetComponent<CinemachineVirtualCamera>();
@@ -27,17 +28,21 @@ public class CameraShake : MonoBehaviour
     {
         StopShake();
     }
-    public void ShakeCamera()
+    public void ShakeCamera(float shakeIntensity)
     {
         CinemachineBasicMultiChannelPerlin _cbmcp2=cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp2.m_AmplitudeGain=shakeIntensity;
-        timer = shakeTime;
+         timer = shakeTime;
     }
     void StopShake()
     {
         CinemachineBasicMultiChannelPerlin _cbmcp2=cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp2.m_AmplitudeGain = 0f;
         timer = 0f;
+
+        Vector3 rotation = cameraTransform.rotation.eulerAngles;
+        rotation.z = 0;
+        cameraTransform.rotation = Quaternion.Euler(rotation);
 
     }
     private void Update()

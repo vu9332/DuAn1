@@ -8,7 +8,7 @@ public class DemonHealth : BringerOfDeathHealth
     [SerializeField] private bossDemon bossDemon;
     [SerializeField] private PlayerData playData;
     [SerializeField] private GameObject Bar;
-    [SerializeField] private GameObject panelWin;
+    //[SerializeField] private GameObject panelWin;
 
     
     protected override void Awake()
@@ -36,7 +36,7 @@ public class DemonHealth : BringerOfDeathHealth
     }
     public override void Die()
     {
-        panelWin.SetActive(true);
+       // panelWin.SetActive(true);
         StartCoroutine(DisplayTextExp());
         panel.SetActive(true);
         AudioManager.Instance.StopMusicSFX(AudioManager.Instance.Level3);

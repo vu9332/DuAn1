@@ -14,6 +14,7 @@ public class item : MonoBehaviour
 
     [Header("Text")]
     [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI levelText2;
     [SerializeField] TextMeshProUGUI priceText;
 
     [Header("Button")]
@@ -24,7 +25,7 @@ public class item : MonoBehaviour
     [SerializeField] public Slider statusBar;
     [SerializeField] private float numberOfParts=3;
     float partValue;
-    public float coutSlideValue = 0;
+   // public float coutSlideValue = 0;
 
     private void Start()
     {
@@ -38,52 +39,54 @@ public class item : MonoBehaviour
     }
     void AutoUpdateText()
     {
+        
         priceText.text = itemData.price.ToString();
+        levelText2.text = "LV:" + itemData.LevePassiveSkill;
         levelText.text = "LV:" + itemData.LevePassiveSkill;
     }
     private void OnEnable()
     {
         statusBar.value = itemData.saveSlideValue;
         levelText.text = "LV:" + itemData.LevePassiveSkill;
+        levelText2.text = "LV:" + itemData.LevePassiveSkill;
         priceText.text=itemData.price.ToString();
     }
-    public void Buying()
+    public void Buying(ref float data)
     {
-        if (itemData.NumberOfPurchases<itemData.maxPurchaseLimit&& itemData.playerData.playerCoin >= itemData.price)
+        if (itemData.NumberOfPurchases<=itemData.maxPurchaseLimit&& itemData.playerData.playerCoin >= itemData.price)
         {
             this.gameObject.GetComponent<Button>().enabled = false;
-            itemData.playerData.playerHealth += itemData.howMuchMore;
+            data += itemData.howMuchMore;
             PlayerHealth.Instance.UseCoin(itemData.price);
             itemData.NumberOfPurchases++;
             itemData.price += 50;
-            coutSlideValue++;
+            itemData.countPress++;
             StartCoroutine(UpdateSliderInParts());
-           
+            itemData.saveSlideValue += partValue;
+
         }
     }    
    public void CheckValue()
     {
-        if (coutSlideValue == numberOfParts&& itemData.NumberOfPurchases != itemData.maxPurchaseLimit)
+        if (itemData.countPress >= numberOfParts&& itemData.NumberOfPurchases != itemData.maxPurchaseLimit)
         {
             StartCoroutine(DecreaseSliderValue());
-            //itemData.LevePassiveSkill++;
-            //statusBar.transform.DOScale(1.2f, duration).OnComplete(() => statusBar.transform.DOScale(1f, duration));
+            //StartCoroutine(UpdateSliderInParts());
             statusBar.transform.DOShakePosition(.2f, 20f);
             itemData.LevePassiveSkill++;
+            itemData.saveSlideValue = 0;
 
         }
-        this.transform.DOScale(scaleAmount, duration).OnComplete(() => this.transform.DOScale(1f, duration));
-      
+        this.transform.DOScale(scaleAmount, duration).OnComplete(() => this.transform.DOScale(1f, duration));   
     }
     IEnumerator DecreaseSliderValue()
     {
-       
-            coutSlideValue = 0;
+
+            itemData.countPress = 0;
             this.gameObject.GetComponent<Button>().enabled = false;
             yield return new WaitForSeconds(.8f);    
             float elapsed = 0f;
             float duration = .4f;
-
             while (elapsed < duration)
             {
 
@@ -94,8 +97,7 @@ public class item : MonoBehaviour
             }
             statusBar.value = 0f;
             this.gameObject.GetComponent<Button>().enabled = true;
-        
-        
+                
     }
    public  IEnumerator UpdateSliderInParts()
     { 
@@ -112,8 +114,7 @@ public class item : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-       statusBar.value=endValue;
-        itemData.saveSlideValue = statusBar.value;
+       statusBar.value=endValue;   
         this.gameObject.GetComponent<Button>().enabled = true;
         //this.gameObject.GetComponent<Image>().enabled = true;
 

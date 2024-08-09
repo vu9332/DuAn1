@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e985447ea823fbf48a65629a7c9b80d9, type: 3}
   m_Name: newData
   m_EditorClassIdentifier: 
-  playerHealth: 100
-  playerCurrentHealth: 100
+  playerHealth: 120
+  playerCurrentHealth: 98133
   playerStamina: 100
-  playerCurrentStamina: 100
-  playerCoin: 10
-  playerLevel: 11
+  playerCurrentStamina: 64
+  playerCoin: 1970636
+  playerLevel: 10
   playeMaxLevel: 0
-  playerExp: 430
-  playerDamage: 100
+  playerExp: 300
+  playerDamage: 10
   _isMoving: 0
-  _isJumping: 1
+  _isJumping: 0
   _isRunning: 0
   _isDash: 0
   dashCD: 5
   _isRolling: 0
   _isWallSliding: 0
-  _isSkillThreeUnlock: 0
-  _isSkillTwoUnlock: 0
-  _isSkillOneUnlock: 0
+  _isSkillThreeUnlock: 1
+  _isSkillTwoUnlock: 1
+  _isSkillOneUnlock: 1

@@ -15,7 +15,8 @@ MonoBehaviour:
   LevePassiveSkill: 0
   maxPurchaseLimit: 10
   NumberOfPurchases: 0
-  price: 10
+  price: 0
   howMuchMore: 10
+  countPress: 0
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
   saveSlideValue: 0

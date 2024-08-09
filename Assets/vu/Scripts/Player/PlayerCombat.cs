@@ -272,7 +272,7 @@ public class PlayerCombat : MonoBehaviour
             IsNormalAttack = false;
             myAnimator.SetTrigger(AnimationString.IsSkillOne);
             StartCoroutine(SkillOneCoolDown(skillOneData.coolDownTime));
-            CameraShake.instance.ShakeCamera();
+            CameraShake.instance.ShakeCamera(5);
          
         }
         else Debug.Log("Chiêu 1 chưa mở");
@@ -344,7 +344,7 @@ public class PlayerCombat : MonoBehaviour
 
             //    slash.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-        CameraShake.instance.ShakeCamera();
+        CameraShake.instance.ShakeCamera(2);
     }
 
     void FindingEnemy()
@@ -448,7 +448,7 @@ public class PlayerCombat : MonoBehaviour
         rb.AddForce(new Vector2(this.transform.localScale.x * -force, 0), ForceMode2D.Impulse);
         StartCoroutine(calculateDistance());
         StartCoroutine(ActivateEffect());
-        CameraShake.instance.ShakeCamera();
+        CameraShake.instance.ShakeCamera(7);
         CameraZoom.instance.ZoomOut();
         StartCoroutine(SkillThreeCoolDown());
     }
@@ -485,11 +485,12 @@ public class PlayerCombat : MonoBehaviour
         {
             if(enemy!=null)
             {
+                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[1], transform, .5f);
                 GameObject ps = Instantiate(particleOnHitPrefabVFX, enemy.transform.position, transform.rotation);
                 Destroy(ps, .15f);
                 Debug.Log("Enemy: " + enemy.name);
                 enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
-                CameraShake.instance.ShakeCamera();
+                CameraShake.instance.ShakeCamera(3);
             }
           
         }

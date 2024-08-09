@@ -13,6 +13,7 @@ public class ShopDataBase : ScriptableObject
     public float NumberOfPurchases;
     public float price;
     public float howMuchMore;
+    public float countPress;
   //  public Slider statusBar;
     public PlayerData playerData;
     public float saveSlideValue;

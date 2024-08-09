@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: newData
   m_EditorClassIdentifier: 
   playerHealth: 120
-  playerCurrentHealth: 0
+  playerCurrentHealth: 100
   playerStamina: 100
-  playerCurrentStamina: 85
+  playerCurrentStamina: 99
   playerCoin: 1970758
   playerLevel: 10
   playeMaxLevel: 0
@@ -31,3 +31,4 @@ MonoBehaviour:
   _isSkillThreeUnlock: 0
   _isSkillTwoUnlock: 0
   _isSkillOneUnlock: 1
+  CountDeath: 0

@@ -182,9 +182,9 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
             RefreshStamina();
         }
     }  
-  public  IEnumerator RefreshHealthRoutine(float count, float maxHealthCanRefersh)
-    {
-        while (count<=maxHealthCanRefersh)
+  public  IEnumerator RefreshHealthRoutine( float maxHealthCanRefersh)
+    {   float count = 0;
+        while (count <= maxHealthCanRefersh)
         {
             yield return new WaitForSeconds(timeBtweenHealthRefresh);
             RefreshHealth();

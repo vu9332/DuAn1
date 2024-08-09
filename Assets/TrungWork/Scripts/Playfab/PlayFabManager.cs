@@ -35,7 +35,7 @@ public class PlayFabManager : MonoBehaviour
     public Transform posInstance;
     public TextMeshProUGUI scoreHighText, userNameText, emailUserText, IDText;
     private string currentPlayFabId;
-
+    public TextMeshProUGUI titleUsernameText;
     public PlayerData playerStatistics;
 
     public GameObject leaderBoardObj;
@@ -53,10 +53,12 @@ public class PlayFabManager : MonoBehaviour
         //    AutoLogin(emailSaved, passwordSaved);
         //}
     }
-
-    private void Start()
+    private void LateUpdate()
     {
-        leaderBoardObj.SetActive(false);
+        if(SceneManager.GetActiveScene().name== "mainMenu")
+        {
+            GetUserAccountInfo();
+        }
     }
     //Hiển thị màn hình đăng nhập và đăng kí tài khoản
 
@@ -100,7 +102,17 @@ public class PlayFabManager : MonoBehaviour
         screenResetPassword.SetActive(false);
         LoginText.text=null;
     }
-
+    public void HideText()
+    {
+        titleUsernameText.gameObject.SetActive(false);
+        userNameText.text = null;
+    }
+    public void DisplayText()
+    {
+        titleUsernameText.gameObject.SetActive(true);
+        titleUsernameText.text = "HELLO,";
+        userNameText.text = PlayerPrefs.GetString("_yourName")+"!";
+    }
     public void DisplayLeaderBoardPlease()
     {
         leaderBoardObj.SetActive(true);
@@ -167,7 +179,6 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log("Đăng nhập thành công!");
         StartCoroutine(Loading());
         currentPlayFabId = result.PlayFabId;
-        GetUserAccountInfo();
         LoadData();
         PlayerPrefs.SetString("email", emailInput.text);
         PlayerPrefs.SetString("password", passwordInput.text);
@@ -177,9 +188,31 @@ public class PlayFabManager : MonoBehaviour
     }
     IEnumerator Loading()
     {
-        yield return new WaitForSeconds(1f);
-        screenMainMenuWhenLoginSuccess.SetActive(true);
-        screenLogin.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        //AsyncOperation t = SceneManager.LoadSceneAsync("mainMenu");
+        //while (!t.isDone)
+        //{
+        //    yield return null;
+        //}
+        SceneManager.LoadScene("mainMenu");
+        yield return new WaitForSeconds(0.5f);
+        GetUserAccountInfo();
+        GetLeaderboard();
+        DisplayText();
+    }
+    IEnumerator UpdateTextOnLoginScreen()
+    {
+        AsyncOperation t = SceneManager.LoadSceneAsync("Menu2 1");
+        while(!t.isDone)
+        {
+            yield return null;
+        }
+        if(t.isDone)
+        {
+            emailInput.text = null;
+            passwordInput.text = null;
+            LoginText.text = null;
+        }
     }
     void OnErrorLogin(PlayFabError error)
     {
@@ -202,22 +235,22 @@ public class PlayFabManager : MonoBehaviour
     void OnAutoLoginSuccess(LoginResult result)
     {
         currentPlayFabId = PlayerPrefs.GetString("id");
-        GetUserAccountInfo();
         PlayerPrefs.SetString("_yourCurrentPlayerID", currentPlayFabId);
         PlayerPrefs.Save();
         //Debug.Log("Bạn đã tự động đăng nhập!");
     }
-    public void LogOut()
+    void HideAllInputText()
     {
-        screenMainMenuWhenLoginSuccess.SetActive(false);
         LoginText.text = null;
         emailInput.text = null;
         passwordInput.text = null;
         userNameText.text = null;
-        screenLogin.SetActive(true);
+    }
+    public void LogOut()
+    {
+        StartCoroutine(UpdateTextOnLoginScreen());
         SaveData();
         PlayerPrefs.SetInt("status", 0);
-        PlayerPrefs.SetString("id", null);
         PlayerPrefs.Save();
         SendLeaderboard(playerStatistics.playerLevel);
     }
@@ -236,13 +269,14 @@ public class PlayFabManager : MonoBehaviour
     {
         var accountInfo = result.AccountInfo;
         string displayName = accountInfo.TitleInfo.DisplayName;
-        userNameText.text= "Hello, "+displayName+"!";
+        userNameText.text=displayName+"!";
         userNameText.color = new Color(0.009217262f, 1, 0);
+        titleUsernameText.text = "HELLO,";
+        titleUsernameText.color=Color.black;
         PlayerPrefs.SetString("_yourName", displayName);
         string email = accountInfo.PrivateInfo.Email;
         //emailUserText.text = email;
         //IDText.text= PlayerPrefs.GetString("_yourCurrentPlayerID");
-        Debug.Log($"DisplayName: {displayName}, Email: {email}");
     }
 
     // Lấy thống kê người chơi

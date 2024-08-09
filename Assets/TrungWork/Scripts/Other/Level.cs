@@ -21,7 +21,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         experiencesDefault = 100;
-        maxLevel=exLevel.maxLevel;
+        maxLevel=pl.playeMaxLevel;
         rateExperiencesUpLevel= 1 + (float)exLevel.rateExperiencesUpLevel/100;
         if (pl.playerLevel >= maxLevel)
         {

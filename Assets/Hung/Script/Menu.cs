@@ -33,8 +33,8 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI LoginText;
     private void Start()
     {
-        panelMenu.SetActive(false);
-        panelSetting.SetActive(false);
+        //panelMenu.SetActive(false);
+        //panelSetting.SetActive(false);
         panelLogin.SetActive(false);
         panelReg.SetActive(false);
 

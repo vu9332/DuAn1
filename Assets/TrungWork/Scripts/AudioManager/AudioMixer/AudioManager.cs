@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource soundSFX;
     [Header("----------MusicSFX--------------")]
 
+    public AudioClip logTheme;
     public AudioClip mainMenu;
     public AudioClip Level1;
     public AudioClip Level2;
@@ -45,6 +46,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip snd_click_1;
     public AudioClip snd_coin;
     public AudioClip snd_pick_up;
+    public AudioClip snd_win;
+    public AudioClip snd_lose_1;
+    public AudioClip snd_lose_2;
 
     private void Awake()
     {

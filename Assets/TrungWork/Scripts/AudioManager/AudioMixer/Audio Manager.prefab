@@ -305,7 +305,8 @@ MonoBehaviour:
   myMixer: {fileID: 24100000, guid: fe0004c9bfcd52548b05378684e559b2, type: 2}
   musicSFX: {fileID: 2954600203241135583}
   soundSFX: {fileID: 3752385800494548031}
-  mainMenu: {fileID: 8300000, guid: ce3f016046feae5409ecb179ce8a7e56, type: 3}
+  logTheme: {fileID: 8300000, guid: 59151eccc79f35c4baf86ac361dd1b4b, type: 3}
+  mainMenu: {fileID: 8300000, guid: dacbc5acb29736c488a6b8e5ec3b1f1a, type: 3}
   Level1: {fileID: 8300000, guid: 26e6f796892f1d849886518f0c0b414a, type: 3}
   Level2: {fileID: 8300000, guid: 52baa7b615786d040b50738403e84553, type: 3}
   Level3: {fileID: 8300000, guid: ef920327e336e914789f79d1b6ffc7d6, type: 3}
@@ -324,3 +325,6 @@ MonoBehaviour:
   snd_click_1: {fileID: 8300000, guid: 6bad7298a839cc8418c83098f78de442, type: 3}
   snd_coin: {fileID: 8300000, guid: dca73554c95de554da1bb6a48d9f5632, type: 3}
   snd_pick_up: {fileID: 8300000, guid: 7e6499d6becc7d84eba6753f7e08b062, type: 3}
+  snd_win: {fileID: 8300000, guid: 36e84d5f7a945e2429c21af02f393958, type: 3}
+  snd_lose_1: {fileID: 8300000, guid: 9c181796aabe8d24c861492d2cbf78f8, type: 3}
+  snd_lose_2: {fileID: 8300000, guid: a23aae4dba99b0948bf34ea1fe40af93, type: 3}

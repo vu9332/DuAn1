@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour
     // [SerializeField] private bool isOpen;
 
     [SerializeField] private GameObject canvas;
-    bool wantOpen=false;
+   // bool wantOpen=false;
     bool trigger=false;
     private void Start()
     {

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: newData
   m_EditorClassIdentifier: 
   playerHealth: 120
-  playerCurrentHealth: 98133
+  playerCurrentHealth: 0
   playerStamina: 100
-  playerCurrentStamina: 64
-  playerCoin: 1970636
+  playerCurrentStamina: 85
+  playerCoin: 1970758
   playerLevel: 10
   playeMaxLevel: 0
-  playerExp: 300
+  playerExp: 1340
   playerDamage: 10
   _isMoving: 0
   _isJumping: 0
@@ -28,6 +28,6 @@ MonoBehaviour:
   dashCD: 5
   _isRolling: 0
   _isWallSliding: 0
-  _isSkillThreeUnlock: 1
-  _isSkillTwoUnlock: 1
+  _isSkillThreeUnlock: 0
+  _isSkillTwoUnlock: 0
   _isSkillOneUnlock: 1

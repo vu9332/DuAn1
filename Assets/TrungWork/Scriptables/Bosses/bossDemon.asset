@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: bossDemon
   m_EditorClassIdentifier: 
   Name: Demon Slime
-  damageAttack: 10
-  damageSkill_1: 20
-  damageSkill_2: 30
-  health: 100
-  amountExperiencesReceived: 300
+  damageAttack: 20
+  damageSkill_1: 30
+  damageSkill_2: 50
+  health: 500
+  amountExperiencesReceived: 100
   amountCoinsReveived: 20

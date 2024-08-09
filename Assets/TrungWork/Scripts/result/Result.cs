@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
-    public GameObject panelResult;
-    public PlayerData playerData;
+    [SerializeField] private GameObject panelResult;
+    [SerializeField] private PlayerData playerData;
 
     private void Start()
     {
@@ -24,4 +24,5 @@ public class Result : MonoBehaviour
         panelResult.SetActive(false);
         playerData.playerCurrentHealth=playerData.playerHealth;
     }
+ 
 }

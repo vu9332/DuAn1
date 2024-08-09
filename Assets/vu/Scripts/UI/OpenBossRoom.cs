@@ -19,6 +19,7 @@ public class OpenBossRoom : MonoBehaviour
         {
             Instance = this;
         }
+        boss.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -32,10 +33,11 @@ public class OpenBossRoom : MonoBehaviour
         yield return new WaitForSeconds(.7f);
         playerCamera.SetActive(true);
         GameObject ef = Instantiate(effect,spawnPoint.transform);
-        yield return new WaitForSeconds(2f);
-        Destroy(ef);
-        GameObject b = Instantiate(boss,spawnPoint.transform);      
+        yield return new WaitForSeconds(1.5f);
+        //GameObject b = Instantiate(boss,spawnPoint.transform);
+        boss.gameObject.SetActive(true);
         yield return new WaitForSeconds(.3f);
+        ef.SetActive(false);
         playerCamera.SetActive(false);
     }
     //private void SartSpawn()

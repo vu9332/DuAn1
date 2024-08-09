@@ -17,9 +17,10 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     [SerializeField] float timeBtweenStaminaRefresh;
     [SerializeField] float timeBtweenHealthRefresh;
     [SerializeField] float cameraShakeForce;
-   
 
-    public bool iSDeath=false;
+
+    [SerializeField] private bool _isDeath=false;
+    public bool IsDeath { get { return _isDeath;  } set { _isDeath = value; } }
     public float health
     { 
         get
@@ -78,12 +79,12 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     Flash flash;
     Rigidbody2D rb;
     [SerializeField] private GameObject playerDie;
-    [SerializeField] private GameObject panelDie;
+   // [SerializeField] private GameObject panelDie;
     [SerializeField] private AudioClip[] audioClips;
     public void Die()
     {
         //PlayerController.Instance.myAnimator.Play("Die");
-        iSDeath = true;        
+        IsDeath = true;        
        this.transform.GetComponent<SpriteRenderer>().enabled = false;
         this.transform.GetComponent<CapsuleCollider2D>().size = new Vector2(0.1f, 0.1f);
         GameObject plDie = Instantiate(playerDie, this.transform.position,Quaternion.identity);
@@ -97,32 +98,21 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     {
         yield return new WaitForSeconds(.5f);
         this.transform.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.5f);
-        panelDie.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(.5f);
+       // panelDie.gameObject.SetActive(true);
 
     }    
     public void TakeDamage(float damage)
     {
-            
-        if (currentHealth <= 0&& !iSDeath)
+        if(currentHealth>0)
         {
-
-            Die();
-            CameraZoom.instance.ZoomIn();
-
-        }
-        else
-        {
-            SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], this.transform,1f);
+            SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], this.transform, 1f);
             CameraShake.instance.ShakeCamera(cameraShakeForce);
             currentHealth -= damage;
             StartCoroutine(flash.FlashRoutine());
-            PlayerController.Instance.myAnimator.SetTrigger(AnimationString.Hurt); 
-        }
-    }
-
-   
-    
+            PlayerController.Instance.myAnimator.SetTrigger(AnimationString.Hurt);
+        }    
+    }    
    public void BatTu()
     {
         currentHealth += 100000;
@@ -152,20 +142,23 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     {
       
         
-        Knockback=GetComponent<Knockback>();
+        
         flash=GetComponent<Flash>();
             
-        rb =GetComponent<Rigidbody2D>();
-       
-        if(Knockback == null)
-        {
-            Debug.Log("Dang null");
-        }     
+        rb =GetComponent<Rigidbody2D>();      
         StartCoroutine(RefreshStaminaRoutine());
 
        // playerData.playerMaxDamage = playerData.playeMaxLevel * itemDamage.howMuchMore;
     }
-    
+    private void Update()
+    {
+        if (currentHealth <= 0 && !IsDeath)
+        {
+            Die();
+            CameraZoom.instance.ZoomIn();
+            TitlePopup.instance.StartGameoverText();
+        }
+    }
     private void RefreshStamina()
     {
         if (currentStamina < stamina)

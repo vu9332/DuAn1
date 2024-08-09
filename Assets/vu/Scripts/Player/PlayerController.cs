@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isWallJumping&&!PlayerHealth.Instance.iSDeath)
+        if (!isWallJumping&&!PlayerHealth.Instance.IsDeath)
         {
         ApplyMovement();
           

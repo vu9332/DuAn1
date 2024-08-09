@@ -17,10 +17,16 @@ public class Demon : Boss
             myAnimator.SetBool("WakeUp", OpenBossRoom.Instance.IsBossWakeUp);
             FindPlayer();
         }
+
+        if (PlayerHealth.Instance.IsDeath)
+        {
+            myAnimator.enabled = false;
+        }
     }
     private void FindPlayer()
     {
-        base.FindCollider();
+        
+             base.FindCollider();
     }
     private void MoveMent()
     {

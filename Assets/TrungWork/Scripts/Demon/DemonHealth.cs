@@ -25,10 +25,7 @@ public class DemonHealth : BringerOfDeathHealth
     }
     private void Update()
     {
-        if (playData.playerCurrentHealth <= 0)
-        {
-            healthBar.gameObject.SetActive(false);
-        }
+      
     }
     public override void TakeDamage(float damage)
     {

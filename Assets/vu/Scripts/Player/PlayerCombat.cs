@@ -222,16 +222,12 @@ public class PlayerCombat : MonoBehaviour
 
 
 
-        if (context.performed && TouchingDirection.Instance.IsGround && playerHealth.currentStamina > 2)
+        if (context.performed && TouchingDirection.Instance.IsGround)
         {
 
             // rb.velocity = Vector2.zero;
-            if (IsSkillOne && CanAttack && (!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash))
-            {
-                Debug.Log("Chiêu 1 ");
-                ActivateSkillOne();
-
-            }
+            
+            ActivateSkillOne();
         }
 
 
@@ -262,18 +258,18 @@ public class PlayerCombat : MonoBehaviour
     {
         if (SkillManager.Instance.IsSkillOneUnlock&& IsSkillOne)
         {
-            IsSkillOne = false;
-            SoundFXManagement.Instance.PlaySoundFXClip(skillOneData.soundEffect[0], transform, 0.3f);
-            // trailRenderer.emitting = true;
-            playerHealth.currentStamina -= 2;
-            startPointSlideSkillOne = this.transform.position;
-            CanAttack = false;
-          //  StartCoroutine(SK1Slide());
-            IsNormalAttack = false;
-            myAnimator.SetTrigger(AnimationString.IsSkillOne);
-            StartCoroutine(SkillOneCoolDown(skillOneData.coolDownTime));
-            CameraShake.instance.ShakeCamera(5);
-         
+            if (IsSkillOne && CanAttack && (!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && playerHealth.currentStamina >=skillOneData.StaminaUse)
+            {
+                IsSkillOne = false;
+                SoundFXManagement.Instance.PlaySoundFXClip(skillOneData.soundEffect[0], transform, 0.3f);
+                playerHealth.UseStamina(skillOneData.StaminaUse);
+                startPointSlideSkillOne = this.transform.position;
+                CanAttack = false;
+                IsNormalAttack = false;
+                myAnimator.SetTrigger(AnimationString.IsSkillOne);
+                StartCoroutine(SkillOneCoolDown(skillOneData.coolDownTime));
+                CameraShake.instance.ShakeCamera(5);
+            }       
         }
         else Debug.Log("Chiêu 1 chưa mở");
     }
@@ -298,11 +294,8 @@ public class PlayerCombat : MonoBehaviour
 
         if (context.started && playerHealth.currentStamina > 2)
         {
-            if (IsSkillTwo && CanAttack && (!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash))
-            {
-
-                ActivateSkillTwo();
-            }
+           
+                ActivateSkillTwo();          
         }
         CanAttack = true;
 
@@ -311,14 +304,18 @@ public class PlayerCombat : MonoBehaviour
     public void ActivateSkillTwo()
     {
         if (SkillManager.Instance.IsSkillTwoUnlock&& IsSkillTwo)
-        {           
-            SoundFXManagement.Instance.PlaySoundFXClip(skillTwoData.soundEffect[0], transform, .5f);
-            playerHealth.currentStamina -= 2;
-            IsSkillTwo = false;
-            CanAttack = false;
-            myAnimator.SetTrigger(AnimationString.IsSkillTwo);
-            FindingEnemy();
-            StartCoroutine(SkillTwoCoolDown(skillTwoData.coolDownTime));
+        {
+            if (IsSkillTwo && CanAttack && (!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && playerHealth.currentStamina >= skillTwoData.StaminaUse)
+            {
+                playerHealth.UseStamina(skillTwoData.StaminaUse);
+                SoundFXManagement.Instance.PlaySoundFXClip(skillTwoData.soundEffect[0], transform, .5f);
+                IsSkillTwo = false;
+                CanAttack = false;
+                myAnimator.SetTrigger(AnimationString.IsSkillTwo);
+                FindingEnemy();
+                StartCoroutine(SkillTwoCoolDown(skillTwoData.coolDownTime));
+            }
+          
         }
         else Debug.Log("Chiêu 2 chưa mở");
     }
@@ -397,23 +394,28 @@ public class PlayerCombat : MonoBehaviour
     {
         if (SkillManager.Instance.IsSkillThreeUnlock&& IsSkillThree)
         {
-            SoundFXManagement.Instance.PlaySoundFXClip(skillThreeData.soundEffect[0], transform, 1f);
-            CameraZoom.instance.ZoomIn();
-            IsSkillThree = false;
-            CanAttack = false;
-            myAnimator.SetTrigger(AnimationString.IsSkillThree);
-            startPosknock = this.transform.position;
-            if (!IsSkillThree)
+            if (IsSkillThree && CanAttack && (!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && playerHealth.currentStamina >= skillThreeData.StaminaUse)
             {
-                foreach (Transform chilld in this.transform)
+                playerHealth.UseStamina(skillThreeData.StaminaUse);
+                SoundFXManagement.Instance.PlaySoundFXClip(skillThreeData.soundEffect[0], transform, 1f);
+                CameraZoom.instance.ZoomIn();
+                IsSkillThree = false;
+                CanAttack = false;
+                myAnimator.SetTrigger(AnimationString.IsSkillThree);
+                startPosknock = this.transform.position;
+                if (!IsSkillThree)
                 {
-                    if (chilld.gameObject.name == ("SkillEffect"))
+                    foreach (Transform chilld in this.transform)
                     {
-                        chilld.gameObject.SetActive(true);
+                        if (chilld.gameObject.name == ("SkillEffect"))
+                        {
+                            chilld.gameObject.SetActive(true);
+                        }
                     }
-                }
 
+                }
             }
+           
         }
         else Debug.Log("Chiêu 3 chưa mở");
 

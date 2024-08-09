@@ -42,4 +42,7 @@ public class PlayerData : ScriptableObject
     public bool _isSkillThreeUnlock = false;
     public bool _isSkillTwoUnlock = false;
     public bool _isSkillOneUnlock = false;
+
+    [Header("Count Death")]
+    public float CountDeath;
 } 

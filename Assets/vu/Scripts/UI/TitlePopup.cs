@@ -41,14 +41,15 @@ public class TitlePopup : MonoBehaviour
         title.DOFade(1f, 3f);
         boxTitle.DOFade(1f, 2f);
         skullImage.DOFade(1f, 2f);
+        BlinkText();
     }
     public void ShowDeathBox() => StartCoroutine(DeathBoard());
    IEnumerator DeathBoard()
-    {
-        yield return new WaitForSeconds(3f);      
+    {      
         title.DOFade(0f, 1f);
         boxTitle.DOFade(0f, 1f).OnComplete(() => OpenDeathBox());
         skullImage.DOFade(0f, 1f);
+        titleContinue.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
         title.gameObject.SetActive(false);
         boxTitle.gameObject.SetActive(false);
@@ -57,4 +58,9 @@ public class TitlePopup : MonoBehaviour
     {
         panelResult.SetActive(true);
     }
+    void BlinkText()
+    {
+        titleContinue.DOFade(0,.7f).SetLoops(-1,LoopType.Yoyo);
+
+    }    
 }

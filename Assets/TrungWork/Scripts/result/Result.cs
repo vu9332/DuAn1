@@ -23,6 +23,7 @@ public class Result : MonoBehaviour
         SceneManager.LoadScene(2);
         panelResult.SetActive(false);
         playerData.playerCurrentHealth=playerData.playerHealth;
+        playerData.playerCurrentStamina=playerData.playerStamina;
     }
  
 }

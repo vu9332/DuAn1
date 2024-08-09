@@ -83,14 +83,13 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     [SerializeField] private AudioClip[] audioClips;
     public void Die()
     {
-        //PlayerController.Instance.myAnimator.Play("Die");
+        playerData.CountDeath++;
         IsDeath = true;        
        this.transform.GetComponent<SpriteRenderer>().enabled = false;
         this.transform.GetComponent<CapsuleCollider2D>().size = new Vector2(0.1f, 0.1f);
         GameObject plDie = Instantiate(playerDie, this.transform.position,Quaternion.identity);
         SpriteRenderer spr= plDie.GetComponent<SpriteRenderer>();
         spr.DOFade(0, 4f).OnComplete(()=>Destroy(plDie));
-        //rb.velocity=Vector2.zero;
         StartCoroutine(DieRoutine());
         SoundFXManagement.Instance.PlaySoundFXClip(audioClips[1], this.transform, 1f);
     }
@@ -98,9 +97,6 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     {
         yield return new WaitForSeconds(.5f);
         this.transform.gameObject.SetActive(false);
-        //yield return new WaitForSeconds(.5f);
-       // panelDie.gameObject.SetActive(true);
-
     }    
     public void TakeDamage(float damage)
     {
@@ -121,7 +117,6 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     {
         currentCoin += 1000000;
     }    
-    // private Transform GetTransform() { return enemyTransform; }
     public void UseStamina(float staminaUse)
     {
         currentStamina-=staminaUse;
@@ -137,7 +132,6 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
             Instance = this;
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
       
@@ -147,8 +141,6 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
             
         rb =GetComponent<Rigidbody2D>();      
         StartCoroutine(RefreshStaminaRoutine());
-
-       // playerData.playerMaxDamage = playerData.playeMaxLevel * itemDamage.howMuchMore;
     }
     private void Update()
     {

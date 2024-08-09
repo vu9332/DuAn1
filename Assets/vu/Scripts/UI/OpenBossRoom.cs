@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class OpenBossRoom : MonoBehaviour
 {
+    public static OpenBossRoom Instance {  get; private set; }  
+
     [SerializeField]  private GameObject boss;
     [SerializeField] private GameObject effect;
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private bool _isBossWakeUp=false;
     public bool IsBossWakeUp { get { return _isBossWakeUp; } private set { _isBossWakeUp = value; } }
+
+    private void Start()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.GetComponent<PlayerController>() != null)
+        if(other.gameObject.GetComponent<PlayerController>() != null&&!IsBossWakeUp)
             StartCoroutine(BossWakeUp());
     }
     IEnumerator BossWakeUp()
@@ -24,9 +34,8 @@ public class OpenBossRoom : MonoBehaviour
         GameObject ef = Instantiate(effect,spawnPoint.transform);
         yield return new WaitForSeconds(2f);
         Destroy(ef);
-        GameObject b = Instantiate(boss,spawnPoint.transform);
-      
-        yield return new WaitForSeconds(3f);
+        GameObject b = Instantiate(boss,spawnPoint.transform);      
+        yield return new WaitForSeconds(.3f);
         playerCamera.SetActive(false);
     }
     //private void SartSpawn()

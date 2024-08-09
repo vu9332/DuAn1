@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Demon : Boss
 {
+    Animator myAnimator;
     protected override void Awake()
     {
+        myAnimator = GetComponent<Animator>();
         base.Awake();
     }
     void Update()
     {
-        FindPlayer();
+        if(OpenBossRoom.Instance.IsBossWakeUp)
+        {
+            myAnimator.SetBool("WakeUp", OpenBossRoom.Instance.IsBossWakeUp);
+            FindPlayer();
+        }
     }
     private void FindPlayer()
     {

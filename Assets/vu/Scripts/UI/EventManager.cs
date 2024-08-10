@@ -20,11 +20,7 @@ public class EventManager : MonoBehaviour
      public  GameObject cardBoard;
      public  GameObject toolBoard;
 
-    bool isTool=false;
-    //Transform[] card;
-    //[SerializeField]   List< bool> boolObj =  new List<bool>();
-   // CardSelectionHandler[] chillObj;
-
+    bool isTool = false;
     private void Awake()
     {
         if (Instance == null)

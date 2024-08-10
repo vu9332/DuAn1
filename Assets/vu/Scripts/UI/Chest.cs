@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ public class Chest : MonoBehaviour, IDamageAble
     [SerializeField] private float time;
     [SerializeField] private bool isKey=false;
     private float timer = 0;
+    [SerializeField] private AudioClip audioClip;
     public float health { get { return chestHealth; } set { chestHealth = value; } }
     
     public void Die()
@@ -46,6 +48,7 @@ public class Chest : MonoBehaviour, IDamageAble
         if (health > 0)
         {
             health -= damage;
+            SoundFXManagement.Instance.PlaySoundFXClip(audioClip,this.transform,.7f);
         }
         else if(health <= 0)
         {

@@ -1,4 +1,5 @@
-    using System.Collections;
+using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,13 @@ public class Player_Abilities : MonoBehaviour
 
     [SerializeField] Image DashImage;
     [SerializeField] PlayerData playerData;
+
+
+    [SerializeField] private Image keyImage;
+    public bool isGetKey { get { return playerData.IsKeyUnlock; } set { value = isGetKey; keyImage.DOColor(Color.white, 1f);}}
+
+
+
     void Start()
     {
        
@@ -31,8 +39,8 @@ public class Player_Abilities : MonoBehaviour
             skill2Image.fillAmount = 0; 
             skill3Image.fillAmount = 0; 
             DashImage.fillAmount = 0;
-      
 
+           keyImage.DOColor(Color.black, 0.1f);
     }
 
     // Update is called once per frame

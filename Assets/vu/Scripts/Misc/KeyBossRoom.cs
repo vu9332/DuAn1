@@ -8,13 +8,19 @@ public class KeyBossRoom : MonoBehaviour
 {
     [SerializeField] private PlayerData newData;
 
-    private void OnCollisionEnter2D(Collision2D other)
+ 
+    private void Start()
     {
-        if (other.gameObject.GetComponent <PlayerController >()!=null)
+      
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerController>()!=null)
         {
-            newData.IsKeyUnlock = true;
-           SpriteRenderer im = this.gameObject.GetComponent<SpriteRenderer>();
-            im.DOFade(0f, 2);
+            //  Player_Abilities.Instance.isGetKey = true;
+            //SpriteRenderer im = this.gameObject.GetComponent<SpriteRenderer>();
+           // im.DOFade(0f, 2);
         }
+       
     }
 }

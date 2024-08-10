@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df242325bcb33414989f4663415f36c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToload: map1
-  sceneNameTransitionName: m2
+  sceneToload: map2
+  sceneNameTransitionName: m1
 --- !u!114 &404970381528953963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 8330996173448721365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.7, z: 0}
+  m_LocalPosition: {x: -1.81, y: -18.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd5347939f9e7b4e8a5331d61c12d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionName: 
+  transitionName: m2
   playerTransform: {fileID: 0}

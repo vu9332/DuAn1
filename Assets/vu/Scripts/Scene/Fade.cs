@@ -36,6 +36,6 @@ public class Fade : MonoBehaviour
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, alpha);
             yield return null;
         }
-
+        this.gameObject.SetActive(false);
     }
 }

@@ -136,7 +136,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 986992273
-  m_SortingOrder: 101
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &2624859143154545278
 MonoBehaviour:
@@ -191,4 +191,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 7144449315988033117}
-  fadeSpeed: 1
+  fadeSpeed: 2

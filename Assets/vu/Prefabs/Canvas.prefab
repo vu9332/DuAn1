@@ -2874,8 +2874,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5594279961900652378}
   - {fileID: 3278023313110256451}
+  - {fileID: 5594279961900652378}
   m_Father: {fileID: 31017052785940492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7311,7 +7311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.0000019073486}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8732798266421560300
@@ -12239,6 +12239,7 @@ MonoBehaviour:
   skill3Data: {fileID: 11400000, guid: 2d772fe7561809f4f8e21f27ac6e99fc, type: 2}
   DashImage: {fileID: 1706925486683118150}
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  keyImage: {fileID: 0}
 --- !u!1 &8851054629037936299
 GameObject:
   m_ObjectHideFlags: 0

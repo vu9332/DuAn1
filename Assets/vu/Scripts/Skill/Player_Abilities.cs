@@ -27,8 +27,8 @@ public class Player_Abilities : MonoBehaviour
     [SerializeField] PlayerData playerData;
 
 
-    [SerializeField] private Image keyImage;
-    public bool isGetKey { get { return playerData.IsKeyUnlock; } set { value = isGetKey; keyImage.DOColor(Color.white, 1f);}}
+   // [SerializeField] private Image keyImage;
+   // public bool isGetKey { get { return playerData.IsKeyUnlock; } set { value = isGetKey; keyImage.DOColor(Color.white, 1f);}}
 
 
 
@@ -40,7 +40,7 @@ public class Player_Abilities : MonoBehaviour
             skill3Image.fillAmount = 0; 
             DashImage.fillAmount = 0;
 
-           keyImage.DOColor(Color.black, 0.1f);
+          // keyImage.DOColor(Color.black, 0.1f);
     }
 
     // Update is called once per frame

@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour, IDamageAble
         {
             playr.gameObject.GetComponent<PlayerHealth>().TakeDamage(10);
         }
-        else Debug.Log("Null");
+     
     }
     public virtual void Die()
     {

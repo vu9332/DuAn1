@@ -139,14 +139,14 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if ((!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && touchingDirection.IsGround && playerHealth.currentStamina > 1)
+            if ((!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && touchingDirection.IsGround && playerHealth.currentStamina > 5)
             {
               
                 rb.velocity = Vector2.zero;
                 if (context.started && comboTempo < 0 &&IsNormalAttack)
                 {
-                    //  SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3], transform, .5f);
-                    playerHealth.currentStamina -= 1;
+                   
+                    playerHealth.UseStamina(5);
                     IsNormalAttack = false;
                     startMoveWhileAttackPos = rb.position;
                     StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
@@ -156,15 +156,13 @@ public class PlayerCombat : MonoBehaviour
                 }
                 else if (context.started && (comboTempo > 0 && comboTempo <= 1f) &&IsNormalAttack)
                 {
-                    // SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[3], transform, .5f);
-
                     IsNormalAttack = false;
                     combo++;
                     if (combo > comboNumber)
                     {
                         combo = 1;
                     }
-                    playerHealth.currentStamina -= 1;
+                    playerHealth.UseStamina(5);
                     startMoveWhileAttackPos = rb.position;
                     myAnimator.SetTrigger(AnimationString.IsNormalAttack + combo);
                     comboTempo = comboTiming;
@@ -177,11 +175,12 @@ public class PlayerCombat : MonoBehaviour
                 }
 
             }
-            else if (!touchingDirection.IsGround && context.started && IsNormalAttack)
+            else if (!touchingDirection.IsGround && context.started && IsNormalAttack&&playerHealth.stamina>=5)
             {
-                IsNormalAttack = false;PlayerController.Instance. moveInput = Vector2.zero;
+                IsNormalAttack = false;//PlayerController.Instance. moveInput = Vector2.zero;
                 myAnimator.SetTrigger(AnimationString.IsAirAttack);
-                playerHealth.currentStamina -= 1;
+                playerHealth.UseStamina(5);
+                IsNormalAttack = false;
                 StartCoroutine(NormalAttackCoolDown(attackNormalCoolDown));
             }
         }

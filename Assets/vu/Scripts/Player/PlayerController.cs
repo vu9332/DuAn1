@@ -69,8 +69,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 wallJumpPower = new Vector2(5f, 8f);
 
     private bool PassiveSkillsBoardOpen = false;
-      
-    
+
+ 
     public float currentMoveSpeed
     {
         get
@@ -141,11 +141,13 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Stuff")]
     [SerializeField] private GameObject _cameraFollowGo; 
     private CameraFollowObject _cameraFollowObjet;
-    //private float _fallSpeedYDamingChangeThreshold;
+    private float _fallSpeedYDamingChangeThreshold;
     private void Awake()
     {
         if(Instance==null)
             Instance = this;
+
+
     }
     void Start()
     {
@@ -158,7 +160,7 @@ public class PlayerController : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         ghost = GetComponent<Ghost>();
         _cameraFollowObjet=_cameraFollowGo.GetComponent<CameraFollowObject>();
-      ///_fallSpeedYDamingChangeThreshold=CameraManager.instance.fallSpeedYDampingChangeThreshold;
+      _fallSpeedYDamingChangeThreshold=CameraManager.instance.fallSpeedYDampingChangeThreshold;
     }
 
     void Update()
@@ -173,7 +175,20 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
         ProcessWallSlide();
         ProcessWallJump();
+        if (rb.velocity.y<_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&!CameraManager.instance.LerpededFromPlayerFalling)
+        {
+       
+            CameraManager.instance.LerpYDamping(true);
+         
+            Debug.Log("1");
 
+        }
+        if(rb.velocity.y >= 0f &&!CameraManager.instance.IsLerpingYDamping&&CameraManager.instance.LerpededFromPlayerFalling)
+        {
+            CameraManager.instance.LerpededFromPlayerFalling = false;
+            CameraManager.instance.LerpYDamping(false);
+            Debug.Log("2");
+        }
         //
         //if (rb.velocity.y<=-_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&!CameraManager.instance.LerpededFromPlayerFalling)
         //{
@@ -197,12 +212,13 @@ public class PlayerController : MonoBehaviour
             moveInput = context.ReadValue<Vector2>();
             IsMoving = moveInput != Vector2.zero;
             SetFacingDirection(moveInput);
-            Debug.Log("Move");
+           
         }
         else
         {
             IsMoving = false;
-           // moveInput = Vector2.zero;
+            // moveInput = Vector2.zero;
+            rb.velocity = Vector2.zero;
           //  Debug.Log("NotMove");
         }
         // if (!IsRolling)
@@ -334,7 +350,7 @@ public class PlayerController : MonoBehaviour
     {
         if (touchingDirection.IsGround && CanJump(context))
         {
-            Debug.Log("DoJump");
+            
             SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[2], this.transform, .7f);
             myAnimator.SetTrigger(AnimationString.IsJumping);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);

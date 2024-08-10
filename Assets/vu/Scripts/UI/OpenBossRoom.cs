@@ -8,7 +8,7 @@ public class OpenBossRoom : MonoBehaviour
 
     [SerializeField]  private GameObject boss;
     [SerializeField] private GameObject effect;
-    [SerializeField] private GameObject playerCamera;
+    [SerializeField] private GameObject miniMap;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private bool _isBossWakeUp=false;
     public bool IsBossWakeUp { get { return _isBossWakeUp; } private set { _isBossWakeUp = value; } }
@@ -35,16 +35,16 @@ public class OpenBossRoom : MonoBehaviour
     {
         SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], transform, 1f);
         IsBossWakeUp = true;
-        playerCamera.SetActive(false);
+      //  playerCamera.SetActive(false);
         yield return new WaitForSeconds(.7f);
-        playerCamera.SetActive(true);
+       // playerCamera.SetActive(true);
         GameObject ef = Instantiate(effect,spawnPoint.transform);
         yield return new WaitForSeconds(1.5f);
         //GameObject b = Instantiate(boss,spawnPoint.transform);
         boss.gameObject.SetActive(true);
         yield return new WaitForSeconds(.3f);
         ef.SetActive(false);
-        playerCamera.SetActive(false);
+      //  playerCamera.SetActive(false);
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
     }
     //private void SartSpawn()

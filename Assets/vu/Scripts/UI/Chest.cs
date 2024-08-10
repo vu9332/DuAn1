@@ -1,57 +1,58 @@
-﻿using System.Collections;
+using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Chest : MonoBehaviour
+public class Chest : MonoBehaviour, IDamageAble
 {
-   BoxCollider2D box;
-    Animator animator;
-    // [SerializeField] private bool isOpen;
-
-    [SerializeField] private GameObject canvas;
-   // bool wantOpen=false;
-    bool trigger=false;
-    private void Start()
+    [Header("key Instantiate")]
+    [SerializeField] private float chestHealth;
+    [SerializeField] private float keyJumpHeight;
+    [SerializeField] private float keyJumpDoration;
+    [SerializeField] private Transform keySpawnPoint;
+    [SerializeField] private GameObject keyRoom;
+    [Header("")]
+    [SerializeField] private float time;
+    [SerializeField] private bool isKey=false;
+    private float timer = 0;
+    public float health { get { return chestHealth; } set { chestHealth = value; } }
+    
+    public void Die()
     {
-        animator = GetComponent<Animator>();
-        canvas.SetActive(false);
-          
+        if (!isKey) 
+            StartCoroutine(JumpKey());
     }
-    private void Update()
+    IEnumerator JumpKey()
     {
-        if (Input.GetKeyUp(KeyCode.C)&&trigger)
+        GameObject go = Instantiate(keyRoom,keySpawnPoint.position,Quaternion.identity);
+        go.transform.DOMoveY(go.transform.position.y+keyJumpHeight,keyJumpDoration).SetEase(Ease.OutCirc);
+        isKey = true;
+        timer = time;
+        while (timer >= 0)
         {
-            canvas.SetActive(false);
-            EventManager.OpenSkillMenu();
+            timer -= Time.deltaTime;
+            yield return null;
         }
-      
-    }
-    private void OnTriggerStay2D(Collider2D other)
+        if (timer <= 0)
+        {
+          go.gameObject.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Static;
+           // go.gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        }
+    }    
+    
+    public void TakeDamage(float damage)
     {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
+        if (health > 0)
         {
-
-
-            trigger = true;
-            canvas.SetActive(true);
-          
-            //EventManager.IsUpdateCard();
-
-
+            health -= damage;
         }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
+        else if(health <= 0)
         {
-            trigger= false;
-            canvas.SetActive(false);
-            EventManager.CloseSkillMenu();
-           // wantOpen = false;
-
-
+            Animator animator = GetComponent<Animator>();
+            animator.Play("Chest");
+            health = 0;
+            Die();
         }
-       
-
     }
 }

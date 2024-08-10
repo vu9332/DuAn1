@@ -16,8 +16,9 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     [SerializeField] float healthRefresh;
     [SerializeField] float timeBtweenStaminaRefresh;
     [SerializeField] float timeBtweenHealthRefresh;
+    [SerializeField] float timeBtweenTakeDamage;
     [SerializeField] float cameraShakeForce;
-
+    bool canTakeDamage=true;
 
     [SerializeField] private bool _isDeath=false;
     public bool IsDeath { get { return _isDeath;  } set { _isDeath = value; } }
@@ -100,15 +101,30 @@ public class PlayerHealth : MonoBehaviour,IDamageAble
     }    
     public void TakeDamage(float damage)
     {
-        if(currentHealth>0)
+        if(currentHealth>0&&canTakeDamage)
         {
             SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], this.transform, 1f);
             CameraShake.instance.ShakeCamera(cameraShakeForce);
             currentHealth -= damage;
             StartCoroutine(flash.FlashRoutine());
             PlayerController.Instance.myAnimator.SetTrigger(AnimationString.Hurt);
+            StartCoroutine(BetweenTakeDamage());
+            canTakeDamage=false;
         }    
     }    
+    IEnumerator BetweenTakeDamage()
+    {
+        float timer=timeBtweenTakeDamage;
+        while (timer >= 0)
+        {
+            timer-=Time.deltaTime;
+            yield return null;
+        }
+        if (timer <= 0)
+        {
+            canTakeDamage = true;
+        }
+    }
    public void BatTu()
     {
         currentHealth += 100000;

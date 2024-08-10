@@ -13,6 +13,7 @@ public class OpenBossRoom : MonoBehaviour
     [SerializeField] private bool _isBossWakeUp=false;
     public bool IsBossWakeUp { get { return _isBossWakeUp; } private set { _isBossWakeUp = value; } }
 
+    [SerializeField] private AudioClip[] audioClips;
     private void Start()
     {
         if(Instance == null)
@@ -24,10 +25,15 @@ public class OpenBossRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.GetComponent<PlayerController>() != null&&!IsBossWakeUp)
+        {
             StartCoroutine(BossWakeUp());
+          
+        }
+         
     }
     IEnumerator BossWakeUp()
     {
+        SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], transform, 1f);
         IsBossWakeUp = true;
         playerCamera.SetActive(false);
         yield return new WaitForSeconds(.7f);
@@ -39,6 +45,7 @@ public class OpenBossRoom : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         ef.SetActive(false);
         playerCamera.SetActive(false);
+        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
     }
     //private void SartSpawn()
     //{

@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef0084e727cc9f14ab72b0a012bfdf00, type: 3}
   SkillIcon: {fileID: 0}
   _DoSkill: 1
+  StaminaUse: 20

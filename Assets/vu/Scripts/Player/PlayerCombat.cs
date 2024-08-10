@@ -486,13 +486,22 @@ public class PlayerCombat : MonoBehaviour
         foreach (var enemy in HitsEnemies)
         {
             if(enemy!=null)
-            {
-                SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[1], transform, .5f);
-                GameObject ps = Instantiate(particleOnHitPrefabVFX, enemy.transform.position, transform.rotation);
-                Destroy(ps, .15f);
-                Debug.Log("Enemy: " + enemy.name);
-                enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
-                CameraShake.instance.ShakeCamera(3);
+            {   Enemy en = enemy.gameObject.GetComponent<Enemy>();   
+                Chest ch = enemy.GetComponent<Chest>();
+                if (en != null)
+                {
+                    SoundFXManagement.Instance.PlaySoundFXClip(attackSoundClip[1], transform, .5f);
+                    GameObject ps = Instantiate(particleOnHitPrefabVFX, enemy.transform.position, transform.rotation);
+                    Destroy(ps, .15f);
+                    //enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
+                    en.TakeDamage(playerDamage);
+                    CameraShake.instance.ShakeCamera(3);
+                }
+                else if (ch != null)
+                {
+                    ch.TakeDamage(10);
+                }
+                
             }
           
         }

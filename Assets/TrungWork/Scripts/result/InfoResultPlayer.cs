@@ -17,6 +17,7 @@ public class InfoResultPlayer : MonoBehaviour
         txtUsername.text = PlayerPrefs.GetString("_yourName");
         txtLevel.text = playerData.playerLevel.ToString();
         txtGoldTotal.text = playerData.playerCoin.ToString();
+        txtDeadsTotal.text = playerData.CountDeath.ToString();
         //txtDeadsTotal.text= 0.ToString();
         if (playerData.playerCurrentHealth <= 0)
         {

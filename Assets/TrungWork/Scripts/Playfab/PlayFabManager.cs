@@ -52,6 +52,13 @@ public class PlayFabManager : MonoBehaviour
         //    string passwordSaved = PlayerPrefs.GetString("password");
         //    AutoLogin(emailSaved, passwordSaved);
         //}
+        if (SceneManager.GetActiveScene().name == "mainMenu")
+        {
+            userNameText.text = PlayerPrefs.GetString("_yourName") + "!";
+            userNameText.color = new Color(0.009217262f, 1, 0);
+            titleUsernameText.text = "HELLO,";
+            titleUsernameText.color = Color.white;
+        }
     }
     private void LateUpdate()
     {

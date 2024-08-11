@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e985447ea823fbf48a65629a7c9b80d9, type: 3}
   m_Name: newData
   m_EditorClassIdentifier: 
-  playerHealth: 150
-  playerCurrentHealth: 150
+  playerHealth: 120
+  playerCurrentHealth: 40
   playerStamina: 100
-  playerCurrentStamina: 100
-  playerCoin: 1970716
-  playerLevel: 10
+  playerCurrentStamina: 102
+  playerCoin: 89
+  playerLevel: 1
   playeMaxLevel: 0
-  playerExp: 1990
+  playerExp: 150
   playerDamage: 10
   _isMoving: 0
   _isJumping: 0
@@ -28,8 +28,8 @@ MonoBehaviour:
   dashCD: 5
   _isRolling: 0
   _isWallSliding: 0
-  _isSkillThreeUnlock: 1
-  _isSkillTwoUnlock: 1
-  _isSkillOneUnlock: 1
-  CountDeath: 6
-  IsKeyUnlock: 0
+  _isSkillThreeUnlock: 0
+  _isSkillTwoUnlock: 0
+  _isSkillOneUnlock: 0
+  CountDeath: 14
+  IsKeyUnlock: 1

@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     PlayerHealth playerHealth;
     TouchingDirection touchingDirection;
     Rigidbody2D rb;
-  public  Animator myAnimator;
+   public  Animator myAnimator;
     ParticleSystem partic;
   public  Vector2 moveInput;
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: bossFlyingEyes
   m_EditorClassIdentifier: 
   Name: Flying Eyes
-  damage: 10
-  health: 30
+  damage: 30
+  health: 200
   damageBite: 20
   amountExperiencesReceived: 100
-  amountCoinsReveived: 15
+  amountCoinsReveived: 100

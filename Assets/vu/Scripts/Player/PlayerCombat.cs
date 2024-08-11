@@ -136,7 +136,7 @@ public class PlayerCombat : MonoBehaviour
     }
     #region normal attack
     public void OnAttack(InputAction.CallbackContext context)
-    {
+    { 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if ((!PlayerController.Instance.IsRolling && !PlayerController.Instance.IsDash) && touchingDirection.IsGround && playerHealth.currentStamina > 5)

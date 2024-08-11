@@ -59,7 +59,7 @@ public class item : MonoBehaviour
             data += itemData.howMuchMore;
             PlayerHealth.Instance.UseCoin(itemData.price);
             itemData.NumberOfPurchases++;
-            itemData.price += 50;
+            itemData.price *= 1.10f;
             itemData.countPress++;
             StartCoroutine(UpdateSliderInParts());
             itemData.saveSlideValue += partValue;

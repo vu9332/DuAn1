@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 1563174618690951825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -447,7 +447,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -760,9 +760,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0.29
+  priority: 11.21
   blendDistance: 0
-  weight: 1
+  weight: 0.19
   sharedProfile: {fileID: 11400000, guid: e624285758e4f484f96e47a8d7eadc3a, type: 2}
 --- !u!1 &6690378187390663425
 GameObject:
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 1, y: 1.7, z: 0}
+  m_TrackedObjectOffset: {x: 1, y: 4.62, z: 0}
   m_LookaheadTime: 0.157
   m_LookaheadSmoothing: 5.86
   m_LookaheadIgnoreY: 0
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 9.78
+    OrthographicSize: 11.82
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

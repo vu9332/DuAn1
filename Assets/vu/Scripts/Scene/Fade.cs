@@ -8,6 +8,16 @@ public class Fade : MonoBehaviour
     [SerializeField] private Image fadeScreen;
     [SerializeField] private float fadeSpeed;
 
+    [SerializeField] private GameObject fadeObject;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerHealth>() != null)
+        {
+            fadeObject.SetActive(true);
+           
+        }
+    }
     private IEnumerator fadeRoutine;
 
     public void FadeToBlack()
@@ -36,6 +46,6 @@ public class Fade : MonoBehaviour
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, alpha);
             yield return null;
         }
-        this.gameObject.SetActive(false);
+       
     }
 }

@@ -20,7 +20,7 @@ public class Result : MonoBehaviour
     }
     public void ReplayGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         panelResult.SetActive(false);
         playerData.playerCurrentHealth=playerData.playerHealth;
         playerData.playerCurrentStamina=playerData.playerStamina;

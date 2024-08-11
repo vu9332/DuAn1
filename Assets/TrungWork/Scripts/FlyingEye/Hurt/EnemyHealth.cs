@@ -36,6 +36,7 @@ public class EnemyHealth : Enemy, IDamageAble
     public bool isDead = false;
     public bool BossIsDead = false;
     public bossFlyingEyes bossFlyingEyes;
+    [SerializeField] private GameObject bossRoom;
 
     protected override void Awake()
     {
@@ -68,6 +69,7 @@ public class EnemyHealth : Enemy, IDamageAble
             }
             else
             {
+                bossRoom.gameObject.SetActive(false);
                 rb.bodyType = RigidbodyType2D.Static;
                 flyingEyes.groundCheckDownRadius = 0;
             }

@@ -780,7 +780,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ce448f7976fdb0d42945264221ea664f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -923,6 +923,7 @@ MonoBehaviour:
   isDead: 0
   BossIsDead: 0
   bossFlyingEyes: {fileID: 11400000, guid: 50489a0058abdbc47a6c687480e887a1, type: 2}
+  bossRoom: {fileID: 0}
 --- !u!70 &4454524905617139772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

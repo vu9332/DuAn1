@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: item3
   m_EditorClassIdentifier: 
   LevePassiveSkill: 2
-  maxPurchaseLimit: 10
-  NumberOfPurchases: 6
-  price: 300
+  maxPurchaseLimit: 30
+  NumberOfPurchases: 7
+  price: 38.974342
   howMuchMore: 10
-  countPress: 0
+  countPress: 1
   playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
-  saveSlideValue: 0
+  saveSlideValue: 0.33333334

@@ -39,7 +39,7 @@ public class EventManager : MonoBehaviour
             isTool = true;
             toolBoard.SetActive(true);
         } 
-        if (Input.GetKeyDown(KeyCode.X)&&isTool)
+       else if (Input.GetKeyDown(KeyCode.X)&&isTool)
         {
             isTool = false;
             toolBoard.SetActive(false);

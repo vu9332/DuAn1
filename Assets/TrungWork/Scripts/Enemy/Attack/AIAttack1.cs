@@ -8,10 +8,14 @@ public class AIAttack1 : MonoBehaviour
     private SpriteRenderer sp;
     private bool isAttacking=false;
     private Rigidbody2D rb;
+    private Animator anim;
+    private EnemyAIFindPlayer EnemyAIFindPlayer;
     private void Awake()
     {
         sp=GetComponent<SpriteRenderer>();
         rb=GetComponent<Rigidbody2D>();
+        anim=GetComponent<Animator>();
+        EnemyAIFindPlayer=GetComponent<EnemyAIFindPlayer>();
     }
     void Start()
     {
@@ -19,26 +23,17 @@ public class AIAttack1 : MonoBehaviour
     }
     private void Update()
     {
-        if (Vector2.Distance(transform.position,PlayerController.Instance.transform.position) < distance)
-        {
-            isAttacking=true;
-        }
-        else
-        {
-            isAttacking=false;
-        }
-        if (isAttacking)
+        if (EnemyAIFindPlayer.canAttack)
         {
             if (transform.position.x < PlayerController.Instance.transform.position.x)
             {
                 sp.flipX = false;
-                rb.velocity = new Vector2(rb.velocity.x, 3);
             }
             else
             {
                 sp.flipX = true;
-                rb.velocity = new Vector2(rb.velocity.x, 3);
             }
         }
+        anim.SetBool("Attack", EnemyAIFindPlayer.canAttack);
     }
 }

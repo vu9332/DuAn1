@@ -17,3 +17,4 @@ MonoBehaviour:
   health: 30
   coins: 3
   experience: 20
+  hearts: 2

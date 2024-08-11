@@ -2856,7 +2856,14 @@ MonoBehaviour:
   userNameText: {fileID: 1929868962}
   emailUserText: {fileID: 0}
   IDText: {fileID: 0}
+  titleUsernameText: {fileID: 0}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  leaderBoardObj: {fileID: 0}
+  btnPlay: {fileID: 0}
+  btnLeaderboard: {fileID: 0}
+  btnlogOut: {fileID: 0}
+  btnExit: {fileID: 0}
+  btnSetting: {fileID: 0}
 --- !u!1 &540894688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,7 +3074,14 @@ MonoBehaviour:
   userNameText: {fileID: 1929868962}
   emailUserText: {fileID: 0}
   IDText: {fileID: 0}
+  titleUsernameText: {fileID: 0}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  leaderBoardObj: {fileID: 0}
+  btnPlay: {fileID: 0}
+  btnLeaderboard: {fileID: 0}
+  btnlogOut: {fileID: 0}
+  btnExit: {fileID: 0}
+  btnSetting: {fileID: 0}
 --- !u!1 &652149286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,7 +4995,14 @@ MonoBehaviour:
   userNameText: {fileID: 1929868962}
   emailUserText: {fileID: 0}
   IDText: {fileID: 0}
+  titleUsernameText: {fileID: 0}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  leaderBoardObj: {fileID: 0}
+  btnPlay: {fileID: 0}
+  btnLeaderboard: {fileID: 0}
+  btnlogOut: {fileID: 0}
+  btnExit: {fileID: 0}
+  btnSetting: {fileID: 0}
 --- !u!114 &961295138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7846,7 +7867,14 @@ MonoBehaviour:
   userNameText: {fileID: 1929868962}
   emailUserText: {fileID: 0}
   IDText: {fileID: 0}
+  titleUsernameText: {fileID: 0}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  leaderBoardObj: {fileID: 0}
+  btnPlay: {fileID: 0}
+  btnLeaderboard: {fileID: 0}
+  btnlogOut: {fileID: 0}
+  btnExit: {fileID: 0}
+  btnSetting: {fileID: 0}
 --- !u!1 &1749710649
 GameObject:
   m_ObjectHideFlags: 0

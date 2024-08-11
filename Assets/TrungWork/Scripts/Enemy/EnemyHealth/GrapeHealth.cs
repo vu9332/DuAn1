@@ -24,6 +24,7 @@ public class GrapeHealth : EnemyAIHealth
         base.Die();
         pl.playerExp += grape.experience;
         Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, grape.coins);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, grape.hearts);
         CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, grape.experience);
     }
 }

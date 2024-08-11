@@ -10,4 +10,5 @@ public class BlueSmileSC : ScriptableObject
     public float health;
     public int coins;
     public float experience;
+    public int hearts;
 }

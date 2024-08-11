@@ -272,7 +272,7 @@ public class PlayFabManager : MonoBehaviour
         userNameText.text=displayName+"!";
         userNameText.color = new Color(0.009217262f, 1, 0);
         titleUsernameText.text = "HELLO,";
-        titleUsernameText.color=Color.black;
+        titleUsernameText.color=Color.white;
         PlayerPrefs.SetString("_yourName", displayName);
         string email = accountInfo.PrivateInfo.Email;
         //emailUserText.text = email;

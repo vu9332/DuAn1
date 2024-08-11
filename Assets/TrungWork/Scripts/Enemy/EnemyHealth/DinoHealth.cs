@@ -24,6 +24,6 @@ public class DinoHealth : EnemyAIHealth
         base.Die();
         pl.playerExp += dinoSC.experience;
         CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, dinoSC.experience);
-        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, dinoSC.coins);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, dinoSC.hearts);
     }
 }

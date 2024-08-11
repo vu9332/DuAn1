@@ -45,7 +45,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip snd_low_pl_attack6;
     public AudioClip snd_click_1;
     public AudioClip snd_coin;
-    public AudioClip snd_pick_up;
+    public AudioClip snd_drop_key;
+    public AudioClip snd_pick_up_1;
+    public AudioClip snd_pick_up_2;
     public AudioClip snd_win;
     public AudioClip snd_lose_1;
     public AudioClip snd_lose_2;

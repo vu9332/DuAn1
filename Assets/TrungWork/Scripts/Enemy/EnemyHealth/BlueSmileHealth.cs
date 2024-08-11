@@ -23,6 +23,7 @@ public class BlueSmileHealth : EnemyAIHealth
         base.Die();
         pl.playerExp += blueSmileSC.experience;
         Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.currency, transform, blueSmileSC.coins);
+        Rewards.rewardInstance.GiveRewardToPlayer(Rewards.rewardInstance.heart, transform, blueSmileSC.hearts);
         CharacterEvents.characterTookExp.Invoke(UIManager.UIManagerInstance.ExpTextPrefab, PlayerController.Instance.gameObject, blueSmileSC.experience);
     }
 }

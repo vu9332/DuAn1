@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8758242881180437721}
   - component: {fileID: 206479817960165549}
   m_Layer: 5
-  m_Name: Image
+  m_Name: KeyImagePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -827, y: 291}
-  m_SizeDelta: {x: 60, y: 70}
+  m_AnchoredPosition: {x: -210, y: 417}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8758242881180437721
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1999022008, guid: fb0c6926aa1343f498619f4209c662bf, type: 3}
+  m_Sprite: {fileID: 26620181, guid: d0ad69d538103c04cb6a955fe7488134, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -84,8 +84,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3194929981164491015}
+  - component: {fileID: 7327793574164086726}
   m_Layer: 13
-  m_Name: GoldImagePrefab
+  m_Name: KeyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +108,20 @@ Transform:
   - {fileID: 3188175626409973374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7327793574164086726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200378350184064185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c6ae28ead527649a375803f2de6a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  imagePowerUpRect: {fileID: 8207746425723480130}
 --- !u!1 &8496504187174912034
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +182,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1549299689
-  m_SortingOrder: 50
+  m_SortingOrder: 2000
   m_TargetDisplay: 0
 --- !u!114 &697997445082428887
 MonoBehaviour:

@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chest: {fileID: 6237775940579642130, guid: 32c2b7346a2d4f44890639317466014f, type: 3}
   currency: {fileID: 1246801724116161888, guid: ab24711687b719746bf7ec6eb4c63a5e, type: 3}
-  isCoinFall: 0
+  heart: {fileID: 906680394421737197, guid: 9801ae30051e8d44381cd796005ab263, type: 3}
 --- !u!1 &999748332468099052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,7 +2192,7 @@ MonoBehaviour:
   myMixer: {fileID: 24100000, guid: fe0004c9bfcd52548b05378684e559b2, type: 2}
   musicSFX: {fileID: 2333826543709541819}
   soundSFX: {fileID: 4427202099824151643}
-  logTheme: {fileID: 8300000, guid: 59151eccc79f35c4baf86ac361dd1b4b, type: 3}
+  logTheme: {fileID: 8300000, guid: b02d03a41e4a22445913be009e8b5ceb, type: 3}
   mainMenu: {fileID: 8300000, guid: dacbc5acb29736c488a6b8e5ec3b1f1a, type: 3}
   Level1: {fileID: 8300000, guid: 26e6f796892f1d849886518f0c0b414a, type: 3}
   Level2: {fileID: 8300000, guid: 52baa7b615786d040b50738403e84553, type: 3}
@@ -2211,7 +2211,9 @@ MonoBehaviour:
   snd_low_pl_attack6: {fileID: 8300000, guid: 28b283f8b15d2f649b4bfb4e42e37b3f, type: 3}
   snd_click_1: {fileID: 8300000, guid: 6bad7298a839cc8418c83098f78de442, type: 3}
   snd_coin: {fileID: 8300000, guid: dca73554c95de554da1bb6a48d9f5632, type: 3}
-  snd_pick_up: {fileID: 8300000, guid: 7e6499d6becc7d84eba6753f7e08b062, type: 3}
+  snd_drop_key: {fileID: 8300000, guid: 4019a0bf531722b43aa7c5eef60b4ce6, type: 3}
+  snd_pick_up_1: {fileID: 8300000, guid: fd4c88b9347d908479ff0badafadabf1, type: 3}
+  snd_pick_up_2: {fileID: 8300000, guid: e52c4f99f0455dd48b91938c582605cd, type: 3}
   snd_win: {fileID: 8300000, guid: 36e84d5f7a945e2429c21af02f393958, type: 3}
   snd_lose_1: {fileID: 8300000, guid: 9c181796aabe8d24c861492d2cbf78f8, type: 3}
   snd_lose_2: {fileID: 8300000, guid: a23aae4dba99b0948bf34ea1fe40af93, type: 3}

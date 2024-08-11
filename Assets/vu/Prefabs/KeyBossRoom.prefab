@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 663325227149543871}
   - component: {fileID: 872180287217476350}
   - component: {fileID: -656821591815241320}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: KeyBossRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,4 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0075eca512f292147837089ca7883365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 1
+  easeCoin: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  powerUpSC: {fileID: 0}
   newData: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  imageKeyObject: {fileID: 7200378350184064185, guid: 3f00ada7e31da08499a9dbd6a5dd59fc, type: 3}

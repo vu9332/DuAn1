@@ -47,4 +47,5 @@ public class PlayerData : ScriptableObject
     public float CountDeath;
     [Header("Unlock Key")]
     public bool IsKeyUnlock;
+    public bool canTele;
 } 

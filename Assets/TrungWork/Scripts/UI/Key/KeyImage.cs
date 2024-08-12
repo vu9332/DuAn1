@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class KeyImage : PowerUpImage
 {
     private static bool _needKey=true;
-    public static bool NeedKey { private get { return _needKey; } set { _needKey = value; } }
+    public static bool NeedKey { get { return _needKey; } set { _needKey = value; } }
 
 
     private RectTransform imageKeyRectPlayer;
@@ -34,7 +34,7 @@ public class KeyImage : PowerUpImage
         }
         if(!_needKey)
         {
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

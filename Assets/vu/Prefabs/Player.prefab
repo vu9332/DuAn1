@@ -5834,7 +5834,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5be19836440df394985a3839f95a0c3b, type: 3}
   - {fileID: 8300000, guid: adbff260cce0a3e4cbee038c656df848, type: 3}
   - {fileID: 8300000, guid: 1fd344d5f8106844e93942ea8a062eab, type: 3}
-  wallSlidingSpeed: 2
+  wallSlidingSpeed: 10
   wallJumpPower: {x: 7, y: 15}
   myAnimator: {fileID: 0}
   moveInput: {x: 0, y: 0}

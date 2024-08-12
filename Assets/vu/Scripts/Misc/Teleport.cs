@@ -8,13 +8,14 @@ public class Teleport : MonoBehaviour
     [SerializeField] private string teleportNameTransitionName;
     [SerializeField] private Transform posToLoad;
     [SerializeField] private GameObject credit;
-
+    [SerializeField] private PlayerData newData;
     Fade fade;
     private float waitForLoad = 1f;
     [SerializeField] bool canClear;
-    bool canGo=true;
+    bool canGo { get { return newData.canTele; } set { newData.canTele = value; } }
     void Start()
     {
+
         fade=FindAnyObjectByType<Fade>().GetComponent<Fade>();
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,9 +24,17 @@ public class Teleport : MonoBehaviour
         if (controller&&controller.playerData.IsKeyUnlock&&canGo)
         {
 
-           canGo = false;
+           
             StartCoroutine(LoadPositonRoutine(controller.transform));
+            canGo = false;
+            if (KeyImage.NeedKey)
+            {
+                KeyImage.NeedKey = false;
+            }
         }
+
+
+       
     }
 
     private IEnumerator LoadPositonRoutine(Transform posPlayer)
@@ -38,10 +47,10 @@ public class Teleport : MonoBehaviour
             waitForLoad -= Time.deltaTime;
             yield return null;
         }
+        posPlayer.position = posToLoad.position;
 
-        if(canGo) 
-        posPlayer.position=posToLoad.position;
 
+      
 
         if(canClear) 
             fade.FadeToClear();

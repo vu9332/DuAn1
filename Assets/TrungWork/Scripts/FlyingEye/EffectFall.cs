@@ -25,11 +25,6 @@ public class EffectFall : MonoBehaviour
     public void Effectfall()
     {
         isTouchingGround = Physics2D.OverlapCircle(transform.position + offSet, radius, layerGround);
-        if (isTouchingGround && FlyingEyes.Instance.isTouchingUp)
-        {
-            Instantiate(Effect_Fall, groundPointUp.position, Quaternion.Euler(180, 0, 0));
-            SoundFXManagement.Instance.PlaySoundFXClip(hitGround, transform, hitGround.length);
-        }
         if (isTouchingGround && FlyingEyes.Instance.isTouchingDown)
         {
             Instantiate(Effect_Fall, groundPointDown.position, Quaternion.Euler(0, 0, 0));

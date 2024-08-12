@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &137948581627981528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5118861499298474866}
+  - component: {fileID: 8727052416537609402}
+  - component: {fileID: 6673273729418336768}
+  m_Layer: 0
+  m_Name: SaveAndLoadData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5118861499298474866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137948581627981528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.89117, y: 0.06195181, z: -9.963351}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8727052416537609402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137948581627981528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2853f8fc6dac7644a6569a25c35a1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+--- !u!114 &6673273729418336768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137948581627981528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3693bac6bbeec684b9ac9ba68ccddf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RegisterText: {fileID: 0}
+  LoginText: {fileID: 0}
+  emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  userNameInput: {fileID: 0}
+  screenSignUp: {fileID: 0}
+  screenLogin: {fileID: 0}
+  screenMainMenuWhenLoginSuccess: {fileID: 0}
+  screenResetPassword: {fileID: 0}
+  templatePlayerPrefab: {fileID: 0}
+  posInstance: {fileID: 0}
+  scoreHighText: {fileID: 0}
+  userNameText: {fileID: 0}
+  emailUserText: {fileID: 0}
+  IDText: {fileID: 0}
+  titleUsernameText: {fileID: 0}
+  playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  leaderBoardObj: {fileID: 0}
+  btnPlay: {fileID: 0}
+  btnLeaderboard: {fileID: 0}
+  btnlogOut: {fileID: 0}
+  btnExit: {fileID: 0}
+  btnSetting: {fileID: 0}

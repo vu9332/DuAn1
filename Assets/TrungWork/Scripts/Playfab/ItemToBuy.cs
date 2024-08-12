@@ -28,7 +28,6 @@ public class ItemToBuy : MonoBehaviour
     void OnSubtractCoinsSuccess(ModifyUserVirtualCurrencyResult result)
     {
         Debug.Log("Đã mua item có tên "+ itemName.text);
-        SaveAndLoadManager.instance.GetVirtualCurrency();
     }
     void OnSubtractCoinsError(PlayFabError error)
     {

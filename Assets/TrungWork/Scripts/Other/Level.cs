@@ -11,7 +11,7 @@ public class Level : MonoBehaviour
     [SerializeField] private GameObject experiencesBar;
     [SerializeField] private Image experiences;
     [SerializeField] private PlayerData pl;
-    [SerializeField] private TextMeshProUGUI playerLevel;
+    [SerializeField] private TextMeshProUGUI playerLevel,playerMaxLevel;
     [SerializeField] private ex_Level exLevel;
     private int maxLevel;
     private float rateExperiencesUpLevel;
@@ -37,6 +37,7 @@ public class Level : MonoBehaviour
         {
             experiences.fillAmount = (float)pl.playerExp / experiencesPlayerNeedToUpLevel;
             playerLevel.text = "Lv. " + pl.playerLevel.ToString();
+            playerLevel.color = Color.yellow;
             if (pl.playerExp >= experiencesPlayerNeedToUpLevel)
             {
                 pl.playerLevel = ++pl.playerLevel;
@@ -46,8 +47,9 @@ public class Level : MonoBehaviour
         }
         else
         {
-            playerLevel.text = "MAX Lv. " + maxLevel.ToString();
-            experiencesBar.SetActive(false);
+            playerMaxLevel.text = "MAX Lv. " + maxLevel.ToString();
+            playerLevel.text = null;
+            playerMaxLevel.color = Color.yellow;
         }
         if (pl.playerLevel >= maxLevel)
         {

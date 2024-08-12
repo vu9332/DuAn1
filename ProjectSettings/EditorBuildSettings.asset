@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Final/Menu2 1.unity
     guid: a491cecc868583e45adc0e47622a9208
   - enabled: 1
-    path: Assets/Final/map1.unity
-    guid: 90db3c5fea08da2408c4eae88a57fd9c
-  - enabled: 1
     path: Assets/Final/mainMenu.unity
     guid: 6ee1f5dcee0fdb1489f8173d27319c5c
+  - enabled: 1
+    path: Assets/Final/map1.unity
+    guid: 90db3c5fea08da2408c4eae88a57fd9c
   - enabled: 1
     path: Assets/Final/Map2.unity
     guid: d3bb94a6f8295454eb52446767c52ee9

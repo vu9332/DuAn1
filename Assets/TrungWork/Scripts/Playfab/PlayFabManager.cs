@@ -201,25 +201,9 @@ public class PlayFabManager : MonoBehaviour
         //{
         //    yield return null;
         //}
-        SceneManager.LoadScene("mainMenu");
-        yield return new WaitForSeconds(0.5f);
+        AsyncOperation loadOPeration = SceneManager.LoadSceneAsync("mainMenu");
         GetUserAccountInfo();
-        GetLeaderboard();
         DisplayText();
-    }
-    IEnumerator UpdateTextOnLoginScreen()
-    {
-        AsyncOperation t = SceneManager.LoadSceneAsync("Menu2 1");
-        while(!t.isDone)
-        {
-            yield return null;
-        }
-        if(t.isDone)
-        {
-            emailInput.text = null;
-            passwordInput.text = null;
-            LoginText.text = null;
-        }
     }
     void OnErrorLogin(PlayFabError error)
     {
@@ -255,7 +239,8 @@ public class PlayFabManager : MonoBehaviour
     }
     public void LogOut()
     {
-        StartCoroutine(UpdateTextOnLoginScreen());
+        StopAllCoroutines();
+        SceneManager.LoadScene("Menu2 1");
         SaveData();
         PlayerPrefs.SetInt("status", 0);
         PlayerPrefs.Save();
@@ -385,7 +370,6 @@ public class PlayFabManager : MonoBehaviour
         else
         {
             playerStatistics.playerLevel = 1;
-            SendLeaderboard(playerStatistics.playerLevel);
             playerStatistics.playerCoin = 0;
             playerStatistics.playerExp = 0;
             playerStatistics._isSkillOneUnlock = true;
@@ -433,6 +417,7 @@ public class PlayFabManager : MonoBehaviour
     }
     void DisplayLeaderboardGet(GetLeaderboardResult result)
     {
+        SendLeaderboard(playerStatistics.playerLevel);
         foreach (Transform item in posInstance)
         {
             Destroy(item.gameObject);

@@ -7,6 +7,7 @@ public class Gate : MonoBehaviour
 {
     [SerializeField] private string sceneToload;
     [SerializeField] private string sceneNameTransitionName;
+  
 
 
     Fade fade;

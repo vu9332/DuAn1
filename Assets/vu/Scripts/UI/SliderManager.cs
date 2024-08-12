@@ -30,7 +30,7 @@ public class SliderManager : MonoBehaviour
     {
         healthSlider.value = (float)PlayerHealth.Instance.currentHealth / PlayerHealth.Instance.health;
         staminaSlider.value = PlayerHealth.Instance.currentStamina / PlayerHealth.Instance.stamina;
-        CoinText.text =PlayerHealth.Instance.currentCoin.ToString();
+        CoinText.text = Mathf.RoundToInt(PlayerHealth.Instance.currentCoin).ToString();
         currentHealthText.text=PlayerHealth.Instance.currentHealth+"/"+PlayerHealth.Instance.health;
         currentStaminaText.text=PlayerHealth.Instance.currentStamina+"/"+PlayerHealth.Instance.stamina;
     }    

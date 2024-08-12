@@ -6,6 +6,7 @@ public class Delete : MonoBehaviour
 {
     void DeleteIt()
     {
+       
         Destroy(gameObject);
     }
 }

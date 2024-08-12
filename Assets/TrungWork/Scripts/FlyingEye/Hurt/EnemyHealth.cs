@@ -4,9 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class EnemyHealth : Enemy, IDamageAble
 {
+    public static EnemyHealth Instance { get; set; }
+
     [Header("UI")]
     [SerializeField] protected GameObject healthBarObject;
     [SerializeField] protected Image healthBar;
@@ -47,6 +50,11 @@ public class EnemyHealth : Enemy, IDamageAble
         effectFall = GetComponent<EffectFall>();
         flyingEyes = GetComponent<FlyingEyes>();
         flyingEyesFall = GetComponentInChildren<FlyingEyesFall>();
+
+        if(Instance==null)
+        {
+            Instance = this;
+        }
     }
     private void Start()
     {
@@ -79,31 +87,39 @@ public class EnemyHealth : Enemy, IDamageAble
                 flyingEyes.groundCheckDownRadius = 0;
             }
         }
+
     }
     //Nếu va chạm với kiếm của Player thì quái sẽ bị trừ máu
     public override void TakeDamage(float damage)
     {
-        ++countHit;
-        if (!isStartFight)
+       
+        //if (!isStartFight)
+        //{
+        //    isStartFight = true;
+        //    healthBarObject.SetActive(true);
+        //    textBoss.text = "BOSS";
+        //    anim.SetTrigger("StartFight");
+        //    SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
+        //    Instantiate(hurtSFX, transform.position, Quaternion.identity);
+        //    AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level1);
+        //}
+        if (isStartFight)
         {
-            isStartFight = true;
-            healthBarObject.SetActive(true);
-            textBoss.text = "BOSS";
-            anim.SetTrigger("StartFight");
-            SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
-            Instantiate(hurtSFX, transform.position, Quaternion.identity);
-            AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level1);
-        }
-        if (isStartFight && countHit > 1)
-        {
+          
             SoundFXManagement.Instance.PlaySoundFXClip(bossHurting, transform, 100);
             Instantiate(hurtSFX, transform.position, Quaternion.identity);
             base.TakeDamage(damage);
             healthBar.fillAmount = currentHealth / health;
-            Debug.Log("Máu boss còn: " + currentHealth);
             StartCoroutine(flash.FlashRoutine());
             Die();
         }
+    }
+    public void StartFighting()
+    {
+        textBoss.text = "BOSS";
+        anim.SetTrigger("StartFight");
+        healthBarObject.SetActive(true);
+        isStartFight = true;
     }
     //Nếu máu về 0
     public override void Die()

@@ -8,13 +8,13 @@ public class Fade : MonoBehaviour
     [SerializeField] private Image fadeScreen;
     [SerializeField] private float fadeSpeed;
 
-    [SerializeField] private GameObject fadeObject;
+   // [SerializeField] private GameObject fadeObject;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<PlayerHealth>() != null)
         {
-            fadeObject.SetActive(true);
+            //fadeObject.SetActive(true);
            
         }
     }

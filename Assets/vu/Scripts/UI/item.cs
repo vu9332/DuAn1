@@ -25,8 +25,9 @@ public class item : MonoBehaviour
     [SerializeField] public Slider statusBar;
     [SerializeField] private float numberOfParts=3;
     float partValue;
-   // public float coutSlideValue = 0;
+    // public float coutSlideValue = 0;
 
+    string text = "The purchase failed";
     private void Start()
     {
        
@@ -49,22 +50,23 @@ public class item : MonoBehaviour
         statusBar.value = itemData.saveSlideValue;
         levelText.text = "LV:" + itemData.LevePassiveSkill;
         levelText2.text = "LV:" + itemData.LevePassiveSkill;
-        priceText.text=itemData.price.ToString();
+        priceText.text= itemData.price.ToString();
     }
     public void Buying(ref float data)
     {
-        if (itemData.NumberOfPurchases<=itemData.maxPurchaseLimit&& itemData.playerData.playerCoin >= itemData.price)
+        if (itemData.NumberOfPurchases <= itemData.maxPurchaseLimit && itemData.playerData.playerCoin >= itemData.price)
         {
             this.gameObject.GetComponent<Button>().enabled = false;
             data += itemData.howMuchMore;
             PlayerHealth.Instance.UseCoin(itemData.price);
             itemData.NumberOfPurchases++;
-            itemData.price *= 1.10f;
+            float tam = itemData.price * 1.1f;
+            itemData.price = Mathf.RoundToInt(tam);
             itemData.countPress++;
             StartCoroutine(UpdateSliderInParts());
             itemData.saveSlideValue += partValue;
-
         }
+        else MessageManager.istance.StartPopUp(text, 3f);
     }    
    public void CheckValue()
     {

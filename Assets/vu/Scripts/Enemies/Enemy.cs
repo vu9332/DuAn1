@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, IDamageAble
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
+      
         PlayerHealth playr=collision.gameObject.GetComponent<PlayerHealth>();
         if (playr != null)
         {

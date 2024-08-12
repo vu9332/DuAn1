@@ -14,6 +14,7 @@ public class OpenBossRoom : MonoBehaviour
     public bool IsBossWakeUp { get { return _isBossWakeUp; } private set { _isBossWakeUp = value; } }
 
     [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private float timeShake;
     private void Start()
     {
         if(Instance == null)
@@ -22,7 +23,17 @@ public class OpenBossRoom : MonoBehaviour
         }
         boss.SetActive(false);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PlayerController pl=collision.gameObject.GetComponent<PlayerController>();
+        if(pl!=null&&pl.playerData.IsKeyUnlock)
+        {
+          //  pl.playerData.IsKeyUnlock = false;
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+
+    }
+    private void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.GetComponent<PlayerController>() != null&&!IsBossWakeUp)
         {
@@ -35,7 +46,7 @@ public class OpenBossRoom : MonoBehaviour
     {
         SoundFXManagement.Instance.PlaySoundFXClip(audioClips[0], transform, 1f);
         IsBossWakeUp = true;
-      //  playerCamera.SetActive(false);
+        StartCoroutine(ShakeCam());
         yield return new WaitForSeconds(.7f);
        // playerCamera.SetActive(true);
         GameObject ef = Instantiate(effect,spawnPoint.transform);
@@ -46,6 +57,16 @@ public class OpenBossRoom : MonoBehaviour
         ef.SetActive(false);
       //  playerCamera.SetActive(false);
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+    }
+    IEnumerator ShakeCam()
+    {
+        float elapsed = 0;
+        while (elapsed <= timeShake)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+            CameraShake.instance.ShakeCamera(5);
+        }
     }
     //private void SartSpawn()
     //{

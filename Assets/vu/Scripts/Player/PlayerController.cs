@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
             CameraManager.instance.LerpYDamping(false);
             Debug.Log("2");
         }
+       
         //
         //if (rb.velocity.y<=-_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&!CameraManager.instance.LerpededFromPlayerFalling)
         //{
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
         //}
         //
 
-        
+
     }
     #region Move
     public void OnMove(InputAction.CallbackContext context)

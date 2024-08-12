@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: newData
   m_EditorClassIdentifier: 
   playerHealth: 120
-  playerCurrentHealth: 40
-  playerStamina: 100
-  playerCurrentStamina: 102
-  playerCoin: 89
+  playerCurrentHealth: 97760
+  playerStamina: 120
+  playerCurrentStamina: 121
+  playerCoin: 457.02567
   playerLevel: 1
   playeMaxLevel: 0
-  playerExp: 150
-  playerDamage: 10
+  playerExp: 4260
+  playerDamage: 140
   _isMoving: 0
   _isJumping: 0
   _isRunning: 0
@@ -31,5 +31,5 @@ MonoBehaviour:
   _isSkillThreeUnlock: 0
   _isSkillTwoUnlock: 0
   _isSkillOneUnlock: 0
-  CountDeath: 14
+  CountDeath: 15
   IsKeyUnlock: 1

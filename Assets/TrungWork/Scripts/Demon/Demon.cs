@@ -21,6 +21,7 @@ public class Demon : Boss
         if (PlayerHealth.Instance.IsDeath)
         {
             myAnimator.enabled = false;
+           
         }
     }
     private void FindPlayer()

@@ -38,7 +38,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
         {
             case "Skill 1":
                 {
-                    if (playerData.playerCoin >= 10 && playerData.playerLevel >= 2)
+                    if (playerData.playerCoin >= 50 && playerData.playerLevel >= 1)
                     {
                         isSelected = true;
                         this.gameObject.SetActive(false);
@@ -57,7 +57,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                 }                 
                     break;                
             case "Skill 2":
-                if (playerData.playerCoin >= 10 && playerData.playerLevel >= 3)
+                if (playerData.playerCoin >= 200 && playerData.playerLevel >= 3)
                 {
                     isSelected = true;
                     this.gameObject.SetActive(false);
@@ -73,7 +73,7 @@ public class CardSelectionHandler : MonoBehaviour,IPointerEnterHandler,IPointerE
                 }
                 break;
             case "Skill 3":
-                if (playerData.playerCoin >= 10 && playerData.playerLevel >= 5)
+                if (playerData.playerCoin >= 300 && playerData.playerLevel >= 5)
                 {
                     isSelected = true;
                     this.gameObject.SetActive(false);

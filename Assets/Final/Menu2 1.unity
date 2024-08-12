@@ -1445,6 +1445,9 @@ MonoBehaviour:
   IDText: {fileID: 0}
   titleUsernameText: {fileID: 0}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+  item3: {fileID: 0}
   leaderBoardObj: {fileID: 0}
   btnPlay: {fileID: 0}
   btnLeaderboard: {fileID: 0}
@@ -5186,6 +5189,9 @@ MonoBehaviour:
   IDText: {fileID: 0}
   titleUsernameText: {fileID: 8384526963802847848, guid: a57031977bc2afa4c9e4fe3d0a8b8537, type: 3}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+  item3: {fileID: 0}
   leaderBoardObj: {fileID: 0}
   btnPlay: {fileID: 0}
   btnLeaderboard: {fileID: 0}
@@ -5517,6 +5523,9 @@ MonoBehaviour:
   IDText: {fileID: 0}
   titleUsernameText: {fileID: 0}
   playerStatistics: {fileID: 11400000, guid: 24615d3941580db4fbde6de41c58175f, type: 2}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+  item3: {fileID: 0}
   leaderBoardObj: {fileID: 0}
   btnPlay: {fileID: 0}
   btnLeaderboard: {fileID: 0}
@@ -7131,6 +7140,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayFabManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7785818126700624084, guid: 6a84777af5a642f4d859627c8d66a13c, type: 3}
+      propertyPath: item1
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a57280ba1202c648a8e4e06029869fc, type: 2}
+    - target: {fileID: 7785818126700624084, guid: 6a84777af5a642f4d859627c8d66a13c, type: 3}
+      propertyPath: item2
+      value: 
+      objectReference: {fileID: 11400000, guid: 38053d462bdff424786a976152662467, type: 2}
+    - target: {fileID: 7785818126700624084, guid: 6a84777af5a642f4d859627c8d66a13c, type: 3}
+      propertyPath: item3
+      value: 
+      objectReference: {fileID: 11400000, guid: d4dbd3be6d60e0c47bc5c052a5d9e3e5, type: 2}
     - target: {fileID: 7785818126700624084, guid: 6a84777af5a642f4d859627c8d66a13c, type: 3}
       propertyPath: LoginText
       value: 

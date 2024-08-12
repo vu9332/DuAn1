@@ -9,8 +9,10 @@ public class ShowText : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject boxText;
     [SerializeField] private GameObject fade;
-    
+
     // Coroutine textBlink;
+    [SerializeField] private bool canFade;
+    
  
     private void Start()
     {
@@ -24,15 +26,28 @@ public class ShowText : MonoBehaviour
             text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
             boxText.SetActive(true);
             TextBlink();
-            fade.SetActive(true);
+            if (canFade)
+            {
+                fade.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<PlayerHealth>() != null)
         {
-            boxText.SetActive(false);
-            fade.SetActive(false);
+            if(boxText.gameObject.activeSelf==true)
+            {
+
+                   boxText.SetActive(false);
+            }
+
+            if (canFade)
+            {
+
+                fade.SetActive(false);
+            }
+            
             //  wasJoin = true;
             // this.gameObject.SetActive(false);
 

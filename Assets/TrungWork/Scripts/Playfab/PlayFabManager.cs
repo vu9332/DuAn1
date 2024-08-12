@@ -37,6 +37,9 @@ public class PlayFabManager : MonoBehaviour
     private string currentPlayFabId;
     public TextMeshProUGUI titleUsernameText;
     public PlayerData playerStatistics;
+    public ShopDataBase item1;
+    public ShopDataBase item2;
+    public ShopDataBase item3;
 
     public GameObject leaderBoardObj;
     public Button btnPlay;
@@ -334,7 +337,8 @@ public class PlayFabManager : MonoBehaviour
                 {"Experiences",playerStatistics.playerExp.ToString()},
                 {"SkillLevel1",playerStatistics._isSkillOneUnlock.ToString()},
                 {"SkillLevel2",playerStatistics._isSkillTwoUnlock.ToString()},
-                {"SkillLevel3",playerStatistics._isSkillThreeUnlock.ToString()}
+                {"SkillLevel3",playerStatistics._isSkillThreeUnlock.ToString()},
+               
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnSaveDataSuccess, OnSaveDataError);
@@ -370,14 +374,28 @@ public class PlayFabManager : MonoBehaviour
         else
         {
             playerStatistics.playerLevel = 1;
-            playerStatistics.playerCoin = 0;
+            playerStatistics.playerCoin = 50;
             playerStatistics.playerExp = 0;
-            playerStatistics._isSkillOneUnlock = true;
+            playerStatistics._isSkillOneUnlock = false;
             playerStatistics._isSkillTwoUnlock = false;
             playerStatistics._isSkillThreeUnlock = false;
+            playerStatistics.playerCurrentHealth = playerStatistics.playerHealth;
+            ResetData(item1);
+            ResetData(item2);
+            ResetData(item3);
             SaveData();
         }
     }
+    private void ResetData(ShopDataBase shopData)
+    {
+
+        shopData.LevePassiveSkill = 0;
+        shopData.price = 10;
+        shopData.countPress = 0;
+        shopData.NumberOfPurchases = 0;
+        shopData.saveSlideValue = 0;
+} 
+
     void OnDataLoadError(PlayFabError error)
     {
         Debug.Log("Không thể tải được dữ liệu của bạn!");

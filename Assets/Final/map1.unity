@@ -19779,6 +19779,7 @@ MonoBehaviour:
   text: {fileID: 1265413500}
   boxText: {fileID: 2042378102}
   fade: {fileID: 2228648236238010962}
+  canFade: 0
 --- !u!61 &742929657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21337,6 +21338,7 @@ MonoBehaviour:
   text: {fileID: 1861244744}
   boxText: {fileID: 1061236617}
   fade: {fileID: 2228648236238010962}
+  canFade: 0
 --- !u!61 &830155371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22723,11 +22725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653207102611590483, guid: fc88b20f1e9e7c1469168706a12019f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -518.5
+      value: -437.92
       objectReference: {fileID: 0}
     - target: {fileID: 6653207102611590483, guid: fc88b20f1e9e7c1469168706a12019f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -955
+      value: -953.88
       objectReference: {fileID: 0}
     - target: {fileID: 6653207102611590483, guid: fc88b20f1e9e7c1469168706a12019f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63438,7 +63440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.55, y: -2.68}
+  m_AnchoredPosition: {x: -3.92, y: -3.03}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414663117
@@ -63461,7 +63463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You need a key to enter
+  m_text: To be continue....
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8db82e3b4f6d3a94a8ac63da2f109946, type: 2}
   m_sharedMaterial: {fileID: 7618678992746546632, guid: 8db82e3b4f6d3a94a8ac63da2f109946, type: 2}
@@ -63488,8 +63490,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.73
-  m_fontSizeBase: 0.73
+  m_fontSize: 0.87
+  m_fontSizeBase: 0.87
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -65309,6 +65311,7 @@ MonoBehaviour:
   text: {fileID: 1414663117}
   boxText: {fileID: 1137144262}
   fade: {fileID: 2228648236238010962}
+  canFade: 1
 --- !u!61 &1505259639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70041,11 +70044,11 @@ PrefabInstance:
       objectReference: {fileID: 842638278}
     - target: {fileID: 6480166015250231254, guid: 9828439c6f4f3244ca602bb386f108c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -115.91223
+      value: -35.332245
       objectReference: {fileID: 0}
     - target: {fileID: 6480166015250231254, guid: 9828439c6f4f3244ca602bb386f108c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.775517
+      value: 30.895512
       objectReference: {fileID: 0}
     - target: {fileID: 6480166015250231254, guid: 9828439c6f4f3244ca602bb386f108c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77608,7 +77611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

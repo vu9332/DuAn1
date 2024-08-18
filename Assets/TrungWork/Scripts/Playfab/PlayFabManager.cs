@@ -380,9 +380,9 @@ public class PlayFabManager : MonoBehaviour
             playerStatistics._isSkillTwoUnlock = false;
             playerStatistics._isSkillThreeUnlock = false;
             playerStatistics.playerCurrentHealth = playerStatistics.playerHealth;
-            ResetData(item1);
-            ResetData(item2);
-            ResetData(item3);
+            //ResetData(item1);
+            //ResetData(item2);
+            //ResetData(item3);
             SaveData();
         }
     }

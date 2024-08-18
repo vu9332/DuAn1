@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            if (CanMove)
-            {
+           // if (CanMove)
+         //   {
                 if (IsMoving &&!touchingDirection.IsOnWallNoSlide&& !IsRolling)
                 {
                     if (IsRunning)
@@ -94,11 +94,11 @@ public class PlayerController : MonoBehaviour
                     //idle
                     return 0;
                 }
-            }
-            else
-            { //move while attack
-                return (IsFacingRight) ? moveWhileAttackSpeed : moveWhileAttackSpeed * -1;
-            }
+       //     }
+            //else
+            //{ //move while attack
+            //    return (IsFacingRight) ? moveWhileAttackSpeed : moveWhileAttackSpeed * -1;
+            //}
 
         }
         set { }
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
    public  Animator myAnimator;
     ParticleSystem partic;
-  public  Vector2 moveInput;
+       Vector2 moveInput;
 
 
     // set direction
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isWallJumping&&!PlayerHealth.Instance.IsDeath)
+        if (!isWallJumping/*&&!PlayerHealth.Instance.IsDeath*/)
         {
         ApplyMovement();
           
@@ -179,30 +179,13 @@ public class PlayerController : MonoBehaviour
         {
        
             CameraManager.instance.LerpYDamping(true);
-         
-            Debug.Log("1");
-
         }
         if(rb.velocity.y >= 0f &&!CameraManager.instance.IsLerpingYDamping&&CameraManager.instance.LerpededFromPlayerFalling)
         {
             CameraManager.instance.LerpededFromPlayerFalling = false;
             CameraManager.instance.LerpYDamping(false);
-            Debug.Log("2");
         }
-       
-        //
-        //if (rb.velocity.y<=-_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&!CameraManager.instance.LerpededFromPlayerFalling)
-        //{
-        //    CameraManager.instance.LerpYDamping(true);        
-        //}
-        //if (rb.velocity.y>=-_fallSpeedYDamingChangeThreshold&&!CameraManager.instance.IsLerpingYDamping&&CameraManager.instance.LerpededFromPlayerFalling)
-        //{
-        //    CameraManager.instance.LerpededFromPlayerFalling=false;
-        //    CameraManager.instance.LerpYDamping(false);        
-        //}
-        //
-
-
+      
     }
     #region Move
     public void OnMove(InputAction.CallbackContext context)
@@ -350,8 +333,7 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (touchingDirection.IsGround && CanJump(context))
-        {
-            
+        {            
             SoundFXManagement.Instance.PlaySoundFXClip(movingSoundEffect[2], this.transform, .7f);
             myAnimator.SetTrigger(AnimationString.IsJumping);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -424,13 +406,13 @@ public class PlayerController : MonoBehaviour
                 // right
                
                 IsFacingRight = true;
-                _cameraFollowObjet.CallTurn();
+               // _cameraFollowObjet.CallTurn();
             }
             else if (direction.x < 0 && IsFacingRight)
             {
                 //Left
                 IsFacingRight = false;
-               _cameraFollowObjet.CallTurn();
+            ///   _cameraFollowObjet.CallTurn();
 
             }
         }

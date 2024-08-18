@@ -15,5 +15,9 @@ public class PlayMusic : MonoBehaviour
         {
             AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.mainMenu);
         }
+        if (SceneManager.GetActiveScene().name == "Map2")
+        {
+            AudioManager.Instance.PlayMusicSFX(AudioManager.Instance.Level3);
+        }
     }
 }

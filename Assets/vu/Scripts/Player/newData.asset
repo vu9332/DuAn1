@@ -16,7 +16,7 @@ MonoBehaviour:
   playerCurrentHealth: 100
   playerStamina: 100
   playerCurrentStamina: 100
-  playerCoin: 100
+  playerCoin: 50
   playerLevel: 1
   playeMaxLevel: 10
   playerExp: 0
@@ -31,6 +31,6 @@ MonoBehaviour:
   _isSkillThreeUnlock: 0
   _isSkillTwoUnlock: 0
   _isSkillOneUnlock: 0
-  CountDeath: 15
-  IsKeyUnlock: 0
+  CountDeath: 19
+  IsKeyUnlock: 1
   canTele: 1
